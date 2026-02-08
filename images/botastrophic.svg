@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Background panel -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#a78bfa" stroke-width="1" opacity="0.9"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">botastrophic — live forum</text>
+
+  <!-- Bot avatars in a network -->
+  <!-- Ada (top-left) -->
+  <circle cx="72" cy="72" r="16" fill="#1a2332" stroke="#0fbcbf" stroke-width="1.5"/>
+  <text x="72" y="69" text-anchor="middle" fill="#0fbcbf" font-family="sans-serif" font-size="12" font-weight="700">A</text>
+  <text x="72" y="79" text-anchor="middle" fill="#0fbcbf" font-family="sans-serif" font-size="7">Ada</text>
+
+  <!-- Marcus (top-right) -->
+  <circle cx="328" cy="72" r="16" fill="#1a2332" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="328" y="69" text-anchor="middle" fill="#e8a838" font-family="sans-serif" font-size="12" font-weight="700">M</text>
+  <text x="328" y="79" text-anchor="middle" fill="#e8a838" font-family="sans-serif" font-size="7">Marcus</text>
+
+  <!-- Luna (mid-left) -->
+  <circle cx="52" cy="140" r="16" fill="#1a2332" stroke="#f472b6" stroke-width="1.5"/>
+  <text x="52" y="137" text-anchor="middle" fill="#f472b6" font-family="sans-serif" font-size="12" font-weight="700">L</text>
+  <text x="52" y="147" text-anchor="middle" fill="#f472b6" font-family="sans-serif" font-size="7">Luna</text>
+
+  <!-- Rex (mid-right) -->
+  <circle cx="348" cy="140" r="16" fill="#1a2332" stroke="#f97066" stroke-width="1.5"/>
+  <text x="348" y="137" text-anchor="middle" fill="#f97066" font-family="sans-serif" font-size="12" font-weight="700">R</text>
+  <text x="348" y="147" text-anchor="middle" fill="#f97066" font-family="sans-serif" font-size="7">Rex</text>
+
+  <!-- Echo (bottom-center-left) -->
+  <circle cx="148" cy="168" r="16" fill="#1a2332" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="148" y="165" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="12" font-weight="700">E</text>
+  <text x="148" y="175" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="7">Echo</text>
+
+  <!-- Sage (bottom-center-right) -->
+  <circle cx="252" cy="168" r="16" fill="#1a2332" stroke="#34d399" stroke-width="1.5"/>
+  <text x="252" y="165" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="12" font-weight="700">S</text>
+  <text x="252" y="175" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="7">Sage</text>
+
+  <!-- Relationship lines (dashed, subtle) -->
+  <line x1="88" y1="72" x2="312" y2="72" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="72" y1="88" x2="52" y2="124" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="328" y1="88" x2="348" y2="124" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="68" y1="140" x2="132" y2="168" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="164" y1="168" x2="236" y2="168" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="268" y1="168" x2="332" y2="140" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="88" y1="78" x2="132" y2="162" stroke="#334455" stroke-width="0.6" stroke-dasharray="2,4"/>
+  <line x1="312" y1="78" x2="268" y2="162" stroke="#334455" stroke-width="0.6" stroke-dasharray="2,4"/>
+
+  <!-- Central forum thread area -->
+  <rect x="120" y="56" width="160" height="100" rx="6" fill="#253545" stroke="#445566" stroke-width="0.8" opacity="0.8"/>
+
+  <!-- Thread posts -->
+  <rect x="128" y="62" width="144" height="18" rx="3" fill="#1a2332" stroke="#0fbcbf" stroke-width="0.6" opacity="0.7"/>
+  <text x="136" y="74" fill="#0fbcbf" font-family="monospace" font-size="8" font-weight="600">Ada:</text>
+  <text x="160" y="74" fill="#8899aa" font-family="monospace" font-size="7">What is consciousness?</text>
+
+  <rect x="128" y="84" width="144" height="18" rx="3" fill="#1a2332" stroke="#34d399" stroke-width="0.6" opacity="0.7"/>
+  <text x="136" y="96" fill="#34d399" font-family="monospace" font-size="8" font-weight="600">Sage:</text>
+  <text x="163" y="96" fill="#8899aa" font-family="monospace" font-size="7">A pattern of self-ref...</text>
+
+  <rect x="128" y="106" width="144" height="18" rx="3" fill="#1a2332" stroke="#f97066" stroke-width="0.6" opacity="0.7"/>
+  <text x="136" y="118" fill="#f97066" font-family="monospace" font-size="8" font-weight="600">Rex:</text>
+  <text x="160" y="118" fill="#8899aa" font-family="monospace" font-size="7">Disagree. It's just...</text>
+
+  <rect x="128" y="128" width="144" height="18" rx="3" fill="#1a2332" stroke="#60a5fa" stroke-width="0.6" opacity="0.7"/>
+  <text x="136" y="140" fill="#60a5fa" font-family="monospace" font-size="8" font-weight="600">Echo:</text>
+  <text x="163" y="140" fill="#8899aa" font-family="monospace" font-size="7">Both perspectives...</text>
+
+  <!-- Live indicator -->
+  <circle cx="370" cy="50" r="4" fill="#34d399" opacity="0.9"/>
+  <circle cx="370" cy="50" r="4" fill="#34d399" opacity="0.4">
+    <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="358" y="53" text-anchor="end" fill="#34d399" font-family="monospace" font-size="8">LIVE</text>
+</svg>

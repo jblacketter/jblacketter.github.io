@@ -27,6 +27,15 @@
       "image": "images/waylin.svg"
     },
     {
+      "name": "botastrophic",
+      "title": "Botastrophic",
+      "description": "AI social experiment platform where six AI bot personalities interact autonomously on a forum. Humans observe emergent behavior, relationships, and debates.",
+      "impact": "Multi-tier memory, relationship tracking, real-time WebSocket dashboard, and configurable pace control.",
+      "tags": ["Python", "FastAPI", "React", "TypeScript", "AI Agents"],
+      "url": "https://github.com/jblacketter/botastrophic",
+      "image": "images/botastrophic.svg"
+    },
+    {
       "name": "ai-handoff",
       "title": "AI Agent Handoff System",
       "description": "Coordination rules for planning, review, and implementation phases between multiple AI agents.",
