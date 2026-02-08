@@ -18,7 +18,6 @@
       renderFocus(data.currentFocus);
       renderDemo(data.video);
       initReveal();
-      initParticles();
     })
     .catch(function (err) {
       console.error('Failed to load content:', err);
@@ -92,10 +91,8 @@
     if (!grid || !items) return;
 
     grid.innerHTML = items.map(function (item) {
-      var statusLabel = item.status === 'active' ? 'Active' : item.status;
       return (
         '<article class="focus-card reveal">' +
-          '<span class="focus-card__status">' + escapeHtml(statusLabel) + '</span>' +
           '<h3 class="focus-card__title">' + escapeHtml(item.title) + '</h3>' +
           '<p class="focus-card__desc">' + escapeHtml(item.description) + '</p>' +
         '</article>'

@@ -164,8 +164,7 @@ a:hover { color: var(--accent-2); }
     #5a4a7a 75%,
     var(--bg) 100%
   );
-  background-size: 400% 400%;
-  animation: heroGradient 20s ease infinite;
+  background-size: 100% 100%;
   z-index: 0;
 }
 
@@ -181,22 +180,6 @@ a:hover { color: var(--accent-2); }
     rgba(167, 139, 250, 0.06),
     rgba(15, 188, 191, 0.08)
   );
-  animation: orbit 25s linear infinite;
-}
-
-@keyframes orbit {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes heroGradient {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__bg { animation: none; }
 }
 
 .hero__left {
@@ -569,19 +552,6 @@ a:hover { color: var(--accent-2); }
 .focus-card:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3), 0 0 16px rgba(232, 168, 56, 0.15);
-}
-
-.focus-card__status {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  background: rgba(232, 168, 56, 0.15);
-  color: var(--accent-2);
-  margin-bottom: 0.4rem;
 }
 
 .focus-card__title {
