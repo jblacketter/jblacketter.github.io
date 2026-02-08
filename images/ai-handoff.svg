@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Background panels (tmux-like) -->
+  <!-- Left pane: Lead -->
+  <rect x="10" y="10" width="185" height="120" rx="6" fill="#1a2332" stroke="#a78bfa" stroke-width="1"/>
+  <rect x="10" y="10" width="185" height="22" rx="6" fill="#2a3545"/>
+  <rect x="10" y="26" width="185" height="6" fill="#2a3545"/>
+  <text x="102" y="25" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="10" font-weight="600">LEAD (Claude)</text>
+  <text x="20" y="48" fill="#34d399" font-family="monospace" font-size="9">Planning phase...</text>
+  <text x="20" y="62" fill="#8899aa" font-family="monospace" font-size="9">Analyzing requirements</text>
+  <text x="20" y="76" fill="#8899aa" font-family="monospace" font-size="9">Drafting implementation</text>
+  <text x="20" y="90" fill="#0fbcbf" font-family="monospace" font-size="9">→ Ready for review</text>
+  <rect x="20" y="100" width="80" height="18" rx="4" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="0.8"/>
+  <text x="60" y="113" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="9">HANDOFF →</text>
+
+  <!-- Right pane: Reviewer -->
+  <rect x="205" y="10" width="185" height="120" rx="6" fill="#1a2332" stroke="#e8a838" stroke-width="1"/>
+  <rect x="205" y="10" width="185" height="22" rx="6" fill="#2a3545"/>
+  <rect x="205" y="26" width="185" height="6" fill="#2a3545"/>
+  <text x="298" y="25" text-anchor="middle" fill="#e8a838" font-family="monospace" font-size="10" font-weight="600">REVIEWER (Codex)</text>
+  <text x="215" y="48" fill="#e8a838" font-family="monospace" font-size="9">Reviewing changes...</text>
+  <text x="215" y="62" fill="#8899aa" font-family="monospace" font-size="9">Checking code quality</text>
+  <text x="215" y="76" fill="#8899aa" font-family="monospace" font-size="9">Validating patterns</text>
+  <text x="215" y="90" fill="#34d399" font-family="monospace" font-size="9">✓ APPROVED</text>
+  <rect x="215" y="100" width="80" height="18" rx="4" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="0.8"/>
+  <text x="255" y="113" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="9">APPROVE ✓</text>
+
+  <!-- Arrow between panes -->
+  <line x1="150" y1="108" x2="210" y2="108" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="208,104 216,108 208,112" fill="#a78bfa"/>
+
+  <!-- Bottom pane: Watcher/Timeline -->
+  <rect x="10" y="140" width="380" height="50" rx="6" fill="#1a2332" stroke="#0fbcbf" stroke-width="1"/>
+  <rect x="10" y="140" width="380" height="18" rx="6" fill="#2a3545"/>
+  <rect x="10" y="152" width="380" height="6" fill="#2a3545"/>
+  <text x="200" y="153" text-anchor="middle" fill="#0fbcbf" font-family="monospace" font-size="9" font-weight="600">WORKFLOW TIMELINE</text>
+  <!-- Timeline dots -->
+  <circle cx="50" cy="174" r="5" fill="#34d399"/>
+  <text x="50" y="168" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="7">Plan</text>
+  <line x1="55" y1="174" x2="125" y2="174" stroke="#445566" stroke-width="1.5"/>
+  <circle cx="130" cy="174" r="5" fill="#34d399"/>
+  <text x="130" y="168" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="7">Review</text>
+  <line x1="135" y1="174" x2="195" y2="174" stroke="#445566" stroke-width="1.5"/>
+  <circle cx="200" cy="174" r="5" fill="#e8a838"/>
+  <text x="200" y="168" text-anchor="middle" fill="#e8a838" font-family="monospace" font-size="7">Revise</text>
+  <line x1="205" y1="174" x2="265" y2="174" stroke="#445566" stroke-width="1.5"/>
+  <circle cx="270" cy="174" r="5" fill="#a78bfa"/>
+  <text x="270" y="168" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="7">Approve</text>
+  <line x1="275" y1="174" x2="335" y2="174" stroke="#445566" stroke-width="1.5"/>
+  <circle cx="340" cy="174" r="5" fill="#0fbcbf" stroke="#0fbcbf" stroke-width="2"/>
+  <text x="340" y="168" text-anchor="middle" fill="#0fbcbf" font-family="monospace" font-size="7">Deploy</text>
+</svg>

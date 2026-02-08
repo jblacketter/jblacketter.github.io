@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Browser chrome -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#f97066" stroke-width="1" opacity="0.9"/>
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <!-- URL bar -->
+  <rect x="80" y="16" width="240" height="16" rx="4" fill="#1a2332"/>
+  <text x="200" y="28" text-anchor="middle" fill="#667788" font-family="sans-serif" font-size="9">linkedin.com/jobs/search</text>
+
+  <!-- Job card 1 - Low risk (green) -->
+  <rect x="24" y="48" width="168" height="62" rx="6" fill="#253545" stroke="#334455" stroke-width="0.8"/>
+  <rect x="158" y="52" width="28" height="16" rx="4" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="0.8"/>
+  <text x="172" y="64" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="700">12</text>
+  <text x="34" y="64" fill="#e4ecf0" font-family="sans-serif" font-size="10" font-weight="600">Senior QA Engineer</text>
+  <text x="34" y="78" fill="#8899aa" font-family="sans-serif" font-size="8">TechCorp · Portland, OR</text>
+  <text x="34" y="90" fill="#667788" font-family="sans-serif" font-size="8">Posted 2 days ago · Hiring manager listed</text>
+  <rect x="34" y="96" width="40" height="8" rx="2" fill="rgba(52,211,153,0.15)"/>
+  <text x="54" y="103" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="6" font-weight="500">LOW RISK</text>
+
+  <!-- Job card 2 - Medium risk (yellow) -->
+  <rect x="208" y="48" width="168" height="62" rx="6" fill="#253545" stroke="#334455" stroke-width="0.8"/>
+  <rect x="342" y="52" width="28" height="16" rx="4" fill="rgba(232,168,56,0.2)" stroke="#e8a838" stroke-width="0.8"/>
+  <text x="356" y="64" text-anchor="middle" fill="#e8a838" font-family="sans-serif" font-size="10" font-weight="700">35</text>
+  <text x="218" y="64" fill="#e4ecf0" font-family="sans-serif" font-size="10" font-weight="600">SDET II</text>
+  <text x="218" y="78" fill="#8899aa" font-family="sans-serif" font-size="8">StartupCo · Remote</text>
+  <text x="218" y="90" fill="#667788" font-family="sans-serif" font-size="8">Posted 18 days ago · No salary</text>
+  <rect x="218" y="96" width="48" height="8" rx="2" fill="rgba(232,168,56,0.15)"/>
+  <text x="242" y="103" text-anchor="middle" fill="#e8a838" font-family="sans-serif" font-size="6" font-weight="500">MEDIUM</text>
+
+  <!-- Job card 3 - High risk (red) -->
+  <rect x="24" y="120" width="168" height="62" rx="6" fill="#253545" stroke="#334455" stroke-width="0.8"/>
+  <rect x="158" y="124" width="28" height="16" rx="4" fill="rgba(249,112,102,0.2)" stroke="#f97066" stroke-width="0.8"/>
+  <text x="172" y="136" text-anchor="middle" fill="#f97066" font-family="sans-serif" font-size="10" font-weight="700">58</text>
+  <text x="34" y="136" fill="#e4ecf0" font-family="sans-serif" font-size="10" font-weight="600">Software Tester</text>
+  <text x="34" y="150" fill="#8899aa" font-family="sans-serif" font-size="8">MegaCorp · Various Locations</text>
+  <text x="34" y="162" fill="#667788" font-family="sans-serif" font-size="8">Reposted · Boilerplate desc · 30+ days</text>
+  <rect x="34" y="168" width="48" height="8" rx="2" fill="rgba(249,112,102,0.15)"/>
+  <text x="58" y="175" text-anchor="middle" fill="#f97066" font-family="sans-serif" font-size="6" font-weight="500">HIGH RISK</text>
+
+  <!-- Score breakdown panel -->
+  <rect x="208" y="120" width="168" height="62" rx="6" fill="#1e2d3d" stroke="#f97066" stroke-width="0.8"/>
+  <text x="218" y="136" fill="#f97066" font-family="sans-serif" font-size="9" font-weight="600">Risk Breakdown</text>
+  <text x="218" y="150" fill="#8899aa" font-family="sans-serif" font-size="8">Post age (30+ days)</text>
+  <text x="366" y="150" fill="#f97066" font-family="sans-serif" font-size="8" text-anchor="end">+15</text>
+  <text x="218" y="162" fill="#8899aa" font-family="sans-serif" font-size="8">Boilerplate description</text>
+  <text x="366" y="162" fill="#f97066" font-family="sans-serif" font-size="8" text-anchor="end">+20</text>
+  <text x="218" y="174" fill="#8899aa" font-family="sans-serif" font-size="8">Reposted listing</text>
+  <text x="366" y="174" fill="#e8a838" font-family="sans-serif" font-size="8" text-anchor="end">+12</text>
+</svg>

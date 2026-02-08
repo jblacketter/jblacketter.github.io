@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Test report window -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#60a5fa" stroke-width="1" opacity="0.9"/>
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="10">Playwright Test Report</text>
+
+  <!-- Stats bar -->
+  <rect x="24" y="46" width="80" height="28" rx="6" fill="rgba(52,211,153,0.12)"/>
+  <text x="64" y="58" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="16" font-weight="700">11</text>
+  <text x="64" y="70" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="8">Passed</text>
+  <rect x="112" y="46" width="80" height="28" rx="6" fill="rgba(249,112,102,0.12)"/>
+  <text x="152" y="58" text-anchor="middle" fill="#f97066" font-family="sans-serif" font-size="16" font-weight="700">0</text>
+  <text x="152" y="70" text-anchor="middle" fill="#f97066" font-family="sans-serif" font-size="8">Failed</text>
+  <rect x="200" y="46" width="80" height="28" rx="6" fill="rgba(96,165,250,0.12)"/>
+  <text x="240" y="58" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="16" font-weight="700">3</text>
+  <text x="240" y="70" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="8">Browsers</text>
+  <rect x="288" y="46" width="92" height="28" rx="6" fill="rgba(232,168,56,0.12)"/>
+  <text x="334" y="58" text-anchor="middle" fill="#e8a838" font-family="sans-serif" font-size="16" font-weight="700">4.2s</text>
+  <text x="334" y="70" text-anchor="middle" fill="#e8a838" font-family="sans-serif" font-size="8">Duration</text>
+
+  <!-- Test list -->
+  <text x="24" y="96" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="96" fill="#e4ecf0" font-family="monospace" font-size="10">Login with valid credentials</text>
+  <text x="370" y="96" fill="#667788" font-family="monospace" font-size="9" text-anchor="end">0.8s</text>
+
+  <text x="24" y="112" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="112" fill="#e4ecf0" font-family="monospace" font-size="10">Verify board structure</text>
+  <text x="370" y="112" fill="#667788" font-family="monospace" font-size="9" text-anchor="end">0.4s</text>
+
+  <text x="24" y="128" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="128" fill="#e4ecf0" font-family="monospace" font-size="10">Navigate between projects</text>
+  <text x="370" y="128" fill="#667788" font-family="monospace" font-size="9" text-anchor="end">0.6s</text>
+
+  <text x="24" y="144" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="144" fill="#e4ecf0" font-family="monospace" font-size="10">Task placement in columns</text>
+  <text x="370" y="144" fill="#667788" font-family="monospace" font-size="9" text-anchor="end">0.5s</text>
+
+  <text x="24" y="160" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="160" fill="#e4ecf0" font-family="monospace" font-size="10">Cross-browser validation</text>
+  <text x="370" y="160" fill="#667788" font-family="monospace" font-size="9" text-anchor="end">1.2s</text>
+
+  <!-- Progress bar -->
+  <rect x="24" y="172" width="356" height="6" rx="3" fill="#253545"/>
+  <rect x="24" y="172" width="356" height="6" rx="3" fill="#34d399"/>
+  <text x="24" y="184" fill="#34d399" font-family="monospace" font-size="8">100% — All tests passing</text>
+</svg>

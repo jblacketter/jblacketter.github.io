@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Terminal window -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#0fbcbf" stroke-width="1" opacity="0.9"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">qaagent</text>
+  <!-- Command line -->
+  <text x="24" y="56" fill="#0fbcbf" font-family="monospace" font-size="11">$</text>
+  <text x="36" y="56" fill="#e4ecf0" font-family="monospace" font-size="11">qaagent analyze --repo ./myapp</text>
+  <!-- Pipeline output -->
+  <text x="24" y="76" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="76" fill="#8899aa" font-family="monospace" font-size="10">Discovering API routes...</text>
+  <text x="280" y="76" fill="#34d399" font-family="monospace" font-size="10">14 found</text>
+  <text x="24" y="93" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="93" fill="#8899aa" font-family="monospace" font-size="10">Running pytest suite...</text>
+  <text x="280" y="93" fill="#34d399" font-family="monospace" font-size="10">48 passed</text>
+  <text x="24" y="110" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="110" fill="#8899aa" font-family="monospace" font-size="10">Schemathesis API fuzzing...</text>
+  <text x="280" y="110" fill="#34d399" font-family="monospace" font-size="10">OK</text>
+  <text x="24" y="127" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="127" fill="#8899aa" font-family="monospace" font-size="10">Accessibility audit...</text>
+  <text x="280" y="127" fill="#e8a838" font-family="monospace" font-size="10">2 warnings</text>
+  <text x="24" y="144" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="144" fill="#8899aa" font-family="monospace" font-size="10">Lighthouse performance...</text>
+  <text x="280" y="144" fill="#34d399" font-family="monospace" font-size="10">Score: 94</text>
+  <!-- Summary bar -->
+  <rect x="24" y="156" width="352" height="1" fill="#334455"/>
+  <text x="24" y="174" fill="#0fbcbf" font-family="monospace" font-size="11">Report:</text>
+  <text x="82" y="174" fill="#e4ecf0" font-family="monospace" font-size="11">findings.html generated</text>
+  <text x="310" y="174" fill="#34d399" font-family="monospace" font-size="11">ALL PASS</text>
+</svg>

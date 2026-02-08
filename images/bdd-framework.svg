@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Terminal window -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#f472b6" stroke-width="1" opacity="0.9"/>
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="10">behave --format pretty</text>
+
+  <!-- Gherkin output -->
+  <text x="24" y="56" fill="#a78bfa" font-family="monospace" font-size="10" font-weight="600">Feature:</text>
+  <text x="82" y="56" fill="#e4ecf0" font-family="monospace" font-size="10">Hotel Booking Management</text>
+
+  <text x="36" y="76" fill="#f472b6" font-family="monospace" font-size="10">Scenario:</text>
+  <text x="108" y="76" fill="#e4ecf0" font-family="monospace" font-size="10">Create a new booking</text>
+
+  <text x="48" y="96" fill="#0fbcbf" font-family="monospace" font-size="10" font-weight="500">Given</text>
+  <text x="90" y="96" fill="#8899aa" font-family="monospace" font-size="10">the API is authenticated</text>
+  <text x="370" y="96" fill="#34d399" font-family="monospace" font-size="10" text-anchor="end">✓</text>
+
+  <text x="48" y="112" fill="#0fbcbf" font-family="monospace" font-size="10" font-weight="500">When</text>
+  <text x="84" y="112" fill="#8899aa" font-family="monospace" font-size="10">I create a booking with valid data</text>
+  <text x="370" y="112" fill="#34d399" font-family="monospace" font-size="10" text-anchor="end">✓</text>
+
+  <text x="48" y="128" fill="#0fbcbf" font-family="monospace" font-size="10" font-weight="500">Then</text>
+  <text x="82" y="128" fill="#8899aa" font-family="monospace" font-size="10">the response status is 200</text>
+  <text x="370" y="128" fill="#34d399" font-family="monospace" font-size="10" text-anchor="end">✓</text>
+
+  <text x="48" y="144" fill="#0fbcbf" font-family="monospace" font-size="10" font-weight="500">And</text>
+  <text x="78" y="144" fill="#8899aa" font-family="monospace" font-size="10">the booking details match</text>
+  <text x="370" y="144" fill="#34d399" font-family="monospace" font-size="10" text-anchor="end">✓</text>
+
+  <!-- Summary -->
+  <rect x="24" y="158" width="356" height="1" fill="#334455"/>
+  <text x="24" y="176" fill="#34d399" font-family="monospace" font-size="10">1 feature passed, 0 failed</text>
+  <text x="370" y="176" fill="#8899aa" font-family="monospace" font-size="10" text-anchor="end">3 scenarios, 12 steps</text>
+</svg>

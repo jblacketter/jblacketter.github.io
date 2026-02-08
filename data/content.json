@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "name": "Greg Blacketter",
+    "title": "QA Engineer & AI Builder",
+    "tagline": "Building intelligent testing and AI systems",
+    "location": "Portland, OR",
+    "github": "https://github.com/jblacketter"
+  },
+  "repos": [
+    {
+      "name": "qaagent",
+      "title": "QA Agent",
+      "description": "AI-powered agent that automates quality assurance testing workflows using intelligent reasoning.",
+      "impact": "Exploring the frontier where AI agents meet software testing.",
+      "tags": ["Python", "AI Agents", "QA"],
+      "url": "https://github.com/jblacketter/qaagent",
+      "image": "images/qaagent.svg"
+    },
+    {
+      "name": "waylin",
+      "title": "Waylin",
+      "description": "iOS app for event-scoped location sharing — create a session, share a link, and everyone sees each other on a map until the event ends.",
+      "impact": "Privacy-first coordination: temporary sharing with auto-expiration, no permanent tracking.",
+      "tags": ["Swift", "SwiftUI", "MapKit", "CloudKit", "iOS"],
+      "badge": "In Progress",
+      "private": true,
+      "image": "images/waylin.svg"
+    },
+    {
+      "name": "ai-handoff",
+      "title": "AI Agent Handoff System",
+      "description": "Coordination rules for planning, review, and implementation phases between multiple AI agents.",
+      "impact": "Structured multi-agent workflows that scale collaborative AI development.",
+      "tags": ["Python", "AI Agents", "Workflow"],
+      "url": "https://github.com/jblacketter/ai-handoff",
+      "image": "images/ai-handoff.svg"
+    },
+    {
+      "name": "linkedin-ghost-job-score",
+      "title": "Ghost Job Detector",
+      "description": "Firefox extension that scores LinkedIn job postings to identify likely ghost jobs before you apply.",
+      "impact": "Practical tool saving job seekers time by flagging suspicious listings.",
+      "tags": ["JavaScript", "Browser Extension", "Firefox"],
+      "url": "https://github.com/jblacketter/linkedin-ghost-job-score",
+      "image": "images/ghost-job.svg"
+    },
+    {
+      "name": "unified",
+      "title": "Unified AI Control Plane",
+      "description": "Orchestration layer for managing AI models, memory systems, and evaluation pipelines.",
+      "impact": "Central control plane for complex multi-model AI architectures.",
+      "tags": ["Python", "AI/ML", "Orchestration"],
+      "url": "https://github.com/jblacketter/unified",
+      "image": "images/unified.svg"
+    },
+    {
+      "name": "demoapp-playwright-tests",
+      "title": "Playwright Test Framework",
+      "description": "Professional Playwright framework with TypeScript, data-driven testing, and cross-browser CI support.",
+      "impact": "Production-grade test architecture patterns for modern web apps.",
+      "tags": ["TypeScript", "Playwright", "Testing", "CI/CD"],
+      "url": "https://github.com/jblacketter/demoapp-playwright-tests",
+      "image": "images/playwright.svg"
+    },
+    {
+      "name": "automation-framework-example",
+      "title": "BDD Automation Framework",
+      "description": "BDD test automation framework combining Python, Behave, and Playwright for end-to-end testing.",
+      "impact": "Reusable framework template for teams adopting behavior-driven development.",
+      "tags": ["Python", "Behave", "Playwright", "BDD"],
+      "url": "https://github.com/jblacketter/automation-framework-example",
+      "image": "images/bdd-framework.svg"
+    },
+    {
+      "name": "benfords_law",
+      "title": "Benford's Law Analyzer",
+      "description": "Web app for analyzing datasets against Benford's Law with CSV uploads, rich visualizations, statistical reports, and Kaggle integration.",
+      "impact": "Enterprise-hardened with CSRF protection, rate limiting, and automated cleanup.",
+      "tags": ["Python", "Flask", "Data Analysis", "Matplotlib"],
+      "url": "https://github.com/jblacketter/benfords_law",
+      "image": "images/benfords-law.svg"
+    }
+  ],
+  "currentFocus": [
+    {
+      "title": "Multi-Agent AI Workflows",
+      "description": "Designing structured coordination patterns for AI agents that plan, review, and implement collaboratively — including the system that built this very page.",
+      "status": "active"
+    },
+    {
+      "title": "AI-Powered Test Automation",
+      "description": "Building intelligent testing agents that can reason about application behavior and generate meaningful test coverage autonomously.",
+      "status": "active"
+    },
+    {
+      "title": "LLM Orchestration & Evaluation",
+      "description": "Exploring patterns for managing multiple AI models, shared memory, and systematic evaluation of AI system outputs.",
+      "status": "active"
+    }
+  ],
+  "video": {
+    "enabled": false,
+    "placeholder": "Demo video coming soon — a walkthrough of one of these projects in action."
+  }
+}

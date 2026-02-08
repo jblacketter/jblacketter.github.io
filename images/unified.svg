@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Central hub -->
+  <circle cx="200" cy="100" r="32" fill="#1a2332" stroke="#60a5fa" stroke-width="2"/>
+  <text x="200" y="96" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="10" font-weight="700">Control</text>
+  <text x="200" y="108" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="10" font-weight="700">Plane</text>
+
+  <!-- Router node (top) -->
+  <line x1="200" y1="68" x2="200" y2="30" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="168" y="8" width="64" height="24" rx="6" fill="#1a2332" stroke="#0fbcbf" stroke-width="1.2"/>
+  <text x="200" y="24" text-anchor="middle" fill="#0fbcbf" font-family="sans-serif" font-size="9" font-weight="600">Router</text>
+
+  <!-- Memory node (left) -->
+  <line x1="170" y1="90" x2="100" y2="60" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="52" y="44" width="64" height="24" rx="6" fill="#1a2332" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="84" y="60" text-anchor="middle" fill="#a78bfa" font-family="sans-serif" font-size="9" font-weight="600">Memory</text>
+
+  <!-- Evaluator node (right) -->
+  <line x1="230" y1="90" x2="300" y2="60" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="268" y="44" width="72" height="24" rx="6" fill="#1a2332" stroke="#34d399" stroke-width="1.2"/>
+  <text x="304" y="60" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="9" font-weight="600">Evaluator</text>
+
+  <!-- Audit Log node (bottom-right) -->
+  <line x1="224" y1="126" x2="290" y2="156" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="264" y="146" width="72" height="24" rx="6" fill="#1a2332" stroke="#e8a838" stroke-width="1.2"/>
+  <text x="300" y="162" text-anchor="middle" fill="#e8a838" font-family="sans-serif" font-size="9" font-weight="600">Audit Log</text>
+
+  <!-- Registry node (bottom-left) -->
+  <line x1="176" y1="126" x2="110" y2="156" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="60" y="146" width="72" height="24" rx="6" fill="#1a2332" stroke="#f472b6" stroke-width="1.2"/>
+  <text x="96" y="162" text-anchor="middle" fill="#f472b6" font-family="sans-serif" font-size="9" font-weight="600">Registry</text>
+
+  <!-- Model satellites -->
+  <circle cx="40" cy="20" r="14" fill="#1a2332" stroke="#445566" stroke-width="0.8"/>
+  <text x="40" y="23" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="7">GPT</text>
+  <line x1="52" y1="28" x2="72" y2="48" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+  <circle cx="360" cy="20" r="14" fill="#1a2332" stroke="#445566" stroke-width="0.8"/>
+  <text x="360" y="23" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="7">Claude</text>
+  <line x1="348" y1="28" x2="326" y2="48" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+  <circle cx="360" cy="180" r="14" fill="#1a2332" stroke="#445566" stroke-width="0.8"/>
+  <text x="360" y="183" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="7">Local</text>
+  <line x1="348" y1="172" x2="330" y2="164" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+  <circle cx="40" cy="180" r="14" fill="#1a2332" stroke="#445566" stroke-width="0.8"/>
+  <text x="40" y="183" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="7">Gemini</text>
+  <line x1="52" y1="172" x2="72" y2="164" stroke="#445566" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+  <!-- Task flow arrow -->
+  <text x="200" y="194" text-anchor="middle" fill="#60a5fa" font-family="sans-serif" font-size="8" opacity="0.6">Task → Route → Execute → Evaluate → Store</text>
+</svg>
