@@ -88,6 +88,15 @@
       "tags": ["Python", "Flask", "Data Analysis", "Matplotlib"],
       "url": "https://github.com/jblacketter/benfords_law",
       "image": "images/benfords-law.svg"
+    },
+    {
+      "name": "bugalizer",
+      "title": "Bugalizer",
+      "description": "AI-powered bug report processing server with a multi-stage LLM pipeline — validates, triages, localizes code, and proposes fixes automatically.",
+      "impact": "Full pipeline from submission to fix proposal using local LLMs, tree-sitter AST analysis, and async queue processing.",
+      "tags": ["Python", "FastAPI", "LLM", "tree-sitter", "SQLite"],
+      "url": "https://github.com/jblacketter/bugalizer",
+      "image": "images/bugalizer.svg"
     }
   ],
   "currentFocus": [
