@@ -1,6 +1,7 @@
 /* ===================================================
    Greg Blacketter — Portfolio Showcase
-   Dark theme · Teal/Amber accents · Space Grotesk + DM Sans
+   Dark theme · Categorized grid · Terminal aesthetic
+   Space Grotesk + DM Sans + JetBrains Mono
    =================================================== */
 
 /* --- Custom Properties --- */
@@ -13,6 +14,8 @@
   --accent-glow: rgba(15, 188, 191, 0.3);
   --accent-2:    #e8a838;
   --accent-2-glow: rgba(232, 168, 56, 0.3);
+  --accent-3:    #a78bfa;
+  --accent-3-glow: rgba(167, 139, 250, 0.3);
   --ink:         #e4ecf0;
   --ink-muted:   rgba(228, 236, 240, 0.65);
   --ink-heading: #f5f9fb;
@@ -21,19 +24,8 @@
   --radius-sm:   6px;
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
   --transition:  0.25s ease;
-
-  /* Card accent palette (cycled via nth-child) */
-  --card-1: #0fbcbf;  /* teal */
-  --card-2: #e8a838;  /* amber */
-  --card-3: #a78bfa;  /* lavender */
-  --card-4: #f97066;  /* coral */
-  --card-5: #34d399;  /* mint */
-  --card-6: #60a5fa;  /* sky */
-  --card-7: #f472b6;  /* rose */
-  --card-8: #fbbf24;  /* gold */
-  --card-9: #818cf8;  /* indigo */
-  --card-10: #fb923c; /* orange */
 }
 
 /* --- Reset & Base --- */
@@ -118,42 +110,30 @@ a:hover { color: var(--accent-2); }
   transform: translateY(0);
 }
 
-/* Staggered entrance for cards */
-.card.reveal:nth-child(1) { transition-delay: 0s; }
-.card.reveal:nth-child(2) { transition-delay: 0.08s; }
-.card.reveal:nth-child(3) { transition-delay: 0.16s; }
-.card.reveal:nth-child(4) { transition-delay: 0.24s; }
-.card.reveal:nth-child(5) { transition-delay: 0.32s; }
-.card.reveal:nth-child(6) { transition-delay: 0.40s; }
-.card.reveal:nth-child(7) { transition-delay: 0.48s; }
-.card.reveal:nth-child(8) { transition-delay: 0.56s; }
-.card.reveal:nth-child(9) { transition-delay: 0.64s; }
-.card.reveal:nth-child(10) { transition-delay: 0.72s; }
-
-/* Staggered entrance for focus cards */
-.focus-card.reveal:nth-child(1) { transition-delay: 0.1s; }
-.focus-card.reveal:nth-child(2) { transition-delay: 0.25s; }
-.focus-card.reveal:nth-child(3) { transition-delay: 0.4s; }
+/* Staggered entrance for cards in the grid */
+.card.reveal { transition-delay: var(--reveal-delay, 0s); }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .card.reveal, .focus-card.reveal { transition-delay: 0s; }
+  .card.reveal { transition-delay: 0s; }
   body::before, body::after { animation: none; }
   .hero__bg::before { animation: none; }
   .hero__name { animation: none; }
   .hero__cta { animation: none; }
-  .focus-card { animation: none; }
   .card::before { animation: none; opacity: 0.5; }
   .section__heading::after { animation: none; }
+  .badge--progress::after { animation: none; }
+  .category-label__cursor { animation: none; }
 }
 
 /* ===================================================
-   HERO — left 1/3 identity, right 2/3 focus + particles
+   HERO — left 1/3 identity, right 2/3 particles
    =================================================== */
 .hero {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  min-height: 50vh;
   overflow: hidden;
 }
 
@@ -205,28 +185,6 @@ a:hover { color: var(--accent-2); }
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-/* Focus cards overlaid on the particle canvas */
-.hero__focus {
-  position: relative;
-  z-index: 2;
-  padding: 2rem 2rem 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.hero__focus-heading {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--ink-heading);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.7;
 }
 
 .hero__name {
@@ -322,6 +280,10 @@ a:hover { color: var(--accent-2); }
   margin: 0 auto;
 }
 
+.section__inner--wide {
+  max-width: 1280px;
+}
+
 .section__heading {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3.8vw, 2.5rem);
@@ -350,19 +312,80 @@ a:hover { color: var(--accent-2); }
 }
 
 /* ===================================================
-   PROJECT CARDS
+   CATEGORIZED PROJECT GRID
+   3 cols × 8 rows explicit grid
    =================================================== */
-.projects__grid {
+.projects-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(7, auto);
+  gap: 1.25rem;
 }
 
+/* ===================================================
+   CATEGORY LABELS — terminal prompt style
+   =================================================== */
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cat-accent, var(--accent));
+  padding: 0;
+  align-self: end;
+  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 12%, var(--bg));
+  border-radius: var(--radius-sm);
+}
+
+.category-label__prompt {
+  opacity: 0.8;
+  padding: 0.45rem 0.5rem 0.45rem 0.75rem;
+}
+
+.category-label__text {
+  padding: 0.45rem 0.5rem;
+}
+
+.category-label__cursor {
+  padding-right: 0.5rem;
+}
+
+.category-label__line {
+  flex: 1;
+  height: 0;
+  border-top: 2px solid var(--cat-accent, var(--accent));
+  opacity: 0.2;
+  margin-right: 0.75rem;
+}
+
+.category-label__cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--cat-accent, var(--accent));
+  opacity: 0.6;
+  animation: cursorBlink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 0.25rem;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 0; }
+}
+
+/* ===================================================
+   PROJECT CARDS
+   =================================================== */
 .card {
   position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--card-accent, var(--accent));
+  border-left: 3px solid var(--cat-accent, var(--accent));
   border-radius: var(--radius);
   padding: 1.75rem;
   display: flex;
@@ -373,9 +396,9 @@ a:hover { color: var(--accent-2); }
 
 .card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 24px var(--card-glow, var(--accent-glow));
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 24px var(--cat-glow, var(--accent-glow));
   border-color: var(--border);
-  border-left-color: var(--card-accent, var(--accent));
+  border-left-color: var(--cat-accent, var(--accent));
   background: var(--bg-card-hover);
 }
 
@@ -387,7 +410,7 @@ a:hover { color: var(--accent-2); }
   top: 0;
   bottom: 0;
   width: 3px;
-  background: var(--card-accent, var(--accent));
+  background: var(--cat-accent, var(--accent));
   border-radius: var(--radius) 0 0 var(--radius);
   opacity: 0.5;
   animation: borderPulse 3s ease-in-out infinite alternate;
@@ -395,32 +418,68 @@ a:hover { color: var(--accent-2); }
 }
 
 @keyframes borderPulse {
-  0%   { opacity: 0.3; box-shadow: 0 0 4px var(--card-glow, var(--accent-glow)); }
-  100% { opacity: 0.8; box-shadow: 0 0 12px var(--card-glow, var(--accent-glow)); }
+  0%   { opacity: 0.3; box-shadow: 0 0 4px var(--cat-glow, var(--accent-glow)); }
+  100% { opacity: 0.8; box-shadow: 0 0 12px var(--cat-glow, var(--accent-glow)); }
 }
 
-.card:nth-child(1) { --pulse-delay: 0s; }
-.card:nth-child(2) { --pulse-delay: 0.5s; }
-.card:nth-child(3) { --pulse-delay: 1s; }
-.card:nth-child(4) { --pulse-delay: 1.5s; }
-.card:nth-child(5) { --pulse-delay: 2s; }
-.card:nth-child(6) { --pulse-delay: 2.5s; }
-.card:nth-child(7) { --pulse-delay: 0.3s; }
-.card:nth-child(8) { --pulse-delay: 0.8s; }
-.card:nth-child(9) { --pulse-delay: 1.3s; }
-.card:nth-child(10) { --pulse-delay: 1.8s; }
+/* Category accent tints on cards */
+.card[data-category="dev-qa"] {
+  --cat-accent: #0fbcbf;
+  --cat-glow: rgba(15, 188, 191, 0.2);
+  background: linear-gradient(135deg, rgba(15, 188, 191, 0.08) 0%, var(--bg-card) 60%);
+}
+.card[data-category="tools"] {
+  --cat-accent: #e8a838;
+  --cat-glow: rgba(232, 168, 56, 0.2);
+  background: linear-gradient(135deg, rgba(232, 168, 56, 0.08) 0%, var(--bg-card) 60%);
+}
+.card[data-category="fun"] {
+  --cat-accent: #a78bfa;
+  --cat-glow: rgba(167, 139, 250, 0.2);
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, var(--bg-card) 60%);
+}
 
-/* Per-card accent colors — stronger tinted gradients */
-.card:nth-child(1) { --card-accent: var(--card-1); --card-glow: rgba(15, 188, 191, 0.2); background: linear-gradient(135deg, rgba(15, 188, 191, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(2) { --card-accent: var(--card-2); --card-glow: rgba(232, 168, 56, 0.2); background: linear-gradient(135deg, rgba(232, 168, 56, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(3) { --card-accent: var(--card-3); --card-glow: rgba(167, 139, 250, 0.2); background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(4) { --card-accent: var(--card-4); --card-glow: rgba(249, 112, 102, 0.2); background: linear-gradient(135deg, rgba(249, 112, 102, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(5) { --card-accent: var(--card-5); --card-glow: rgba(52, 211, 153, 0.2); background: linear-gradient(135deg, rgba(52, 211, 153, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(6) { --card-accent: var(--card-6); --card-glow: rgba(96, 165, 250, 0.2); background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(7) { --card-accent: var(--card-7); --card-glow: rgba(244, 114, 182, 0.2); background: linear-gradient(135deg, rgba(244, 114, 182, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(8) { --card-accent: var(--card-8); --card-glow: rgba(251, 191, 36, 0.2); background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(9) { --card-accent: var(--card-9); --card-glow: rgba(129, 140, 248, 0.2); background: linear-gradient(135deg, rgba(129, 140, 248, 0.1) 0%, var(--bg-card) 60%); }
-.card:nth-child(10) { --card-accent: var(--card-10); --card-glow: rgba(251, 146, 60, 0.2); background: linear-gradient(135deg, rgba(251, 146, 60, 0.1) 0%, var(--bg-card) 60%); }
+.card[data-category="dev-qa"]:hover { background: linear-gradient(135deg, rgba(15, 188, 191, 0.14) 0%, var(--bg-card-hover) 60%); }
+.card[data-category="tools"]:hover { background: linear-gradient(135deg, rgba(232, 168, 56, 0.14) 0%, var(--bg-card-hover) 60%); }
+.card[data-category="fun"]:hover { background: linear-gradient(135deg, rgba(167, 139, 250, 0.14) 0%, var(--bg-card-hover) 60%); }
+
+/* --- Featured card modifier --- */
+.card--featured {
+  border-left-width: 5px;
+}
+
+.card--featured::before {
+  width: 5px;
+}
+
+/* --- Window dots (top-right decorative) --- */
+.card__window-dots {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 4px;
+  opacity: 0.15;
+  z-index: 2;
+}
+
+.card__window-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+/* --- Repo slug (monospace label above title) --- */
+.card__slug {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--cat-accent, var(--accent));
+  opacity: 0.6;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.04em;
+}
 
 /* Card illustration image */
 .card__image {
@@ -451,9 +510,14 @@ a:hover { color: var(--accent-2); }
   margin-bottom: 0.5rem;
 }
 
+/* Featured card gets larger title */
+.card--featured .card__title {
+  font-size: 1.6rem;
+}
+
 .card__badge {
   display: inline-block;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -464,6 +528,30 @@ a:hover { color: var(--accent-2); }
   color: var(--accent-2);
   margin-left: 0.5rem;
   vertical-align: middle;
+}
+
+/* Pulsing badge for in-progress items */
+.badge--progress {
+  position: relative;
+  padding-right: 1.2rem;
+}
+
+.badge--progress::after {
+  content: '';
+  position: absolute;
+  right: 0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  animation: progressPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232, 168, 56, 0.4); }
+  50%      { opacity: 0.4; box-shadow: 0 0 6px 2px rgba(232, 168, 56, 0.2); }
 }
 
 .card__desc {
@@ -489,20 +577,20 @@ a:hover { color: var(--accent-2); }
 }
 
 .tag {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 0.25rem 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--card-accent, var(--accent)) 12%, transparent);
-  color: var(--card-accent, var(--accent));
-  border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 22%, transparent);
+  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 12%, transparent);
+  color: var(--cat-accent, var(--accent));
+  border: 1px solid color-mix(in srgb, var(--cat-accent, var(--accent)) 22%, transparent);
   transition: all var(--transition);
 }
 
 .tag:hover {
-  background: color-mix(in srgb, var(--card-accent, var(--accent)) 20%, transparent);
-  box-shadow: 0 0 8px var(--card-glow, var(--accent-glow));
+  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 20%, transparent);
+  box-shadow: 0 0 8px var(--cat-glow, var(--accent-glow));
 }
 
 .card__link {
@@ -527,53 +615,11 @@ a:hover { color: var(--accent-2); }
 }
 
 /* ===================================================
-   CURRENT FOCUS (inside hero__right)
+   CATEGORY ZONE BORDERS (decorative dashed outlines)
    =================================================== */
-.focus__grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.focus-card {
-  background: rgba(74, 102, 133, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  border-left: 3px solid var(--accent-2);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
-  animation: drift var(--drift-speed, 6s) ease-in-out infinite alternate;
-  animation-delay: var(--drift-delay, 0s);
-}
-
-.focus-card:nth-child(1) { --drift-speed: 5.5s; --drift-delay: 0s; }
-.focus-card:nth-child(2) { --drift-speed: 6.5s; --drift-delay: 1.2s; }
-.focus-card:nth-child(3) { --drift-speed: 7s; --drift-delay: 2.4s; }
-
-@keyframes drift {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(-4px); }
-}
-
-.focus-card:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3), 0 0 16px rgba(232, 168, 56, 0.15);
-}
-
-.focus-card__title {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--ink-heading);
-  margin-bottom: 0.25rem;
-}
-
-.focus-card__desc {
-  font-size: 0.95rem;
-  color: var(--ink);
-  line-height: 1.5;
+.category-zone {
+  position: relative;
+  display: contents;
 }
 
 /* ===================================================
@@ -633,17 +679,25 @@ a:hover { color: var(--accent-2); }
     grid-template-columns: 1fr;
   }
   .hero__left { padding: 2rem 1.5rem 1rem; }
-  .hero__focus { padding: 0 1.5rem 2rem; }
+  .hero__right { min-height: 200px; }
   .section { padding: 3rem 1.5rem; }
-  .projects__grid { grid-template-columns: 1fr; }
+
+  .projects-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  /* Reset all explicit grid placements on mobile */
+  .projects-layout > * {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
 }
 
 @media (max-width: 480px) {
   .hero__left { padding: 1.5rem 1rem 0.75rem; }
-  .hero__focus { padding: 0 1rem 1.5rem; }
   .section { padding: 2.5rem 1rem; }
   .hero__cta { padding: 0.55rem 1.1rem; font-size: 0.85rem; }
   .card { padding: 1.25rem; }
   .card__image { margin: -1.25rem -1.25rem 0.75rem -1.25rem; }
-  .focus-card { padding: 0.75rem 1rem; }
 }

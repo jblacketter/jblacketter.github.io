@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Terminal window -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#0fbcbf" stroke-width="1" opacity="0.9"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">aegis — quality control plane</text>
+  <!-- Shield icon -->
+  <path d="M200 52 L230 62 L230 88 C230 104 216 116 200 120 C184 116 170 104 170 88 L170 62 Z" fill="none" stroke="#0fbcbf" stroke-width="2" opacity="0.8"/>
+  <path d="M190 82 L197 89 L212 74" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Policy gates -->
+  <text x="50" y="66" fill="#0fbcbf" font-family="monospace" font-size="9">POLICY GATE</text>
+  <rect x="50" y="72" width="80" height="14" rx="3" fill="none" stroke="#0fbcbf" stroke-width="0.8" opacity="0.5"/>
+  <text x="55" y="82" fill="#34d399" font-family="monospace" font-size="8">toxicity: PASS</text>
+  <rect x="50" y="90" width="80" height="14" rx="3" fill="none" stroke="#0fbcbf" stroke-width="0.8" opacity="0.5"/>
+  <text x="55" y="100" fill="#34d399" font-family="monospace" font-size="8">accuracy: PASS</text>
+  <rect x="50" y="108" width="80" height="14" rx="3" fill="none" stroke="#0fbcbf" stroke-width="0.8" opacity="0.5"/>
+  <text x="55" y="118" fill="#e8a838" font-family="monospace" font-size="8">drift: WARNING</text>
+  <!-- Monitoring panel -->
+  <text x="270" y="66" fill="#0fbcbf" font-family="monospace" font-size="9">MONITORING</text>
+  <text x="270" y="82" fill="#8899aa" font-family="monospace" font-size="8">requests/min</text>
+  <text x="345" y="82" fill="#34d399" font-family="monospace" font-size="8">1,247</text>
+  <text x="270" y="97" fill="#8899aa" font-family="monospace" font-size="8">avg latency</text>
+  <text x="345" y="97" fill="#34d399" font-family="monospace" font-size="8">42ms</text>
+  <text x="270" y="112" fill="#8899aa" font-family="monospace" font-size="8">violations</text>
+  <text x="345" y="112" fill="#e8a838" font-family="monospace" font-size="8">3</text>
+  <!-- Bottom status -->
+  <rect x="24" y="134" width="352" height="1" fill="#334455"/>
+  <text x="24" y="152" fill="#0fbcbf" font-family="monospace" font-size="10">$</text>
+  <text x="36" y="152" fill="#e4ecf0" font-family="monospace" font-size="10">aegis validate --model gpt-4 --policy strict</text>
+  <text x="24" y="170" fill="#34d399" font-family="monospace" font-size="10">✓ All quality gates passed</text>
+  <text x="280" y="170" fill="#34d399" font-family="monospace" font-size="10">APPROVED</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Terminal window -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#0fbcbf" stroke-width="1" opacity="0.9"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">squanch — spec developer</text>
+  <!-- Command -->
+  <text x="24" y="56" fill="#0fbcbf" font-family="monospace" font-size="11">$</text>
+  <text x="36" y="56" fill="#e4ecf0" font-family="monospace" font-size="11">squanch generate --input requirements.md</text>
+  <!-- Processing steps -->
+  <text x="24" y="76" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="76" fill="#8899aa" font-family="monospace" font-size="10">Parsing natural language...</text>
+  <text x="24" y="93" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="93" fill="#8899aa" font-family="monospace" font-size="10">Extracting acceptance criteria...</text>
+  <text x="280" y="93" fill="#34d399" font-family="monospace" font-size="10">14 found</text>
+  <text x="24" y="110" fill="#34d399" font-family="monospace" font-size="10">✓</text>
+  <text x="38" y="110" fill="#8899aa" font-family="monospace" font-size="10">Generating test scenarios...</text>
+  <text x="280" y="110" fill="#34d399" font-family="monospace" font-size="10">28 specs</text>
+  <text x="24" y="127" fill="#e8a838" font-family="monospace" font-size="10">⟳</text>
+  <text x="38" y="127" fill="#e8a838" font-family="monospace" font-size="10">Building traceability matrix...</text>
+  <!-- Output preview -->
+  <rect x="24" y="140" width="352" height="1" fill="#334455"/>
+  <text x="24" y="158" fill="#0fbcbf" font-family="monospace" font-size="10">Output:</text>
+  <text x="80" y="158" fill="#e4ecf0" font-family="monospace" font-size="10">spec_v1.yaml (28 scenarios)</text>
+  <text x="24" y="175" fill="#a78bfa" font-family="monospace" font-size="10">SPEC-001:</text>
+  <text x="90" y="175" fill="#8899aa" font-family="monospace" font-size="10">"User can reset password via email"</text>
+</svg>

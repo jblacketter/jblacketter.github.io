@@ -1,6 +1,7 @@
 /* ===================================================
    Greg Blacketter — Portfolio Showcase
    Data rendering + scroll animations + hero particles
+   Categorized grid with terminal aesthetic
    =================================================== */
 
 (function () {
@@ -8,14 +9,43 @@
 
   var DATA_URL = 'data/content.json';
 
+  /* --- Grid Layout Map ---
+     Defines explicit grid positions for the asymmetric 3-col × 8-row layout.
+     Keys: "categoryId/repoName"
+     Values: { gridColumn, gridRow }
+  */
+  var GRID_MAP = {
+    // Category labels
+    'label/dev-qa':           { gridColumn: '1 / 3', gridRow: '1' },
+    'label/tools':            { gridColumn: '3',     gridRow: '1' },
+    'label/fun':              { gridColumn: '1 / 3', gridRow: '5' },
+
+    // Dev & QA (2×2 block in cols 1-2, rows 2-3)
+    'dev-qa/aegis':           { gridColumn: '1',     gridRow: '2' },
+    'dev-qa/qaagent':         { gridColumn: '2',     gridRow: '2' },
+    'dev-qa/bugalizer':       { gridColumn: '1',     gridRow: '3' },
+    'dev-qa/test-frameworks': { gridColumn: '2',     gridRow: '3' },
+    'dev-qa/squanch':         { gridColumn: '1',     gridRow: '4' },
+
+    // Tools (col 3, rows 2-5)
+    'tools/ai-handoff':                { gridColumn: '3', gridRow: '2' },
+    'tools/linkedin-ghost-job-score':  { gridColumn: '3', gridRow: '3' },
+    'tools/unified':                   { gridColumn: '3', gridRow: '4' },
+    'tools/waylin':                    { gridColumn: '3', gridRow: '5 / 7' },
+
+    // Fun (rows 6-7)
+    'fun/botastrophic':    { gridColumn: '1 / 3', gridRow: '6' },
+    'fun/isolated-claw':   { gridColumn: '1',     gridRow: '7' },
+    'fun/benfords_law':    { gridColumn: '2 / 4', gridRow: '7' }
+  };
+
   /* --- Fetch & Render --- */
 
   fetch(DATA_URL)
     .then(function (res) { return res.json(); })
     .then(function (data) {
       renderMeta(data.meta);
-      renderProjects(data.repos);
-      renderFocus(data.currentFocus);
+      renderCategorizedProjects(data.categories);
       renderDemo(data.video);
       initReveal();
     })
@@ -35,69 +65,116 @@
     if (ghLink && meta.github) ghLink.href = meta.github;
   }
 
-  /* --- Projects --- */
+  /* --- Categorized Projects --- */
 
-  function renderProjects(repos) {
-    var grid = document.getElementById('projects-grid');
-    if (!grid || !repos) return;
+  function renderCategorizedProjects(categories) {
+    var grid = document.getElementById('projects-layout');
+    if (!grid || !categories) return;
 
-    grid.innerHTML = repos.map(function (repo) {
-      var tags = repo.tags.map(function (t) {
-        return '<span class="tag">' + escapeHtml(t) + '</span>';
-      }).join('');
+    var html = '';
+    var cardIndex = 0;
 
-      var impact = repo.impact
-        ? '<p class="card__impact">' + escapeHtml(repo.impact) + '</p>'
-        : '';
+    categories.forEach(function (cat) {
+      // Category label
+      var labelKey = 'label/' + cat.id;
+      var labelPos = GRID_MAP[labelKey] || {};
+      var labelStyle = buildGridStyle(labelPos);
 
-      var badge = repo.badge
-        ? '<span class="card__badge">' + escapeHtml(repo.badge) + '</span>'
-        : '';
+      html +=
+        '<div class="category-label reveal" style="' + labelStyle + '; --cat-accent: ' + escapeAttr(cat.accent) + ';">' +
+          '<span class="category-label__prompt">&gt;</span> ' +
+          '<span class="category-label__text">' + escapeHtml(cat.label) + '</span>' +
+          '<span class="category-label__cursor"></span>' +
+          '<span class="category-label__line"></span>' +
+        '</div>';
 
-      var titleHtml = '<h3 class="card__title">' + escapeHtml(repo.title) + badge + '</h3>';
+      // Repo cards
+      cat.repos.forEach(function (repo) {
+        var posKey = cat.id + '/' + repo.name;
+        var pos = GRID_MAP[posKey] || {};
+        var gridStyle = buildGridStyle(pos);
 
-      var imageHtml = repo.image
-        ? '<div class="card__image"><img src="' + escapeAttr(repo.image) + '" alt="' + escapeAttr(repo.title) + ' illustration" loading="lazy"/></div>'
-        : '';
+        var classes = 'card reveal';
+        if (repo.featured) classes += ' card--featured';
+        if (repo.wide) classes += ' card--wide';
 
-      var link;
-      if (repo.private || !repo.url) {
-        link = '<span class="card__link card__link--disabled">Private repo</span>';
-      } else {
-        link =
-          '<a class="card__link" href="' + escapeAttr(repo.url) + '" target="_blank" rel="noopener noreferrer">' +
-            'View on GitHub ' +
-            '<span class="card__link-arrow">&rarr;</span>' +
-          '</a>';
-      }
+        var delay = cardIndex * 0.07;
 
-      return (
-        '<article class="card reveal">' +
-          imageHtml +
-          titleHtml +
-          '<p class="card__desc">' + escapeHtml(repo.description) + '</p>' +
-          impact +
-          '<div class="card__tags">' + tags + '</div>' +
-          link +
-        '</article>'
-      );
-    }).join('');
+        // Window dots
+        var windowDots =
+          '<div class="card__window-dots">' +
+            '<span class="card__window-dot"></span>' +
+            '<span class="card__window-dot"></span>' +
+            '<span class="card__window-dot"></span>' +
+          '</div>';
+
+        // Repo slug
+        var slug = '<div class="card__slug">' + escapeHtml(repo.name) + '/</div>';
+
+        // Image
+        var imageHtml = repo.image
+          ? '<div class="card__image"><img src="' + escapeAttr(repo.image) + '" alt="' + escapeAttr(repo.title) + ' illustration" loading="lazy"/></div>'
+          : '';
+
+        // Tags
+        var tags = repo.tags.map(function (t) {
+          return '<span class="tag">' + escapeHtml(t) + '</span>';
+        }).join('');
+
+        // Impact
+        var impact = repo.impact
+          ? '<p class="card__impact">' + escapeHtml(repo.impact) + '</p>'
+          : '';
+
+        // Badge
+        var badge = '';
+        if (repo.badge) {
+          var badgeClass = repo.badge === 'In Progress' ? 'card__badge badge--progress' : 'card__badge';
+          badge = '<span class="' + badgeClass + '">' + escapeHtml(repo.badge) + '</span>';
+        }
+
+        var titleHtml = '<h3 class="card__title">' + escapeHtml(repo.title) + badge + '</h3>';
+
+        // Link
+        var link;
+        if (repo.private) {
+          link = '<span class="card__link card__link--disabled">Private repo</span>';
+        } else if (!repo.url) {
+          link = '<span class="card__link card__link--disabled">Coming soon</span>';
+        } else {
+          link =
+            '<a class="card__link" href="' + escapeAttr(repo.url) + '" target="_blank" rel="noopener noreferrer">' +
+              'View on GitHub ' +
+              '<span class="card__link-arrow">&rarr;</span>' +
+            '</a>';
+        }
+
+        html +=
+          '<article class="' + classes + '" data-category="' + escapeAttr(cat.id) + '" style="' + gridStyle + '; --reveal-delay: ' + delay.toFixed(2) + 's; --pulse-delay: ' + (cardIndex * 0.4).toFixed(1) + 's;">' +
+            windowDots +
+            imageHtml +
+            slug +
+            titleHtml +
+            '<p class="card__desc">' + escapeHtml(repo.description) + '</p>' +
+            impact +
+            '<div class="card__tags">' + tags + '</div>' +
+            link +
+          '</article>';
+
+        cardIndex++;
+      });
+    });
+
+    grid.innerHTML = html;
   }
 
-  /* --- Current Focus --- */
+  /* --- Build inline grid style from position object --- */
 
-  function renderFocus(items) {
-    var grid = document.getElementById('focus-grid');
-    if (!grid || !items) return;
-
-    grid.innerHTML = items.map(function (item) {
-      return (
-        '<article class="focus-card reveal">' +
-          '<h3 class="focus-card__title">' + escapeHtml(item.title) + '</h3>' +
-          '<p class="focus-card__desc">' + escapeHtml(item.description) + '</p>' +
-        '</article>'
-      );
-    }).join('');
+  function buildGridStyle(pos) {
+    var parts = [];
+    if (pos.gridColumn) parts.push('grid-column: ' + pos.gridColumn);
+    if (pos.gridRow) parts.push('grid-row: ' + pos.gridRow);
+    return parts.join('; ');
   }
 
   /* --- Demo --- */
@@ -244,6 +321,9 @@
       }
     });
   }
+
+  // Init particles on load
+  initParticles();
 
   /* --- Helpers --- */
 

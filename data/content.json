@@ -6,114 +6,140 @@
     "location": "Portland, OR",
     "github": "https://github.com/jblacketter"
   },
-  "repos": [
+  "categories": [
     {
-      "name": "qaagent",
-      "title": "QA Agent",
-      "description": "AI-powered agent that automates quality assurance testing workflows using intelligent reasoning.",
-      "impact": "Exploring the frontier where AI agents meet software testing.",
-      "tags": ["Python", "AI Agents", "QA"],
-      "url": "https://github.com/jblacketter/qaagent",
-      "image": "images/qaagent.svg"
+      "id": "dev-qa",
+      "label": "DEV_AND_QA",
+      "title": "Dev & QA",
+      "accent": "#0fbcbf",
+      "repos": [
+        {
+          "name": "aegis",
+          "title": "Aegis",
+          "description": "The AI Quality Control Plane — an intelligent gateway that validates, monitors, and enforces quality standards across AI model outputs in real time.",
+          "impact": "Production-grade quality gates for AI systems with policy enforcement and drift detection.",
+          "tags": ["Python", "FastAPI", "AI/ML", "Quality Engineering"],
+          "url": "https://github.com/jblacketter/aegis",
+          "image": "images/aegis.svg"
+        },
+        {
+          "name": "qaagent",
+          "title": "QA Agent",
+          "description": "AI-powered agent that automates quality assurance testing workflows using intelligent reasoning.",
+          "impact": "Exploring the frontier where AI agents meet software testing.",
+          "tags": ["Python", "AI Agents", "QA"],
+          "url": "https://github.com/jblacketter/qaagent",
+          "image": "images/qaagent.svg"
+        },
+        {
+          "name": "bugalizer",
+          "title": "Bugalizer",
+          "description": "AI-powered bug report processing server with a multi-stage LLM pipeline — validates, triages, localizes code, and proposes fixes automatically.",
+          "impact": "Full pipeline from submission to fix proposal using local LLMs, tree-sitter AST analysis, and async queue processing.",
+          "tags": ["Python", "FastAPI", "LLM", "tree-sitter", "SQLite"],
+          "url": "https://github.com/jblacketter/bugalizer",
+          "image": "images/bugalizer.svg"
+        },
+        {
+          "name": "test-frameworks",
+          "title": "Test Frameworks",
+          "description": "Production-grade test automation combining Playwright with TypeScript for cross-browser testing and Python Behave for BDD — two complementary approaches in one toolkit.",
+          "impact": "Reusable framework patterns for teams adopting modern test automation and behavior-driven development.",
+          "tags": ["TypeScript", "Playwright", "Python", "Behave", "BDD", "CI/CD"],
+          "url": "https://github.com/jblacketter/demoapp-playwright-tests",
+          "image": "images/test-frameworks.svg"
+        },
+        {
+          "name": "squanch",
+          "title": "Squanch Spec Developer",
+          "description": "AI-assisted specification generator that transforms natural language requirements into structured, testable specs with traceability built in.",
+          "impact": "Bridging the gap between product intent and engineering precision.",
+          "tags": ["Python", "AI Agents", "Specifications"],
+          "image": "images/squanch.svg",
+          "badge": "In Progress"
+        }
+      ]
     },
     {
-      "name": "waylin",
-      "title": "Waylin",
-      "description": "iOS app for event-scoped location sharing — create a session, share a link, and everyone sees each other on a map until the event ends.",
-      "impact": "Privacy-first coordination: temporary sharing with auto-expiration, no permanent tracking.",
-      "tags": ["Swift", "SwiftUI", "MapKit", "CloudKit", "iOS"],
-      "badge": "In Progress",
-      "private": true,
-      "image": "images/waylin.svg"
+      "id": "tools",
+      "label": "USEFUL_TOOLS",
+      "title": "Useful Tools & Utilities",
+      "accent": "#e8a838",
+      "repos": [
+        {
+          "name": "ai-handoff",
+          "title": "AI Agent Handoff System",
+          "description": "Coordination rules for planning, review, and implementation phases between multiple AI agents.",
+          "impact": "Structured multi-agent workflows that scale collaborative AI development.",
+          "tags": ["Python", "AI Agents", "Workflow"],
+          "url": "https://github.com/jblacketter/ai-handoff",
+          "image": "images/ai-handoff.svg"
+        },
+        {
+          "name": "linkedin-ghost-job-score",
+          "title": "Ghost Job Detector",
+          "description": "Firefox extension that scores LinkedIn job postings to identify likely ghost jobs before you apply.",
+          "impact": "Practical tool saving job seekers time by flagging suspicious listings.",
+          "tags": ["JavaScript", "Browser Extension", "Firefox"],
+          "url": "https://github.com/jblacketter/linkedin-ghost-job-score",
+          "image": "images/ghost-job.svg"
+        },
+        {
+          "name": "unified",
+          "title": "Unified AI Control Plane",
+          "description": "Orchestration layer for managing AI models, memory systems, and evaluation pipelines.",
+          "impact": "Central control plane for complex multi-model AI architectures.",
+          "tags": ["Python", "AI/ML", "Orchestration"],
+          "url": "https://github.com/jblacketter/unified",
+          "image": "images/unified.svg"
+        },
+        {
+          "name": "waylin",
+          "title": "Waylin",
+          "description": "iOS app for event-scoped location sharing — create a session, share a link, and everyone sees each other on a map until the event ends.",
+          "impact": "Privacy-first coordination: temporary sharing with auto-expiration, no permanent tracking.",
+          "tags": ["Swift", "SwiftUI", "MapKit", "CloudKit", "iOS"],
+          "badge": "In Progress",
+          "private": true,
+          "image": "images/waylin.svg"
+        }
+      ]
     },
     {
-      "name": "botastrophic",
-      "title": "Botastrophic",
-      "description": "AI social experiment platform where six AI bot personalities interact autonomously on a forum. Humans observe emergent behavior, relationships, and debates.",
-      "impact": "Multi-tier memory, relationship tracking, real-time WebSocket dashboard, and configurable pace control.",
-      "tags": ["Python", "FastAPI", "React", "TypeScript", "AI Agents"],
-      "url": "https://github.com/jblacketter/botastrophic",
-      "image": "images/botastrophic.svg"
-    },
-    {
-      "name": "ai-handoff",
-      "title": "AI Agent Handoff System",
-      "description": "Coordination rules for planning, review, and implementation phases between multiple AI agents.",
-      "impact": "Structured multi-agent workflows that scale collaborative AI development.",
-      "tags": ["Python", "AI Agents", "Workflow"],
-      "url": "https://github.com/jblacketter/ai-handoff",
-      "image": "images/ai-handoff.svg"
-    },
-    {
-      "name": "linkedin-ghost-job-score",
-      "title": "Ghost Job Detector",
-      "description": "Firefox extension that scores LinkedIn job postings to identify likely ghost jobs before you apply.",
-      "impact": "Practical tool saving job seekers time by flagging suspicious listings.",
-      "tags": ["JavaScript", "Browser Extension", "Firefox"],
-      "url": "https://github.com/jblacketter/linkedin-ghost-job-score",
-      "image": "images/ghost-job.svg"
-    },
-    {
-      "name": "unified",
-      "title": "Unified AI Control Plane",
-      "description": "Orchestration layer for managing AI models, memory systems, and evaluation pipelines.",
-      "impact": "Central control plane for complex multi-model AI architectures.",
-      "tags": ["Python", "AI/ML", "Orchestration"],
-      "url": "https://github.com/jblacketter/unified",
-      "image": "images/unified.svg"
-    },
-    {
-      "name": "demoapp-playwright-tests",
-      "title": "Playwright Test Framework",
-      "description": "Professional Playwright framework with TypeScript, data-driven testing, and cross-browser CI support.",
-      "impact": "Production-grade test architecture patterns for modern web apps.",
-      "tags": ["TypeScript", "Playwright", "Testing", "CI/CD"],
-      "url": "https://github.com/jblacketter/demoapp-playwright-tests",
-      "image": "images/playwright.svg"
-    },
-    {
-      "name": "automation-framework-example",
-      "title": "BDD Automation Framework",
-      "description": "BDD test automation framework combining Python, Behave, and Playwright for end-to-end testing.",
-      "impact": "Reusable framework template for teams adopting behavior-driven development.",
-      "tags": ["Python", "Behave", "Playwright", "BDD"],
-      "url": "https://github.com/jblacketter/automation-framework-example",
-      "image": "images/bdd-framework.svg"
-    },
-    {
-      "name": "benfords_law",
-      "title": "Benford's Law Analyzer",
-      "description": "Web app for analyzing datasets against Benford's Law with CSV uploads, rich visualizations, statistical reports, and Kaggle integration.",
-      "impact": "Enterprise-hardened with CSRF protection, rate limiting, and automated cleanup.",
-      "tags": ["Python", "Flask", "Data Analysis", "Matplotlib"],
-      "url": "https://github.com/jblacketter/benfords_law",
-      "image": "images/benfords-law.svg"
-    },
-    {
-      "name": "bugalizer",
-      "title": "Bugalizer",
-      "description": "AI-powered bug report processing server with a multi-stage LLM pipeline — validates, triages, localizes code, and proposes fixes automatically.",
-      "impact": "Full pipeline from submission to fix proposal using local LLMs, tree-sitter AST analysis, and async queue processing.",
-      "tags": ["Python", "FastAPI", "LLM", "tree-sitter", "SQLite"],
-      "url": "https://github.com/jblacketter/bugalizer",
-      "image": "images/bugalizer.svg"
-    }
-  ],
-  "currentFocus": [
-    {
-      "title": "Multi-Agent AI Workflows",
-      "description": "Designing structured coordination patterns for AI agents that plan, review, and implement collaboratively — including the system that built this very page.",
-      "status": "active"
-    },
-    {
-      "title": "AI-Powered Test Automation",
-      "description": "Building intelligent testing agents that can reason about application behavior and generate meaningful test coverage autonomously.",
-      "status": "active"
-    },
-    {
-      "title": "LLM Orchestration & Evaluation",
-      "description": "Exploring patterns for managing multiple AI models, shared memory, and systematic evaluation of AI system outputs.",
-      "status": "active"
+      "id": "fun",
+      "label": "FUN_STUFF",
+      "title": "Fun Stuff",
+      "accent": "#a78bfa",
+      "repos": [
+        {
+          "name": "botastrophic",
+          "title": "Botastrophic",
+          "description": "AI social experiment platform where six AI bot personalities interact autonomously on a forum. Humans observe emergent behavior, relationships, and debates.",
+          "impact": "Multi-tier memory, relationship tracking, real-time WebSocket dashboard, and configurable pace control.",
+          "tags": ["Python", "FastAPI", "React", "TypeScript", "AI Agents"],
+          "url": "https://github.com/jblacketter/botastrophic",
+          "image": "images/botastrophic.svg",
+          "wide": true
+        },
+        {
+          "name": "isolated-claw",
+          "title": "Isolated Claw",
+          "description": "A creative AI experiment exploring autonomous agent behavior in constrained, adversarial environments — think escape room meets machine learning.",
+          "impact": "Pushing boundaries of agent reasoning under pressure and limited information.",
+          "tags": ["Python", "AI Agents", "Creative AI"],
+          "image": "images/isolated-claw.svg",
+          "badge": "In Progress"
+        },
+        {
+          "name": "benfords_law",
+          "title": "Benford's Law Analyzer",
+          "description": "Web app for analyzing datasets against Benford's Law with CSV uploads, rich visualizations, statistical reports, and Kaggle integration.",
+          "impact": "Enterprise-hardened with CSRF protection, rate limiting, and automated cleanup.",
+          "tags": ["Python", "Flask", "Data Analysis", "Matplotlib"],
+          "url": "https://github.com/jblacketter/benfords_law",
+          "image": "images/benfords-law.svg"
+        }
+      ]
     }
   ],
   "video": {
