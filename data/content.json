@@ -57,6 +57,15 @@
           "tags": ["Python", "AI Agents", "Specifications"],
           "image": "images/squanch.svg",
           "badge": "In Progress"
+        },
+        {
+          "name": "engram",
+          "title": "Engram",
+          "description": "Personal semantic memory for AI — stores, embeds, and retrieves knowledge using PostgreSQL, pgvector, and MCP so AI tools remember context across sessions.",
+          "impact": "Persistent AI memory with vector similarity search, exposed as an MCP server for seamless tool integration.",
+          "tags": ["Python", "PostgreSQL", "pgvector", "MCP", "Embeddings"],
+          "url": "https://github.com/jblacketter/engram",
+          "image": "images/engram.svg"
         }
       ]
     },

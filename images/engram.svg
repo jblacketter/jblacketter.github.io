@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- Terminal window -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#0fbcbf" stroke-width="1" opacity="0.9"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">engram — semantic memory</text>
+  <!-- Brain/network icon -->
+  <circle cx="200" cy="82" r="18" fill="none" stroke="#0fbcbf" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="200" cy="82" r="4" fill="#0fbcbf" opacity="0.8"/>
+  <circle cx="185" cy="72" r="3" fill="#a78bfa" opacity="0.8"/>
+  <circle cx="215" cy="72" r="3" fill="#a78bfa" opacity="0.8"/>
+  <circle cx="185" cy="92" r="3" fill="#a78bfa" opacity="0.8"/>
+  <circle cx="215" cy="92" r="3" fill="#a78bfa" opacity="0.8"/>
+  <line x1="200" y1="82" x2="185" y2="72" stroke="#0fbcbf" stroke-width="0.8" opacity="0.5"/>
+  <line x1="200" y1="82" x2="215" y2="72" stroke="#0fbcbf" stroke-width="0.8" opacity="0.5"/>
+  <line x1="200" y1="82" x2="185" y2="92" stroke="#0fbcbf" stroke-width="0.8" opacity="0.5"/>
+  <line x1="200" y1="82" x2="215" y2="92" stroke="#0fbcbf" stroke-width="0.8" opacity="0.5"/>
+  <line x1="185" y1="72" x2="215" y2="92" stroke="#a78bfa" stroke-width="0.5" opacity="0.3"/>
+  <line x1="215" y1="72" x2="185" y2="92" stroke="#a78bfa" stroke-width="0.5" opacity="0.3"/>
+  <!-- Vector embeddings panel -->
+  <text x="40" y="62" fill="#0fbcbf" font-family="monospace" font-size="9">EMBEDDINGS</text>
+  <text x="40" y="78" fill="#8899aa" font-family="monospace" font-size="8">dim: 1536</text>
+  <text x="40" y="91" fill="#a78bfa" font-family="monospace" font-size="7">[0.023, -0.118,</text>
+  <text x="40" y="101" fill="#a78bfa" font-family="monospace" font-size="7"> 0.891, 0.445,</text>
+  <text x="40" y="111" fill="#a78bfa" font-family="monospace" font-size="7"> -0.337, ...]</text>
+  <!-- Memory store panel -->
+  <text x="270" y="62" fill="#0fbcbf" font-family="monospace" font-size="9">MEMORY STORE</text>
+  <text x="270" y="78" fill="#8899aa" font-family="monospace" font-size="8">pgvector</text>
+  <text x="270" y="93" fill="#8899aa" font-family="monospace" font-size="8">memories</text>
+  <text x="345" y="93" fill="#34d399" font-family="monospace" font-size="8">2,841</text>
+  <text x="270" y="106" fill="#8899aa" font-family="monospace" font-size="8">similarity</text>
+  <text x="345" y="106" fill="#34d399" font-family="monospace" font-size="8">0.94</text>
+  <!-- Bottom status -->
+  <rect x="24" y="126" width="352" height="1" fill="#334455"/>
+  <text x="24" y="144" fill="#0fbcbf" font-family="monospace" font-size="10">$</text>
+  <text x="36" y="144" fill="#e4ecf0" font-family="monospace" font-size="10">engram recall "test automation patterns"</text>
+  <text x="24" y="160" fill="#34d399" font-family="monospace" font-size="9">Found 7 memories (cosine similarity > 0.85)</text>
+  <text x="24" y="175" fill="#8899aa" font-family="monospace" font-size="9">MCP server ready on stdio</text>
+  <text x="300" y="175" fill="#34d399" font-family="monospace" font-size="10">CONNECTED</text>
+</svg>
