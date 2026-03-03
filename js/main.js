@@ -45,6 +45,7 @@
     .then(function (res) { return res.json(); })
     .then(function (data) {
       renderMeta(data.meta);
+      renderFocus(data.currentFocus);
       renderCategorizedProjects(data.categories);
       renderDemo(data.video);
       initReveal();
@@ -63,6 +64,22 @@
     if (title && meta.title) title.textContent = meta.title;
     if (tagline && meta.tagline) tagline.textContent = meta.tagline;
     if (ghLink && meta.github) ghLink.href = meta.github;
+  }
+
+  /* --- Current Focus --- */
+
+  function renderFocus(items) {
+    var grid = document.getElementById('focus-grid');
+    if (!grid || !items) return;
+
+    grid.innerHTML = items.map(function (item) {
+      return (
+        '<article class="focus-card reveal">' +
+          '<h3 class="focus-card__title">' + escapeHtml(item.title) + '</h3>' +
+          '<p class="focus-card__desc">' + escapeHtml(item.description) + '</p>' +
+        '</article>'
+      );
+    }).join('');
   }
 
   /* --- Categorized Projects --- */

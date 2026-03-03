@@ -142,6 +142,23 @@
       ]
     }
   ],
+  "currentFocus": [
+    {
+      "title": "AI-Augmented Development",
+      "description": "Building systems where AI agents plan, review, and ship code collaboratively — from automated PR review to coordinated test generation.",
+      "status": "active"
+    },
+    {
+      "title": "Intelligent Test Engineering",
+      "description": "Creating AI agents that analyze application behavior, generate meaningful test coverage, and catch regressions humans miss.",
+      "status": "active"
+    },
+    {
+      "title": "AI Quality & Evaluation",
+      "description": "Designing quality gates and evaluation pipelines for AI outputs — ensuring LLM-powered features meet production standards.",
+      "status": "active"
+    }
+  ],
   "video": {
     "enabled": false,
     "placeholder": "Demo video coming soon — a walkthrough of one of these projects in action."
