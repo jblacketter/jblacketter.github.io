@@ -1,10 +1,39 @@
 {
   "meta": {
     "name": "Greg Blacketter",
-    "title": "QA Engineer & AI Builder",
-    "tagline": "Building intelligent testing and AI systems",
+    "title": "I build AI systems — and the quality tools that keep them honest.",
+    "tagline": "QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence.",
     "location": "Portland, OR",
-    "github": "https://github.com/jblacketter"
+    "github": "https://github.com/jblacketter",
+    "availability": {
+      "label": "Open to",
+      "items": [
+        "Full-time roles",
+        "Contract engagements",
+        "Co-founder conversations"
+      ]
+    },
+    "contact": {
+      "heading": "Let's talk",
+      "subheading": "If any of the work above resonates — for a role, a contract, or something you want to build — send a note. I read everything.",
+      "links": [
+        {
+          "label": "Email",
+          "value": "jblacketter@gmail.com",
+          "href": "mailto:jblacketter@gmail.com"
+        },
+        {
+          "label": "LinkedIn",
+          "value": "linkedin.com/in/gregblacketter",
+          "href": "https://www.linkedin.com/in/gregblacketter/"
+        },
+        {
+          "label": "GitHub",
+          "value": "github.com/jblacketter",
+          "href": "https://github.com/jblacketter"
+        }
+      ]
+    }
   },
   "categories": [
     {
@@ -15,7 +44,8 @@
       "repos": [
         {
           "name": "aegis",
-          "title": "Aegis",
+          "title": "What if AI models shipped with quality gates as strict as production code?",
+          "status": "In development",
           "description": "The AI Quality Control Plane — an intelligent gateway that validates, monitors, and enforces quality standards across AI model outputs in real time.",
           "impact": "Production-grade quality gates for AI systems with policy enforcement and drift detection.",
           "tags": ["Python", "FastAPI", "AI/ML", "Quality Engineering"],
@@ -24,7 +54,8 @@
         },
         {
           "name": "qaagent",
-          "title": "QA Agent",
+          "title": "Can an AI agent run the test plan while you sleep?",
+          "status": "Exploring · live on GitHub",
           "description": "AI-powered agent that automates quality assurance testing workflows using intelligent reasoning.",
           "impact": "Exploring the frontier where AI agents meet software testing.",
           "tags": ["Python", "AI Agents", "QA"],
@@ -33,7 +64,8 @@
         },
         {
           "name": "bugalizer",
-          "title": "Bugalizer",
+          "title": "What if every bug report arrived with a proposed fix?",
+          "status": "Live · local LLMs + tree-sitter",
           "description": "AI-powered bug report processing server with a multi-stage LLM pipeline — validates, triages, localizes code, and proposes fixes automatically.",
           "impact": "Full pipeline from submission to fix proposal using local LLMs, tree-sitter AST analysis, and async queue processing.",
           "tags": ["Python", "FastAPI", "LLM", "tree-sitter", "SQLite"],
@@ -42,7 +74,8 @@
         },
         {
           "name": "test-frameworks",
-          "title": "Test Frameworks",
+          "title": "A reusable test toolkit for teams adopting modern automation",
+          "status": "Live · Playwright + Behave",
           "description": "Production-grade test automation combining Playwright with TypeScript for cross-browser testing and Python Behave for BDD — two complementary approaches in one toolkit.",
           "impact": "Reusable framework patterns for teams adopting modern test automation and behavior-driven development.",
           "tags": ["TypeScript", "Playwright", "Python", "Behave", "BDD", "CI/CD"],
@@ -51,7 +84,8 @@
         },
         {
           "name": "squanch",
-          "title": "Squanch Spec Developer",
+          "title": "Turn plain-English requirements into testable specs",
+          "status": "In progress",
           "description": "AI-assisted specification generator that transforms natural language requirements into structured, testable specs with traceability built in.",
           "impact": "Bridging the gap between product intent and engineering precision.",
           "tags": ["Python", "AI Agents", "Specifications"],
@@ -60,7 +94,8 @@
         },
         {
           "name": "engram",
-          "title": "Engram",
+          "title": "Give AI tools a memory that survives the session",
+          "status": "Live · exposed as MCP server",
           "description": "Personal semantic memory for AI — stores, embeds, and retrieves knowledge using PostgreSQL, pgvector, and MCP so AI tools remember context across sessions.",
           "impact": "Persistent AI memory with vector similarity search, exposed as an MCP server for seamless tool integration.",
           "tags": ["Python", "PostgreSQL", "pgvector", "MCP", "Embeddings"],
@@ -77,7 +112,8 @@
       "repos": [
         {
           "name": "tagteam",
-          "title": "Tagteam",
+          "title": "What if two AI agents could ship code without a human babysitting every round?",
+          "status": "Live · pip install tagteam",
           "description": "Pip-installable CLI for structured AI-to-AI handoffs with human oversight — one agent leads, another reviews, you arbitrate. Runs phase by phase from a roadmap with auto-escalation after stale rounds.",
           "impact": "Productized multi-agent workflow: terminal automation (iTerm2/tmux), roadmap-driven phases, and JSONL-backed state that either agent can resume.",
           "tags": ["Python", "CLI", "AI Agents", "Workflow"],
@@ -86,7 +122,8 @@
         },
         {
           "name": "linkedin-ghost-job-score",
-          "title": "Ghost Job Detector",
+          "title": "Flag ghost jobs on LinkedIn before you apply",
+          "status": "Live · Firefox extension",
           "description": "Firefox extension that scores LinkedIn job postings to identify likely ghost jobs before you apply.",
           "impact": "Practical tool saving job seekers time by flagging suspicious listings.",
           "tags": ["JavaScript", "Browser Extension", "Firefox"],
@@ -95,7 +132,8 @@
         },
         {
           "name": "unified",
-          "title": "Unified AI Control Plane",
+          "title": "Central orchestration for multi-model AI architectures",
+          "status": "In development",
           "description": "Orchestration layer for managing AI models, memory systems, and evaluation pipelines.",
           "impact": "Central control plane for complex multi-model AI architectures.",
           "tags": ["Python", "AI/ML", "Orchestration"],
@@ -104,7 +142,8 @@
         },
         {
           "name": "waylin",
-          "title": "Waylin",
+          "title": "Location sharing that expires when the event ends",
+          "status": "In development · iOS",
           "description": "iOS app for event-scoped location sharing — create a session, share a link, and everyone sees each other on a map until the event ends.",
           "impact": "Privacy-first coordination: temporary sharing with auto-expiration, no permanent tracking.",
           "tags": ["Swift", "SwiftUI", "MapKit", "CloudKit", "iOS"],
@@ -122,7 +161,8 @@
       "repos": [
         {
           "name": "botastrophic",
-          "title": "Botastrophic",
+          "title": "Six AI personalities on a forum — what emerges?",
+          "status": "Live · FastAPI + React + WebSocket",
           "description": "AI social experiment platform where six AI bot personalities interact autonomously on a forum. Humans observe emergent behavior, relationships, and debates.",
           "impact": "Multi-tier memory, relationship tracking, real-time WebSocket dashboard, and configurable pace control.",
           "tags": ["Python", "FastAPI", "React", "TypeScript", "AI Agents"],
@@ -132,7 +172,8 @@
         },
         {
           "name": "benfords_law",
-          "title": "Benford's Law Analyzer",
+          "title": "Run Benford's Law against any dataset",
+          "status": "Live · enterprise-hardened",
           "description": "Web app for analyzing datasets against Benford's Law with CSV uploads, rich visualizations, statistical reports, and Kaggle integration.",
           "impact": "Enterprise-hardened with CSRF protection, rate limiting, and automated cleanup.",
           "tags": ["Python", "Flask", "Data Analysis", "Matplotlib"],

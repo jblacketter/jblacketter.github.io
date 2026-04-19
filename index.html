@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greg Blacketter — QA Engineer & AI Builder</title>
-  <meta name="description" content="Portfolio showcase of Greg Blacketter — QA Engineer and AI Builder based in Portland, OR. Exploring intelligent testing and AI systems.">
-  <meta property="og:title" content="Greg Blacketter — QA Engineer & AI Builder">
-  <meta property="og:description" content="Exploring intelligent testing and AI systems.">
+  <title>Greg Blacketter — AI systems and the quality tools that keep them honest</title>
+  <meta name="description" content="Greg Blacketter, QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence. Open to full-time, contract, and co-founder conversations.">
+  <meta property="og:title" content="Greg Blacketter — AI systems and the quality tools that keep them honest">
+  <meta property="og:description" content="QA engineer and AI builder. I help teams ship LLM-powered features with confidence.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,21 +15,38 @@
 </head>
 <body>
 
+  <!-- Top nav -->
+  <nav class="topbar" aria-label="Primary">
+    <a class="topbar__brand" href="#hero">
+      <span class="topbar__prompt">&gt;</span>
+      <span class="topbar__name">greg</span><span class="topbar__at">@</span><span class="topbar__host">blacketter</span>
+    </a>
+    <a class="topbar__cta" href="#contact">Get in touch</a>
+  </nav>
+
   <!-- Hero -->
   <header class="hero" id="hero">
     <div class="hero__bg"></div>
 
     <div class="hero__left reveal">
-      <h1 class="hero__name">Greg Blacketter</h1>
+      <p class="hero__name">Greg Blacketter</p>
       <p class="hero__location">Portland, OR</p>
-      <p class="hero__title" id="hero-title">QA Engineer & AI Builder</p>
-      <p class="hero__tagline" id="hero-tagline">Building intelligent testing and AI systems</p>
-      <a class="hero__cta" id="hero-github" href="https://github.com/jblacketter" target="_blank" rel="noopener noreferrer">
-        <svg class="hero__github-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-        View GitHub Profile
-      </a>
+      <h1 class="hero__title" id="hero-title">I build AI systems — and the quality tools that keep them honest.</h1>
+      <p class="hero__tagline" id="hero-tagline">QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence.</p>
+
+      <div class="hero__availability" id="hero-availability" aria-label="Availability">
+        <!-- Rendered by main.js -->
+      </div>
+
+      <div class="hero__ctas">
+        <a class="hero__cta hero__cta--primary" href="#contact">Get in touch</a>
+        <a class="hero__cta" id="hero-github" href="https://github.com/jblacketter" target="_blank" rel="noopener noreferrer">
+          <svg class="hero__github-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          View GitHub Profile
+        </a>
+      </div>
     </div>
 
     <div class="hero__right">
@@ -64,6 +81,19 @@
           </svg>
         </div>
         <p class="demo__text" id="demo-text">Demo video coming soon</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section--contact" id="contact">
+    <div class="section__inner">
+      <h2 class="section__heading reveal" id="contact-heading">Let's talk</h2>
+      <p class="contact__subheading reveal" id="contact-subheading">
+        If any of the work above resonates — for a role, a contract, or something you want to build — send a note. I read everything.
+      </p>
+      <div class="contact__links reveal" id="contact-links">
+        <!-- Rendered by main.js -->
       </div>
     </div>
   </section>

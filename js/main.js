@@ -34,9 +34,8 @@
     'tools/waylin':                    { gridColumn: '3', gridRow: '5 / 7' },
 
     // Fun (rows 6-7)
-    'fun/botastrophic':    { gridColumn: '1 / 3', gridRow: '6' },
-    'fun/isolated-claw':   { gridColumn: '1',     gridRow: '7' },
-    'fun/benfords_law':    { gridColumn: '2 / 4', gridRow: '7' }
+    'fun/botastrophic':    { gridColumn: '1 / 4', gridRow: '6' },
+    'fun/benfords_law':    { gridColumn: '1 / 4', gridRow: '7' }
   };
 
   /* --- Fetch & Render --- */
@@ -64,6 +63,44 @@
     if (title && meta.title) title.textContent = meta.title;
     if (tagline && meta.tagline) tagline.textContent = meta.tagline;
     if (ghLink && meta.github) ghLink.href = meta.github;
+
+    renderAvailability(meta.availability);
+    renderContact(meta.contact);
+  }
+
+  function renderAvailability(availability) {
+    var el = document.getElementById('hero-availability');
+    if (!el || !availability || !availability.items) return;
+    var label = availability.label
+      ? '<span class="availability__label">' + escapeHtml(availability.label) + ':</span>'
+      : '';
+    var items = availability.items.map(function (item) {
+      return '<span class="availability__item">' + escapeHtml(item) + '</span>';
+    }).join('<span class="availability__sep" aria-hidden="true">·</span>');
+    el.innerHTML = label + '<span class="availability__items">' + items + '</span>';
+  }
+
+  function renderContact(contact) {
+    if (!contact) return;
+    var heading = document.getElementById('contact-heading');
+    var sub = document.getElementById('contact-subheading');
+    var links = document.getElementById('contact-links');
+    if (heading && contact.heading) heading.textContent = contact.heading;
+    if (sub && contact.subheading) sub.textContent = contact.subheading;
+    if (links && contact.links) {
+      links.innerHTML = contact.links.map(function (link) {
+        var external = link.href.indexOf('http') === 0
+          ? ' target="_blank" rel="noopener noreferrer"'
+          : '';
+        return (
+          '<a class="contact-link" href="' + escapeAttr(link.href) + '"' + external + '>' +
+            '<span class="contact-link__label">' + escapeHtml(link.label) + '</span>' +
+            '<span class="contact-link__value">' + escapeHtml(link.value) + '</span>' +
+            '<span class="contact-link__arrow" aria-hidden="true">&rarr;</span>' +
+          '</a>'
+        );
+      }).join('');
+    }
   }
 
   /* --- Current Focus --- */
@@ -152,6 +189,10 @@
 
         var titleHtml = '<h3 class="card__title">' + escapeHtml(repo.title) + badge + '</h3>';
 
+        var statusHtml = repo.status
+          ? '<p class="card__status"><span class="card__status-dot" aria-hidden="true"></span>' + escapeHtml(repo.status) + '</p>'
+          : '';
+
         // Link
         var link;
         if (repo.private) {
@@ -172,6 +213,7 @@
             imageHtml +
             slug +
             titleHtml +
+            statusHtml +
             '<p class="card__desc">' + escapeHtml(repo.description) + '</p>' +
             impact +
             '<div class="card__tags">' + tags + '</div>' +
