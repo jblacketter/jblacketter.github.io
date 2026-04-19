@@ -28,7 +28,7 @@
     'dev-qa/squanch':         { gridColumn: '1',     gridRow: '4' },
 
     // Tools (col 3, rows 2-5)
-    'tools/ai-handoff':                { gridColumn: '3', gridRow: '2' },
+    'tools/tagteam':                   { gridColumn: '3', gridRow: '2' },
     'tools/linkedin-ghost-job-score':  { gridColumn: '3', gridRow: '3' },
     'tools/unified':                   { gridColumn: '3', gridRow: '4' },
     'tools/waylin':                    { gridColumn: '3', gridRow: '5 / 7' },

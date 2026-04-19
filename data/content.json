@@ -76,13 +76,13 @@
       "accent": "#e8a838",
       "repos": [
         {
-          "name": "ai-handoff",
-          "title": "AI Agent Handoff System",
-          "description": "Coordination rules for planning, review, and implementation phases between multiple AI agents.",
-          "impact": "Structured multi-agent workflows that scale collaborative AI development.",
-          "tags": ["Python", "AI Agents", "Workflow"],
-          "url": "https://github.com/jblacketter/ai-handoff",
-          "image": "images/ai-handoff.svg"
+          "name": "tagteam",
+          "title": "Tagteam",
+          "description": "Pip-installable CLI for structured AI-to-AI handoffs with human oversight — one agent leads, another reviews, you arbitrate. Runs phase by phase from a roadmap with auto-escalation after stale rounds.",
+          "impact": "Productized multi-agent workflow: terminal automation (iTerm2/tmux), roadmap-driven phases, and JSONL-backed state that either agent can resume.",
+          "tags": ["Python", "CLI", "AI Agents", "Workflow"],
+          "url": "https://github.com/jblacketter/tagteam",
+          "image": "images/tagteam.svg"
         },
         {
           "name": "linkedin-ghost-job-score",
@@ -129,15 +129,6 @@
           "url": "https://github.com/jblacketter/botastrophic",
           "image": "images/botastrophic.svg",
           "wide": true
-        },
-        {
-          "name": "isolated-claw",
-          "title": "Isolated Claw",
-          "description": "A creative AI experiment exploring autonomous agent behavior in constrained, adversarial environments — think escape room meets machine learning.",
-          "impact": "Pushing boundaries of agent reasoning under pressure and limited information.",
-          "tags": ["Python", "AI Agents", "Creative AI"],
-          "image": "images/isolated-claw.svg",
-          "badge": "In Progress"
         },
         {
           "name": "benfords_law",
