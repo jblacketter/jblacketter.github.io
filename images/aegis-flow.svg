@@ -1,32 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" fill="none" role="img" aria-label="Aegis scan flow: repository in, QA artifacts out">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" fill="none" role="img" aria-label="Aegis scan flow: a repository goes in, one scan runs discovery, risk scoring, and generation, and a set of QA artifacts comes out">
   <!-- Repo input -->
-  <rect x="30" y="115" width="170" height="70" rx="10" fill="#1a2332" stroke="#a78bfa" stroke-width="1.5"/>
-  <text x="115" y="145" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="14" font-weight="bold">YOUR REPO</text>
-  <text x="115" y="168" text-anchor="middle" fill="#8899aa" font-family="sans-serif" font-size="12">stays on your machine</text>
-  <!-- Arrow to scan -->
-  <path d="M204 150 L266 150" stroke="#8899aa" stroke-width="1.5"/>
-  <path d="M270 150 l-8 -4 0 8 z" fill="#8899aa"/>
-  <!-- Scan engine -->
-  <rect x="274" y="100" width="190" height="100" rx="10" fill="#1a2332" stroke="#0fbcbf" stroke-width="2"/>
-  <text x="369" y="132" text-anchor="middle" fill="#0fbcbf" font-family="monospace" font-size="15" font-weight="bold">ONE SCAN</text>
-  <text x="369" y="154" text-anchor="middle" fill="#e4ecf0" font-family="sans-serif" font-size="12">discovers routes, endpoints,</text>
-  <text x="369" y="172" text-anchor="middle" fill="#e4ecf0" font-family="sans-serif" font-size="12">auth · scores risk</text>
-  <!-- Fan-out arrows -->
-  <path d="M468 120 L536 55"  stroke="#8899aa" stroke-width="1.2"/>
-  <path d="M468 135 L536 115" stroke="#8899aa" stroke-width="1.2"/>
-  <path d="M468 150 L536 175" stroke="#8899aa" stroke-width="1.2"/>
-  <path d="M468 165 L536 235" stroke="#8899aa" stroke-width="1.2"/>
-  <!-- Artifacts -->
-  <rect x="540" y="30" width="230" height="48" rx="8" fill="#1a2332" stroke="#e8a838" stroke-width="1.2"/>
-  <text x="558" y="50" fill="#e8a838" font-family="monospace" font-size="12" font-weight="bold">RISK MAP</text>
-  <text x="558" y="67" fill="#8899aa" font-family="sans-serif" font-size="11">every route scored</text>
-  <rect x="540" y="90" width="230" height="48" rx="8" fill="#1a2332" stroke="#34d399" stroke-width="1.2"/>
-  <text x="558" y="110" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold">TEST PLAN + TESTS</text>
-  <text x="558" y="127" fill="#8899aa" font-family="sans-serif" font-size="11">runnable pytest · behave · playwright</text>
-  <rect x="540" y="150" width="230" height="48" rx="8" fill="#1a2332" stroke="#0fbcbf" stroke-width="1.2"/>
-  <text x="558" y="170" fill="#0fbcbf" font-family="monospace" font-size="12" font-weight="bold">APP DOCS</text>
-  <text x="558" y="187" fill="#8899aa" font-family="sans-serif" font-size="11">features · journeys · architecture</text>
-  <rect x="540" y="210" width="230" height="48" rx="8" fill="#1a2332" stroke="#f472b6" stroke-width="1.2"/>
-  <text x="558" y="230" fill="#f472b6" font-family="monospace" font-size="12" font-weight="bold">ISSUES + FIXES</text>
-  <text x="558" y="247" fill="#8899aa" font-family="sans-serif" font-size="11">prioritized recommendations</text>
+  <rect x="20" y="80" width="150" height="100" rx="10" fill="#1a2332" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="95" y="106" text-anchor="middle" fill="#c6b5fc" font-family="monospace" font-size="13" font-weight="bold">YOUR REPO</text>
+  <text x="36" y="130" fill="#8899aa" font-family="monospace" font-size="10">src/</text>
+  <text x="36" y="146" fill="#8899aa" font-family="monospace" font-size="10">api/</text>
+  <text x="36" y="162" fill="#8899aa" font-family="monospace" font-size="10">tests/ (thin)</text>
+  <path d="M174 130 L216 130" stroke="#8899aa" stroke-width="1.5"/>
+  <path d="M220 130 l-8 -4 0 8 z" fill="#8899aa"/>
+  <!-- Scan engine with visible steps -->
+  <rect x="224" y="46" width="250" height="168" rx="10" fill="#1a2332" stroke="#0fbcbf" stroke-width="2"/>
+  <text x="349" y="72" text-anchor="middle" fill="#0fbcbf" font-family="monospace" font-size="13" font-weight="bold">ONE SCAN</text>
+  <text x="240" y="98" fill="#34d399" font-family="monospace" font-size="10">1 discover routes + auth</text>
+  <text x="240" y="120" fill="#34d399" font-family="monospace" font-size="10">2 score risk per route</text>
+  <text x="240" y="142" fill="#34d399" font-family="monospace" font-size="10">3 plan + generate tests</text>
+  <text x="240" y="164" fill="#e8a838" font-family="monospace" font-size="10">4 write docs + fixes</text>
+  <rect x="238" y="178" width="222" height="22" rx="11" fill="none" stroke="#0fbcbf" opacity="0.6"/>
+  <text x="349" y="193" text-anchor="middle" fill="#0fbcbf" font-family="monospace" font-size="9">QUICK · LOCAL AI · CLOUD AI</text>
+  <!-- Fan-out -->
+  <path d="M478 90 L536 52"  stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M478 115 L536 105" stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M478 145 L536 158" stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M478 170 L536 211" stroke="#8899aa" stroke-width="1.2"/>
+  <!-- Artifact thumbnails -->
+  <rect x="540" y="28" width="240" height="46" rx="8" fill="#1a2332" stroke="#e8a838" stroke-width="1.2"/>
+  <text x="556" y="47" fill="#efbf63" font-family="monospace" font-size="11" font-weight="bold">RISK MAP</text>
+  <rect x="556" y="54" width="60" height="8" rx="2" fill="#f97066" opacity="0.8"/>
+  <rect x="622" y="54" width="44" height="8" rx="2" fill="#e8a838" opacity="0.8"/>
+  <rect x="672" y="54" width="30" height="8" rx="2" fill="#34d399" opacity="0.8"/>
+  <rect x="540" y="82" width="240" height="46" rx="8" fill="#1a2332" stroke="#34d399" stroke-width="1.2"/>
+  <text x="556" y="101" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold">TEST PLAN + TESTS</text>
+  <text x="556" y="118" fill="#8899aa" font-family="monospace" font-size="9">pytest · behave · playwright</text>
+  <rect x="540" y="136" width="240" height="46" rx="8" fill="#1a2332" stroke="#0fbcbf" stroke-width="1.2"/>
+  <text x="556" y="155" fill="#3cd6d9" font-family="monospace" font-size="11" font-weight="bold">APP DOCS</text>
+  <text x="556" y="172" fill="#8899aa" font-family="monospace" font-size="9">features · journeys · diagrams</text>
+  <rect x="540" y="190" width="240" height="46" rx="8" fill="#1a2332" stroke="#f472b6" stroke-width="1.2"/>
+  <text x="556" y="209" fill="#f472b6" font-family="monospace" font-size="11" font-weight="bold">ISSUES + FIXES</text>
+  <text x="556" y="226" fill="#8899aa" font-family="monospace" font-size="9">prioritized by the same risk scores</text>
+  <!-- local-first footnote -->
+  <text x="95" y="205" text-anchor="middle" fill="#e8a838" font-family="monospace" font-size="9">never leaves</text>
+  <text x="95" y="219" text-anchor="middle" fill="#e8a838" font-family="monospace" font-size="9">your machine</text>
 </svg>

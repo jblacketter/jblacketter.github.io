@@ -76,3 +76,19 @@ ink raised to `rgba(245, 249, 251, 0.85)`, link tints lifted (`#b8eef0`,
 `#f8dfae`, `#e6e0fe`), mist's small teal darkened to `#086568`, paper's amber
 deepened to `#8d5309`, and the tag/badge/chip/hover tint percentages reduced
 until every composited pair cleared threshold.
+
+
+## Vertical-space record: aegis-page-refinement
+
+Measured in headless Playwright at 1440x900 after `document.fonts.ready` and all
+image decodes settled, same environment for both runs.
+
+| State | scrollHeight |
+|---|---|
+| Before (main at 7af359a) | 4678px |
+| After (tiers moved up, 2-column vignette cards, Surfaces removed, spacing pass) | 4068px |
+
+Reduction: 13.0 percent, while adding six artifact vignettes. The savings came
+from removing the Surfaces section, collapsing the stacked hero-bottom plus
+section-top padding, and tightening section/heading/diagram spacing on this page
+only (page-scoped overrides; the landing page is untouched).

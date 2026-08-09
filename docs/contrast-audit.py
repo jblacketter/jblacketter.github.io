@@ -127,8 +127,24 @@ for name, t in THEMES.items():
     worst = min(results, key=lambda r: r[1] / r[2])
     print(f"{name:9s} {len(results)} pairs, worst: {worst[0]} = {worst[1]} (need {worst[2]})")
 
-chk_deep = [('placeholder text / deep', ratio(hex2rgb('#8fa3b8'), DEEP), 4.5),
-            ('placeholder prompt / deep', ratio(hex2rgb('#4fd8da'), DEEP), 4.5)]
+PANEL = hex2rgb('#1a2332')   # vignette/artwork panel surface
+SUBPANEL = hex2rgb('#141e2a')  # inset panes inside vignettes
+chk_deep = [
+    # vignette text colors vs their fixed panels (theme-invariant artwork)
+    ('vignette ink / panel', ratio(hex2rgb('#e4ecf0'), PANEL), 4.5),
+    ('vignette muted / panel', ratio(hex2rgb('#8899aa'), PANEL), 4.5),
+    ('vignette teal / panel', ratio(hex2rgb('#3cd6d9'), PANEL), 4.5),
+    ('vignette teal accent / panel', ratio(hex2rgb('#0fbcbf'), PANEL), 4.5),
+    ('vignette amber / panel', ratio(hex2rgb('#efbf63'), PANEL), 4.5),
+    ('vignette amber accent / panel', ratio(hex2rgb('#e8a838'), PANEL), 4.5),
+    ('vignette green / panel', ratio(hex2rgb('#34d399'), PANEL), 4.5),
+    ('vignette red / panel', ratio(hex2rgb('#f97066'), PANEL), 4.5),
+    ('vignette purple / panel', ratio(hex2rgb('#c6b5fc'), PANEL), 4.5),
+    ('vignette ink / subpanel', ratio(hex2rgb('#e4ecf0'), SUBPANEL), 4.5),
+    ('vignette muted / subpanel', ratio(hex2rgb('#8899aa'), SUBPANEL), 4.5),
+    ('vignette green / subpanel', ratio(hex2rgb('#34d399'), SUBPANEL), 4.5),
+    ('vignette red / subpanel', ratio(hex2rgb('#f97066'), SUBPANEL), 4.5),
+]
 for what, r, need in chk_deep:
     print(f"invariant  {what} = {round(r, 2)} (need {need})")
     if r < need:

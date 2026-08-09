@@ -65,8 +65,11 @@
 
     .artifact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .artifact-grid { grid-template-columns: 1fr; }
     }
     .artifact {
       background: var(--bg-card);
@@ -74,7 +77,16 @@
       border-left: 3px solid var(--accent);
       border-radius: var(--radius);
       padding: 1.5rem;
+      box-shadow: 4px 4px 0 var(--shadow-block);
     }
+    .artifact__vis {
+      margin: -1.5rem -1.5rem 1rem -1.5rem;
+      border-radius: var(--radius) var(--radius) 0 0;
+      overflow: hidden;
+      background: var(--surface-deep);
+      border-bottom: 1px solid var(--border);
+    }
+    .artifact__vis img { width: 100%; height: auto; display: block; }
     .artifact__name {
       font-family: var(--font-mono);
       font-size: 0.95rem;
@@ -120,25 +132,6 @@
     }
     .local-first p { color: var(--ink); line-height: 1.6; max-width: 70ch; }
 
-    .screens { display: grid; gap: 1.5rem; }
-    .screen {
-      background: var(--surface-deep);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .screen img { width: 100%; height: auto; display: block; }
-    .screen__placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      min-height: 180px;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: #8fa3b8;
-    }
-    .screen__placeholder-prompt { color: #4fd8da; }
     .screen figcaption {
       font-family: var(--font-mono);
       font-size: 0.82rem;
@@ -180,6 +173,15 @@
       .companion-band { grid-template-columns: 1fr; }
       .local-first { grid-template-columns: 1fr; }
     }
+
+    /* Vertical rhythm: this page runs tighter than the landing page */
+    .section { padding: 2rem; }
+    .section__heading { margin-bottom: 1rem; }
+    .section__heading::after { margin-top: 0.35rem; }
+    .aegis-hero { padding: 2.5rem 2rem 0.5rem; }
+    .aegis-hero__desc { margin-bottom: 1.25rem; }
+    .diagram { padding: 1rem; }
+    .diagram-caption { margin-top: 0.6rem; }
   </style>
 </head>
 <body>
@@ -215,52 +217,58 @@
     <div class="section__inner">
       <h2 class="section__heading reveal">One scan in, a QA toolkit out</h2>
       <div class="diagram reveal">
-        <img src="images/aegis-flow.svg" alt="Diagram: a repository goes into one Aegis scan, which produces a risk map, test plan with runnable tests, app docs, and prioritized issues and fixes.">
-      </div>
-    </div>
-  </section>
-
-  <!-- Artifacts -->
-  <section class="section section--alt">
-    <div class="section__inner">
-      <h2 class="section__heading reveal">What one scan gives you</h2>
-      <div class="artifact-grid">
-        <div class="artifact reveal">
-          <div class="artifact__name">Risk Map</div>
-          <p>Every route scored for security, performance, and reliability. A quick rule-based pass, or a deeper evidence-based one.</p>
-        </div>
-        <div class="artifact reveal">
-          <div class="artifact__name">Test Plan</div>
-          <p>A prioritized strategy: test-pyramid targets, priority areas, and sample end-to-end scenarios.</p>
-        </div>
-        <div class="artifact reveal">
-          <div class="artifact__name">Generated Tests</div>
-          <p>Runnable Behave, pytest, and Playwright projects. Working test suites, not snippets.</p>
-        </div>
-        <div class="artifact reveal">
-          <div class="artifact__name">App Docs</div>
-          <p>Feature maps, integration detection, critical-user-journey discovery, architecture diagrams, and a repo overview.</p>
-        </div>
-        <div class="artifact reveal">
-          <div class="artifact__name">Issues &amp; Fixes</div>
-          <p>A non-destructive issue report plus prioritized testing and fix recommendations.</p>
-        </div>
-        <div class="artifact reveal">
-          <div class="artifact__name">Deterministic Analyses</div>
-          <p>Cross-cutting coverage (accessibility, observability, contracts, compliance), users &amp; roles, pipeline &amp; gates, and test data &amp; environments.</p>
-        </div>
+        <img src="images/aegis-flow.svg?v=2" alt="Diagram: your repository feeds one Aegis scan, which discovers routes and auth, scores risk, generates tests, and writes docs, producing a risk map, test plan with runnable tests, app docs, and prioritized issues and fixes.">
       </div>
     </div>
   </section>
 
   <!-- Tiers -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="section__inner">
       <h2 class="section__heading reveal">You choose the depth and the spend</h2>
       <div class="diagram reveal">
         <img src="images/aegis-tiers.svg" alt="Diagram: three tiers rising like a ladder: Quick Scan (deterministic, instant), Local AI (on-device Ollama model), Cloud AI (configured cloud model, the deepest pass).">
       </div>
       <p class="diagram-caption">Every report runs at any tier. Start free and instant; go deeper only where it's worth it.</p>
+    </div>
+  </section>
+
+  <!-- Artifacts -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section__heading reveal">What one scan gives you</h2>
+      <div class="artifact-grid">
+        <div class="artifact reveal">
+          <div class="artifact__vis"><img src="images/aegis-vis-riskmap.svg" alt="Risk Map report: routes listed with security, performance, and reliability severity bars; 7 high, 12 medium, 23 low, with auth and payment surfaces flagged." loading="lazy"></div>
+          <div class="artifact__name">Risk Map</div>
+          <p>Every route scored for security, performance, and reliability. A quick rule-based pass, or a deeper evidence-based one.</p>
+        </div>
+        <div class="artifact reveal">
+          <div class="artifact__vis"><img src="images/aegis-vis-testplan.svg" alt="Test Plan report: a test pyramid targeting 60 percent unit, 30 percent integration, 10 percent end to end, next to prioritized areas and a sample checkout scenario." loading="lazy"></div>
+          <div class="artifact__name">Test Plan</div>
+          <p>A prioritized strategy: test-pyramid targets, priority areas, and sample end-to-end scenarios.</p>
+        </div>
+        <div class="artifact reveal">
+          <div class="artifact__vis"><img src="images/aegis-vis-tests.svg" alt="Terminal running the generated suites: pytest, behave, and playwright all passing, 48 tests across 3 frameworks." loading="lazy"></div>
+          <div class="artifact__name">Generated Tests</div>
+          <p>Runnable Behave, pytest, and Playwright projects. Working test suites, not snippets.</p>
+        </div>
+        <div class="artifact reveal">
+          <div class="artifact__vis"><img src="images/aegis-vis-appdocs.svg" alt="App Docs: a critical user journey graph from login through checkout, plus a feature map noting 14 features and 3 detected integrations." loading="lazy"></div>
+          <div class="artifact__name">App Docs</div>
+          <p>Feature maps, integration detection, critical-user-journey discovery, architecture diagrams, and a repo overview.</p>
+        </div>
+        <div class="artifact reveal">
+          <div class="artifact__vis"><img src="images/aegis-vis-fixes.svg" alt="Issues and Fixes report: a non-destructive diff of formatting and import cleanups beside five recommendations ranked by risk score." loading="lazy"></div>
+          <div class="artifact__name">Issues &amp; Fixes</div>
+          <p>A non-destructive issue report plus prioritized testing and fix recommendations.</p>
+        </div>
+        <div class="artifact reveal">
+          <div class="artifact__vis"><img src="images/aegis-vis-analyses.svg" alt="Deterministic analyses grid: accessibility, observability, contracts, and users and roles, each with a progress bar and findings." loading="lazy"></div>
+          <div class="artifact__name">Deterministic Analyses</div>
+          <p>Cross-cutting coverage (accessibility, observability, contracts, compliance), users &amp; roles, pipeline &amp; gates, and test data &amp; environments.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -282,29 +290,8 @@
     </div>
   </section>
 
-  <!-- Screens -->
-  <section class="section" id="screens">
-    <div class="section__inner">
-      <h2 class="section__heading reveal">The surfaces</h2>
-      <div class="screens">
-        <figure class="screen reveal">
-          <div class="screen__placeholder" role="img" aria-label="Screenshot of the Aegis scan console, coming soon">
-            <span class="screen__placeholder-prompt" aria-hidden="true">$</span> capturing console screenshot...
-          </div>
-          <figcaption>The scan console: point it at a repo, scan, pick what to generate. Dependent steps add their prerequisites automatically.</figcaption>
-        </figure>
-        <figure class="screen reveal">
-          <div class="screen__placeholder" role="img" aria-label="Screenshot of the Aegis dashboard, coming soon">
-            <span class="screen__placeholder-prompt" aria-hidden="true">$</span> capturing dashboard screenshot...
-          </div>
-          <figcaption>The dashboard: every report has a home. Pin a repo and the whole app follows it.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
   <!-- What's next -->
-  <section class="section section--alt">
+  <section class="section">
     <div class="section__inner">
       <h2 class="section__heading reveal">What's next</h2>
       <div class="roadmap-note reveal">
@@ -320,7 +307,7 @@
   </section>
 
   <!-- Companion -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="section__inner">
       <div class="companion-band reveal">
         <div>

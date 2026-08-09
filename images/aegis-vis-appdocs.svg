@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" fill="none">
+  <rect x="4" y="4" width="632" height="292" rx="10" fill="#1a2332" stroke="#0fbcbf" stroke-width="1" opacity="0.95"/>
+  <rect x="4" y="4" width="632" height="34" rx="10" fill="#253545"/>
+  <rect x="4" y="28" width="632" height="10" fill="#253545"/>
+  <text x="22" y="26" fill="#0fbcbf" font-family="monospace" font-size="13">APP DOCS</text>
+  <text x="618" y="26" text-anchor="end" fill="#8899aa" font-family="monospace" font-size="11">critical user journey</text>
+  <!-- journey graph -->
+  <rect x="30" y="70" width="100" height="34" rx="8" fill="none" stroke="#0fbcbf"/>
+  <text x="80" y="92" text-anchor="middle" fill="#3cd6d9" font-family="monospace" font-size="11">login</text>
+  <path d="M134 87 L176 87" stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M180 87 l-8 -4 0 8 z" fill="#8899aa"/>
+  <rect x="184" y="70" width="118" height="34" rx="8" fill="none" stroke="#0fbcbf"/>
+  <text x="243" y="92" text-anchor="middle" fill="#3cd6d9" font-family="monospace" font-size="11">browse</text>
+  <path d="M306 87 L348 87" stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M352 87 l-8 -4 0 8 z" fill="#8899aa"/>
+  <rect x="356" y="70" width="100" height="34" rx="8" fill="none" stroke="#e8a838"/>
+  <text x="406" y="92" text-anchor="middle" fill="#efbf63" font-family="monospace" font-size="11">cart</text>
+  <path d="M460 87 L502 87" stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M506 87 l-8 -4 0 8 z" fill="#8899aa"/>
+  <rect x="510" y="70" width="106" height="34" rx="8" fill="none" stroke="#f97066"/>
+  <text x="563" y="92" text-anchor="middle" fill="#f97066" font-family="monospace" font-size="11">checkout</text>
+  <!-- branch -->
+  <path d="M406 108 L406 138" stroke="#8899aa" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <rect x="346" y="142" width="120" height="30" rx="8" fill="none" stroke="#a78bfa"/>
+  <text x="406" y="162" text-anchor="middle" fill="#c6b5fc" font-family="monospace" font-size="10">saved carts</text>
+  <line x1="18" y1="190" x2="622" y2="190" stroke="#334455" stroke-width="1"/>
+  <!-- feature map summary -->
+  <text x="22" y="214" fill="#8899aa" font-family="monospace" font-size="10">FEATURE MAP</text>
+  <text x="22" y="238" fill="#e4ecf0" font-family="monospace" font-size="11">14 features · 3 integrations detected (stripe, s3, sendgrid)</text>
+  <text x="22" y="262" fill="#e4ecf0" font-family="monospace" font-size="11">architecture diagram + repo overview generated</text>
+  <text x="22" y="284" fill="#8899aa" font-family="monospace" font-size="10">the doc a new QA engineer reads on day one</text>
+</svg>

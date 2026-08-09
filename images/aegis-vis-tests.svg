@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" fill="none">
+  <rect x="4" y="4" width="632" height="292" rx="10" fill="#1a2332" stroke="#0fbcbf" stroke-width="1" opacity="0.95"/>
+  <rect x="4" y="4" width="632" height="34" rx="10" fill="#253545"/>
+  <rect x="4" y="28" width="632" height="10" fill="#253545"/>
+  <circle cx="24" cy="21" r="5" fill="#f97066"/>
+  <circle cx="40" cy="21" r="5" fill="#e8a838"/>
+  <circle cx="56" cy="21" r="5" fill="#34d399"/>
+  <text x="320" y="26" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">generated tests · runnable out of the box</text>
+  <text x="22" y="62" fill="#0fbcbf" font-family="monospace" font-size="11">$</text>
+  <text x="36" y="62" fill="#e4ecf0" font-family="monospace" font-size="11">pytest generated/api --tb=short</text>
+  <text x="22" y="86" fill="#34d399" font-family="monospace" font-size="10">test_login_rejects_expired_token PASSED</text>
+  <text x="22" y="106" fill="#34d399" font-family="monospace" font-size="10">test_payment_declines_bubble_up PASSED</text>
+  <text x="22" y="126" fill="#34d399" font-family="monospace" font-size="10">test_order_state_machine_rollback PASSED</text>
+  <text x="22" y="150" fill="#0fbcbf" font-family="monospace" font-size="11">$</text>
+  <text x="36" y="150" fill="#e4ecf0" font-family="monospace" font-size="11">behave features/checkout.feature</text>
+  <text x="22" y="172" fill="#34d399" font-family="monospace" font-size="10">Scenario: guest checkout with saved cart .. passed</text>
+  <text x="22" y="196" fill="#0fbcbf" font-family="monospace" font-size="11">$</text>
+  <text x="36" y="196" fill="#e4ecf0" font-family="monospace" font-size="11">npx playwright test journeys/</text>
+  <text x="22" y="218" fill="#34d399" font-family="monospace" font-size="10">3 passed (chromium, firefox, webkit)</text>
+  <line x1="18" y1="236" x2="622" y2="236" stroke="#334455" stroke-width="1"/>
+  <text x="22" y="262" fill="#e4ecf0" font-family="monospace" font-size="11">48 tests · 3 frameworks · 0 failures</text>
+  <text x="618" y="262" text-anchor="end" fill="#34d399" font-family="monospace" font-size="11">ALL PASS</text>
+  <text x="22" y="284" fill="#8899aa" font-family="monospace" font-size="10">projects, fixtures, and CI config included</text>
+</svg>
