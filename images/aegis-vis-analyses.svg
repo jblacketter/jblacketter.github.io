@@ -2,8 +2,7 @@
   <rect x="4" y="4" width="632" height="292" rx="10" fill="#1a2332" stroke="#0fbcbf" stroke-width="1" opacity="0.95"/>
   <rect x="4" y="4" width="632" height="34" rx="10" fill="#253545"/>
   <rect x="4" y="28" width="632" height="10" fill="#253545"/>
-  <text x="22" y="26" fill="#0fbcbf" font-family="monospace" font-size="13">DETERMINISTIC ANALYSES</text>
-  <text x="618" y="26" text-anchor="end" fill="#94a7ba" font-family="monospace" font-size="11">instant · no model</text>
+  <text x="22" y="26" fill="#94a7ba" font-family="monospace" font-size="11">instant · no model</text>
   <!-- 2x2 grid -->
   <rect x="18" y="52" width="296" height="104" rx="8" fill="#141e2a" stroke="#334455"/>
   <text x="34" y="76" fill="#3cd6d9" font-family="monospace" font-size="11">ACCESSIBILITY</text>

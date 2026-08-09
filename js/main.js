@@ -30,9 +30,9 @@
     'tools/liminal':                   { gridColumn: '3', gridRow: '3' },
     'tools/waylin':                    { gridColumn: '3', gridRow: '4 / 6' },
 
-    // Fun (rows 5-6)
-    'fun/botastrophic':    { gridColumn: '1 / 3', gridRow: '5' },
-    'fun/benfords_law':    { gridColumn: '1 / 3', gridRow: '6' }
+    // Fun (row 5, side by side)
+    'fun/botastrophic':    { gridColumn: '1', gridRow: '5' },
+    'fun/benfords_law':    { gridColumn: '2', gridRow: '5' }
   };
 
   /* --- Fetch & Render --- */
@@ -44,7 +44,6 @@
       renderFocus(data.currentFocus);
       renderFeatured(data.featured);
       renderCategorizedProjects(data.categories);
-      renderDemo(data.video);
       initReveal();
     })
     .catch(function (err) {
@@ -273,14 +272,6 @@
     if (pos.gridColumn) parts.push('grid-column: ' + pos.gridColumn);
     if (pos.gridRow) parts.push('grid-row: ' + pos.gridRow);
     return parts.join('; ');
-  }
-
-  /* --- Demo --- */
-
-  function renderDemo(video) {
-    if (!video) return;
-    var text = document.getElementById('demo-text');
-    if (text && video.placeholder) text.textContent = video.placeholder;
   }
 
   /* --- Scroll Reveal (IntersectionObserver) --- */

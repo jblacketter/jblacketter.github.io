@@ -202,10 +202,6 @@
       "status": "active"
     }
   ],
-  "video": {
-    "enabled": false,
-    "placeholder": "Demo video coming soon: a walkthrough of one of these projects in action."
-  },
   "featured": {
     "name": "AEGIS",
     "eyebrow": "Flagship project",
