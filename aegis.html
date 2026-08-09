@@ -128,6 +128,17 @@
       overflow: hidden;
     }
     .screen img { width: 100%; height: auto; display: block; }
+    .screen__placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 180px;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: #8fa3b8;
+    }
+    .screen__placeholder-prompt { color: #4fd8da; }
     .screen figcaption {
       font-family: var(--font-mono);
       font-size: 0.82rem;
@@ -277,11 +288,15 @@
       <h2 class="section__heading reveal">The surfaces</h2>
       <div class="screens">
         <figure class="screen reveal">
-          <img src="images/aegis-shot-console.png" alt="Aegis scan console: point it at a repo path, scan, and pick what to generate." loading="lazy">
+          <div class="screen__placeholder" role="img" aria-label="Screenshot of the Aegis scan console, coming soon">
+            <span class="screen__placeholder-prompt" aria-hidden="true">$</span> capturing console screenshot...
+          </div>
           <figcaption>The scan console: point it at a repo, scan, pick what to generate. Dependent steps add their prerequisites automatically.</figcaption>
         </figure>
         <figure class="screen reveal">
-          <img src="images/aegis-shot-dashboard.png" alt="Aegis dashboard: every report has a home; pin a repo and the whole app follows it." loading="lazy">
+          <div class="screen__placeholder" role="img" aria-label="Screenshot of the Aegis dashboard, coming soon">
+            <span class="screen__placeholder-prompt" aria-hidden="true">$</span> capturing dashboard screenshot...
+          </div>
           <figcaption>The dashboard: every report has a home. Pin a repo and the whole app follows it.</figcaption>
         </figure>
       </div>

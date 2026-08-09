@@ -21,9 +21,9 @@
   --ink-heading: #f5f9fb;
   --border:      rgba(255, 255, 255, 0.15);
   --border-soft: rgba(255, 255, 255, 0.08);
-  --link:        #a8e8ea;
-  --link-2:      #f4d494;
-  --link-3:      #ded4fe;
+  --link:        #b8eef0;
+  --link-2:      #f8dfae;
+  --link-3:      #e6e0fe;
   --on-accent:   #0d1a23;
   --on-accent-2: #1a1408;
   --surface-deep: #141e2a;
@@ -37,6 +37,9 @@
   --cat-dev-qa-text: #3cd6d9;
   --cat-tools-text:  #efbf63;
   --cat-fun-text:    #c6b5fc;
+  --cat-dev-qa-text-sm: #b8eef0;
+  --cat-tools-text-sm:  #f8dfae;
+  --cat-fun-text-sm:    #e6e0fe;
   --shadow-block: #2b3d52;
   --particle-1: #0fbcbf;
   --particle-2: #e8a838;
@@ -289,10 +292,10 @@ a:hover { color: var(--link-2); }
 }
 
 .hero__cta:hover {
-  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
   border-color: var(--accent);
   box-shadow: 0 0 28px var(--accent-glow), 0 0 8px color-mix(in srgb, var(--accent) 15%, transparent);
-  color: var(--accent);
+  color: var(--link);
   transform: translateY(-3px) scale(1.03);
   animation-play-state: paused;
 }
@@ -466,7 +469,7 @@ a:hover { color: var(--link-2); }
   gap: 0;
   font-family: var(--font-mono);
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--cat-accent-text, var(--cat-accent, var(--accent)));
@@ -561,16 +564,19 @@ a:hover { color: var(--link-2); }
 .card[data-category="dev-qa"], .category-label[data-category="dev-qa"] {
   --cat-accent: var(--cat-dev-qa);
   --cat-accent-text: var(--cat-dev-qa-text);
+  --cat-accent-text-sm: var(--cat-dev-qa-text-sm);
   --cat-glow: color-mix(in srgb, var(--cat-dev-qa) 20%, transparent);
 }
 .card[data-category="tools"], .category-label[data-category="tools"] {
   --cat-accent: var(--cat-tools);
   --cat-accent-text: var(--cat-tools-text);
+  --cat-accent-text-sm: var(--cat-tools-text-sm);
   --cat-glow: color-mix(in srgb, var(--cat-tools) 20%, transparent);
 }
 .card[data-category="fun"], .category-label[data-category="fun"] {
   --cat-accent: var(--cat-fun);
   --cat-accent-text: var(--cat-fun-text);
+  --cat-accent-text-sm: var(--cat-fun-text-sm);
   --cat-glow: color-mix(in srgb, var(--cat-fun) 20%, transparent);
 }
 .card[data-category] {
@@ -662,8 +668,8 @@ a:hover { color: var(--link-2); }
   letter-spacing: 0.06em;
   padding: 0.15rem 0.5rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent-2) 15%, transparent);
-  color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 8%, transparent);
+  color: var(--link-2);
   margin-left: 0.5rem;
   vertical-align: middle;
 }
@@ -720,8 +726,8 @@ a:hover { color: var(--link-2); }
   font-weight: 400;
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 12%, transparent);
-  color: var(--cat-accent, var(--accent));
+  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 6%, transparent);
+  color: var(--cat-accent-text-sm, var(--link));
   border: 1px solid color-mix(in srgb, var(--cat-accent, var(--accent)) 22%, transparent);
   transition: all var(--transition);
 }
@@ -837,10 +843,10 @@ a:hover { color: var(--link-2); }
   letter-spacing: 0.02em;
 }
 
-.topbar__brand:hover { color: var(--accent); }
+.topbar__brand:hover { color: var(--link); }
 
 .topbar__prompt {
-  color: var(--accent);
+  color: var(--link);
   margin-right: 0.4rem;
   opacity: 0.85;
 }
@@ -855,7 +861,7 @@ a:hover { color: var(--link-2); }
   border-radius: 999px;
   background: color-mix(in srgb, var(--accent) 18%, transparent);
   border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
-  color: var(--accent);
+  color: var(--link);
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 600;
@@ -891,7 +897,7 @@ a:hover { color: var(--link-2); }
 }
 
 .availability__label {
-  color: var(--accent-2);
+  color: var(--link-2);
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1011,7 +1017,7 @@ a:hover { color: var(--link-2); }
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--link);
   position: relative;
   z-index: 1;
 }
@@ -1133,7 +1139,7 @@ a:hover { color: var(--link-2); }
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
   color: var(--link);
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
 
 .featured__tier-sep {
@@ -1288,6 +1294,9 @@ html[data-theme="charcoal"] {
   --cat-dev-qa-text: #4fd8da;
   --cat-tools-text:  #e6b45a;
   --cat-fun-text:    #b7a3f5;
+  --cat-dev-qa-text-sm: #4fd8da;
+  --cat-tools-text-sm:  #e6b45a;
+  --cat-fun-text-sm:    #b7a3f5;
   --link-3:      #cbbcf8;
   --shadow-block: #101214;
   --particle-1: #4fd8da;
@@ -1327,6 +1336,9 @@ html[data-theme="mist"] {
   --cat-dev-qa-text: #0a7c7f;
   --cat-tools-text:  #8a5d08;
   --cat-fun-text:    #6247c9;
+  --cat-dev-qa-text-sm: #086568;
+  --cat-tools-text-sm:  #8a5d08;
+  --cat-fun-text-sm:    #6247c9;
   --link-3:      #5a41b8;
   --shadow-block: #b8c2d0;
   --particle-1: #0a7c7f;
@@ -1352,7 +1364,7 @@ html[data-theme="paper"] {
   --border:      rgba(34, 31, 25, 0.16);
   --border-soft: rgba(34, 31, 25, 0.08);
   --link:        #095e62;
-  --link-2:      #a2620a;
+  --link-2:      #8d5309;
   --on-accent:   #ffffff;
   --on-accent-2: #ffffff;
   --surface-deep: #1c1a16;
@@ -1366,6 +1378,9 @@ html[data-theme="paper"] {
   --cat-dev-qa-text: #0d7377;
   --cat-tools-text:  #a2620a;
   --cat-fun-text:    #7050c8;
+  --cat-dev-qa-text-sm: #0d7377;
+  --cat-tools-text-sm:  #8d5309;
+  --cat-fun-text-sm:    #7050c8;
   --link-3:      #63449e;
   --shadow-block: #d8d0bd;
   --particle-1: #0d7377;
@@ -1405,6 +1420,9 @@ html[data-theme="crt"] {
   --cat-dev-qa-text: #33ff66;
   --cat-tools-text:  #ffd23f;
   --cat-fun-text:    #c792ff;
+  --cat-dev-qa-text-sm: #33ff66;
+  --cat-tools-text-sm:  #ffd23f;
+  --cat-fun-text-sm:    #c792ff;
   --link-3:      #d7b3ff;
   --shadow-block: #1d2b1d;
   --particle-1: #33ff66;

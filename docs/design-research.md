@@ -38,24 +38,35 @@ takeaways that were actually applied.
 
 ## WCAG AA contrast record
 
-Computed with the relative-luminance formula (WCAG 2.1), alpha composited where
-applicable. Thresholds: body/small text 4.5:1, large bold text (card names,
-category labels, 20px+ bold) 3:1, focus indicators 3:1 non-text.
+The full audit lives in `docs/contrast-audit.py` and is re-runnable
+(`python3 docs/contrast-audit.py`, exit 0 = pass). It computes the ratio for
+**every rendered text/background selector pair**, including tint-composited
+backgrounds (tags at 6% category tint, badges at 8% amber tint, tier chips at
+6% accent tint, CTA pills at 15%/18% accent tint, the translucent topbar), not
+just the raw token pairs. Thresholds: 4.5:1 for body/small text and controls,
+3:1 for large bold text (card names and category labels, 20.8px at weight 700)
+and non-text focus indicators.
 
-| Pair | slate | charcoal | mist | paper | crt |
-|---|---|---|---|---|---|
-| ink / bg | 6.33 | 12.33 | 8.19 | 10.75 | 15.22 |
-| ink / card | 5.51 | 10.69 | 9.12 | 11.33 | 14.14 |
-| muted / card | 5.04 | 6.31 | 4.93 | 5.83 | 7.74 |
-| heading / bg | 7.15 | 14.51 | 11.85 | 14.70 | 18.51 |
-| link / card | 4.83 | 8.92 | 6.48 | 7.10 | 14.16 |
-| link-2 / card | 4.61 | 7.27 | 5.45 | 4.62 | 12.51 |
-| link-3 / card | 4.69 | 6.9 | 5.9 | 5.7 | 9.8 |
-| on-accent / accent (CTA) | 7.54 | 8.95 | 5.00 | 5.62 | 12.70 |
-| on-accent-2 / accent-2 (CTA hover) | 8.79 | 9.00 | 5.75 | 4.90 | 11.62 |
-| cat text / card (large bold, 3:1) | 3.58 to 3.86 | 8.0 | 4.7 | 5.3 | 13.4 |
-| focus (link) / card (3:1) | 4.83 | 8.92 | 6.48 | 7.10 | 14.16 |
+Result as of this phase: **26 pairs per theme times 5 themes, plus the
+theme-invariant placeholder surfaces: all pass.** Worst pair per theme:
 
-Slate needed tuning to pass: card surface darkened `#4a6685` to `#455f7d`, muted
-ink raised to `rgba(245, 249, 251, 0.85)`, and text-lifted variants added for the
-teal/amber/purple accents. The four alternate palettes passed as designed.
+| Theme | Worst pair | Ratio | Needs |
+|---|---|---|---|
+| slate | badge text over amber tint | 4.63 | 4.5 |
+| charcoal | fun tag over tint | 5.65 | 4.5 |
+| mist | topbar CTA over tinted topbar | 4.63 | 4.5 |
+| paper | dev-qa tag over tint | 4.89 | 4.5 |
+| crt | fun tag over tint | 7.10 | 4.5 |
+
+Design rule enforced by the audit: rendered text never uses the raw
+`--accent*` / `--cat-*` tokens. Small text and controls use `--link`,
+`--link-2`, `--link-3`, or `--cat-*-text-sm`; large bold names use
+`--cat-*-text`. Raw accents are decoration only (borders, glows, gradients,
+dots, swatches). Category labels were set to weight 700 so their 20.8px size
+qualifies as WCAG large text.
+
+Tuning that was required: slate's card darkened `#4a6685` to `#455f7d`, muted
+ink raised to `rgba(245, 249, 251, 0.85)`, link tints lifted (`#b8eef0`,
+`#f8dfae`, `#e6e0fe`), mist's small teal darkened to `#086568`, paper's amber
+deepened to `#8d5309`, and the tag/badge/chip/hover tint percentages reduced
+until every composited pair cleared threshold.
