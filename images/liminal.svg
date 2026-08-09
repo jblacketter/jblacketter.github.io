@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <!-- App window -->
+  <rect x="10" y="10" width="380" height="180" rx="8" fill="#1a2332" stroke="#a78bfa" stroke-width="1" opacity="0.9"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="380" height="28" rx="8" fill="#253545"/>
+  <rect x="10" y="30" width="380" height="8" fill="#253545"/>
+  <circle cx="28" cy="24" r="5" fill="#f97066"/>
+  <circle cx="44" cy="24" r="5" fill="#e8a838"/>
+  <circle cx="60" cy="24" r="5" fill="#34d399"/>
+  <text x="200" y="27" text-anchor="middle" fill="#94a7ba" font-family="monospace" font-size="11">liminal · pattern map</text>
+  <!-- Entry snippet (left) -->
+  <rect x="22" y="48" width="150" height="130" rx="6" fill="#141e2a" stroke="#334455"/>
+  <text x="32" y="68" fill="#94a7ba" font-family="monospace" font-size="8">DREAM · last night</text>
+  <rect x="32" y="76" width="126" height="5" rx="2" fill="#3d4f63"/>
+  <rect x="32" y="87" width="112" height="5" rx="2" fill="#3d4f63"/>
+  <rect x="32" y="98" width="120" height="5" rx="2" fill="#3d4f63"/>
+  <rect x="60" y="96" width="34" height="9" rx="2" fill="#a78bfa" opacity="0.35"/>
+  <rect x="32" y="109" width="98" height="5" rx="2" fill="#3d4f63"/>
+  <text x="32" y="134" fill="#94a7ba" font-family="monospace" font-size="8">JOURNAL · tuesday</text>
+  <rect x="32" y="142" width="122" height="5" rx="2" fill="#3d4f63"/>
+  <rect x="32" y="153" width="104" height="5" rx="2" fill="#3d4f63"/>
+  <rect x="88" y="151" width="30" height="9" rx="2" fill="#a78bfa" opacity="0.35"/>
+  <rect x="32" y="164" width="114" height="5" rx="2" fill="#3d4f63"/>
+  <!-- Pattern network (right) -->
+  <path d="M262 84 L226 118" stroke="#a78bfa" stroke-width="1" opacity="0.6"/>
+  <path d="M262 84 L318 108" stroke="#a78bfa" stroke-width="1" opacity="0.6"/>
+  <path d="M262 84 L296 60"  stroke="#8899aa" stroke-width="1" opacity="0.4" stroke-dasharray="3 3"/>
+  <path d="M226 118 L268 152" stroke="#8899aa" stroke-width="1" opacity="0.4" stroke-dasharray="3 3"/>
+  <path d="M318 108 L268 152" stroke="#a78bfa" stroke-width="1" opacity="0.6"/>
+  <circle cx="262" cy="84" r="17" fill="#1a2332" stroke="#c6b5fc" stroke-width="1.5"/>
+  <text x="262" y="88" text-anchor="middle" fill="#c6b5fc" font-family="monospace" font-size="9">water</text>
+  <circle cx="226" cy="118" r="14" fill="#1a2332" stroke="#3cd6d9" stroke-width="1.2"/>
+  <text x="226" y="122" text-anchor="middle" fill="#3cd6d9" font-family="monospace" font-size="8">door</text>
+  <circle cx="318" cy="108" r="15" fill="#1a2332" stroke="#efbf63" stroke-width="1.2"/>
+  <text x="318" y="112" text-anchor="middle" fill="#efbf63" font-family="monospace" font-size="8">moon</text>
+  <circle cx="296" cy="60" r="11" fill="#1a2332" stroke="#8899aa" stroke-width="1"/>
+  <text x="296" y="64" text-anchor="middle" fill="#94a7ba" font-family="monospace" font-size="7">home</text>
+  <circle cx="268" cy="152" r="12" fill="#1a2332" stroke="#34d399" stroke-width="1.2"/>
+  <text x="268" y="156" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="7">rain</text>
+  <!-- Confidence chip -->
+  <rect x="296" y="164" width="82" height="16" rx="8" fill="none" stroke="#a78bfa" opacity="0.8"/>
+  <text x="337" y="175" text-anchor="middle" fill="#c6b5fc" font-family="monospace" font-size="8">0.92 confidence</text>
+  <!-- Footnote -->
+  <text x="186" y="188" fill="#94a7ba" font-family="monospace" font-size="8">7 entries share this thread</text>
+</svg>

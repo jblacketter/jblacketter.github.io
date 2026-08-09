@@ -27,7 +27,7 @@
 
     // Tools (col 3, rows 2-4)
     'tools/tagteam':                   { gridColumn: '3', gridRow: '2' },
-    'tools/linkedin-ghost-job-score':  { gridColumn: '3', gridRow: '3' },
+    'tools/liminal':                   { gridColumn: '3', gridRow: '3' },
     'tools/waylin':                    { gridColumn: '3', gridRow: '4 / 6' },
 
     // Fun (rows 5-6)

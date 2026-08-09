@@ -110,19 +110,20 @@
           "image": "images/tagteam.svg"
         },
         {
-          "name": "linkedin-ghost-job-score",
-          "title": "Flag ghost jobs on LinkedIn before you apply",
-          "status": "Live · Firefox extension",
-          "description": "Firefox extension that scores LinkedIn job postings to identify likely ghost jobs before you apply.",
-          "impact": "Saves job hunters time by flagging listings that will never hire.",
+          "name": "liminal",
+          "displayName": "Liminal",
+          "title": "Your writing has patterns. Liminal finds them.",
+          "status": "In development · Django + NLP",
+          "description": "Semantic writing platform: capture journals, fiction, dreams, and quick thoughts, then let AI surface the recurring themes, symbols, and connections across everything you have written.",
+          "impact": "Pattern recognition with confidence scoring, voice capture with transcription, and a choice of AI tiers: a local Ollama model or your own cloud key. Private writing stays private.",
           "tags": [
-            "JavaScript",
-            "Browser Extension",
-            "Firefox"
+            "Python",
+            "Django",
+            "NLP",
+            "AI"
           ],
-          "url": "https://github.com/jblacketter/linkedin-ghost-job-score",
-          "image": "images/ghost-job.svg",
-          "displayName": "Ghost-Job Score"
+          "private": true,
+          "image": "images/liminal.svg"
         },
         {
           "name": "waylin",
