@@ -3,7 +3,7 @@
   <rect x="4" y="4" width="632" height="34" rx="10" fill="#253545"/>
   <rect x="4" y="28" width="632" height="10" fill="#253545"/>
   <text x="22" y="26" fill="#0fbcbf" font-family="monospace" font-size="13">RISK MAP</text>
-  <text x="618" y="26" text-anchor="end" fill="#8899aa" font-family="monospace" font-size="11">42 routes scored</text>
+  <text x="618" y="26" text-anchor="end" fill="#94a7ba" font-family="monospace" font-size="11">42 routes scored</text>
   <!-- column headers -->
   <text x="22" y="60" fill="#8899aa" font-family="monospace" font-size="10">ROUTE</text>
   <text x="330" y="60" fill="#8899aa" font-family="monospace" font-size="10">SEC</text>

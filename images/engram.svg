@@ -7,7 +7,7 @@
   <circle cx="28" cy="24" r="5" fill="#f97066"/>
   <circle cx="44" cy="24" r="5" fill="#e8a838"/>
   <circle cx="60" cy="24" r="5" fill="#34d399"/>
-  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">engram · semantic memory</text>
+  <text x="200" y="27" text-anchor="middle" fill="#94a7ba" font-family="monospace" font-size="11">engram · semantic memory</text>
   <!-- Brain/network icon -->
   <circle cx="200" cy="82" r="18" fill="none" stroke="#0fbcbf" stroke-width="1.5" opacity="0.6"/>
   <circle cx="200" cy="82" r="4" fill="#0fbcbf" opacity="0.8"/>

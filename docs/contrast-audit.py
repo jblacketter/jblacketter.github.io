@@ -129,7 +129,18 @@ for name, t in THEMES.items():
 
 PANEL = hex2rgb('#1a2332')   # vignette/artwork panel surface
 SUBPANEL = hex2rgb('#141e2a')  # inset panes inside vignettes
+BAR = hex2rgb('#253545')       # vignette/artwork title bar
 chk_deep = [
+    # title-bar text (actual header surface, not the panel)
+    ('vignette header muted / bar', ratio(hex2rgb('#94a7ba'), BAR), 4.5),
+    ('vignette header title teal / bar', ratio(hex2rgb('#0fbcbf'), BAR), 4.5),
+    # diff rows: colored text on its own 15% tint over the subpanel
+    ('diff removed red / tinted row', ratio(hex2rgb('#f97066'), mix('#f97066', 0.15, SUBPANEL)), 4.5),
+    ('diff added green / tinted row', ratio(hex2rgb('#34d399'), mix('#34d399', 0.15, SUBPANEL)), 4.5),
+    # pyramid labels on their tinted polygons over the panel
+    ('pyramid e2e purple / 25% tint', ratio(hex2rgb('#c6b5fc'), mix('#a78bfa', 0.25, PANEL)), 4.5),
+    ('pyramid integration teal / 20% tint', ratio(hex2rgb('#3cd6d9'), mix('#0fbcbf', 0.20, PANEL)), 4.5),
+    ('pyramid unit green / 18% tint', ratio(hex2rgb('#34d399'), mix('#34d399', 0.18, PANEL)), 4.5),
     # vignette text colors vs their fixed panels (theme-invariant artwork)
     ('vignette ink / panel', ratio(hex2rgb('#e4ecf0'), PANEL), 4.5),
     ('vignette muted / panel', ratio(hex2rgb('#8899aa'), PANEL), 4.5),

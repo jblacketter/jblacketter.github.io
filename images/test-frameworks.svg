@@ -7,7 +7,7 @@
   <circle cx="28" cy="24" r="5" fill="#f97066"/>
   <circle cx="44" cy="24" r="5" fill="#e8a838"/>
   <circle cx="60" cy="24" r="5" fill="#34d399"/>
-  <text x="200" y="27" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">test-frameworks</text>
+  <text x="200" y="27" text-anchor="middle" fill="#94a7ba" font-family="monospace" font-size="11">test-frameworks</text>
   <!-- Left panel: Playwright -->
   <text x="24" y="56" fill="#0fbcbf" font-family="monospace" font-size="10">PLAYWRIGHT + TYPESCRIPT</text>
   <rect x="24" y="60" width="160" height="1" fill="#0fbcbf" opacity="0.3"/>

@@ -5,7 +5,7 @@
   <circle cx="24" cy="21" r="5" fill="#f97066"/>
   <circle cx="40" cy="21" r="5" fill="#e8a838"/>
   <circle cx="56" cy="21" r="5" fill="#34d399"/>
-  <text x="320" y="26" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">generated tests · runnable out of the box</text>
+  <text x="320" y="26" text-anchor="middle" fill="#94a7ba" font-family="monospace" font-size="11">generated tests · runnable out of the box</text>
   <text x="22" y="62" fill="#0fbcbf" font-family="monospace" font-size="11">$</text>
   <text x="36" y="62" fill="#e4ecf0" font-family="monospace" font-size="11">pytest generated/api --tb=short</text>
   <text x="22" y="86" fill="#34d399" font-family="monospace" font-size="10">test_login_rejects_expired_token PASSED</text>
