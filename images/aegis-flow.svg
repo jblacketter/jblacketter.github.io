@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" fill="none" role="img" aria-label="Aegis scan flow: repository in, QA artifacts out">
+  <!-- Repo input -->
+  <rect x="30" y="115" width="170" height="70" rx="10" fill="#1a2332" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="115" y="145" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="14" font-weight="bold">YOUR REPO</text>
+  <text x="115" y="168" text-anchor="middle" fill="#8899aa" font-family="sans-serif" font-size="12">stays on your machine</text>
+  <!-- Arrow to scan -->
+  <path d="M204 150 L266 150" stroke="#8899aa" stroke-width="1.5"/>
+  <path d="M270 150 l-8 -4 0 8 z" fill="#8899aa"/>
+  <!-- Scan engine -->
+  <rect x="274" y="100" width="190" height="100" rx="10" fill="#1a2332" stroke="#0fbcbf" stroke-width="2"/>
+  <text x="369" y="132" text-anchor="middle" fill="#0fbcbf" font-family="monospace" font-size="15" font-weight="bold">ONE SCAN</text>
+  <text x="369" y="154" text-anchor="middle" fill="#e4ecf0" font-family="sans-serif" font-size="12">discovers routes, endpoints,</text>
+  <text x="369" y="172" text-anchor="middle" fill="#e4ecf0" font-family="sans-serif" font-size="12">auth · scores risk</text>
+  <!-- Fan-out arrows -->
+  <path d="M468 120 L536 55"  stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M468 135 L536 115" stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M468 150 L536 175" stroke="#8899aa" stroke-width="1.2"/>
+  <path d="M468 165 L536 235" stroke="#8899aa" stroke-width="1.2"/>
+  <!-- Artifacts -->
+  <rect x="540" y="30" width="230" height="48" rx="8" fill="#1a2332" stroke="#e8a838" stroke-width="1.2"/>
+  <text x="558" y="50" fill="#e8a838" font-family="monospace" font-size="12" font-weight="bold">RISK MAP</text>
+  <text x="558" y="67" fill="#8899aa" font-family="sans-serif" font-size="11">every route scored</text>
+  <rect x="540" y="90" width="230" height="48" rx="8" fill="#1a2332" stroke="#34d399" stroke-width="1.2"/>
+  <text x="558" y="110" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold">TEST PLAN + TESTS</text>
+  <text x="558" y="127" fill="#8899aa" font-family="sans-serif" font-size="11">runnable pytest · behave · playwright</text>
+  <rect x="540" y="150" width="230" height="48" rx="8" fill="#1a2332" stroke="#0fbcbf" stroke-width="1.2"/>
+  <text x="558" y="170" fill="#0fbcbf" font-family="monospace" font-size="12" font-weight="bold">APP DOCS</text>
+  <text x="558" y="187" fill="#8899aa" font-family="sans-serif" font-size="11">features · journeys · architecture</text>
+  <rect x="540" y="210" width="230" height="48" rx="8" fill="#1a2332" stroke="#f472b6" stroke-width="1.2"/>
+  <text x="558" y="230" fill="#f472b6" font-family="monospace" font-size="12" font-weight="bold">ISSUES + FIXES</text>
+  <text x="558" y="247" fill="#8899aa" font-family="sans-serif" font-size="11">prioritized recommendations</text>
+</svg>

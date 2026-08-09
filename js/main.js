@@ -1,5 +1,5 @@
 /* ===================================================
-   Greg Blacketter — Portfolio Showcase
+   Greg Blacketter · Portfolio Showcase
    Data rendering + scroll animations + hero particles
    Categorized grid with terminal aesthetic
    =================================================== */
@@ -18,24 +18,21 @@
     // Category labels
     'label/dev-qa':           { gridColumn: '1 / 3', gridRow: '1' },
     'label/tools':            { gridColumn: '3',     gridRow: '1' },
-    'label/fun':              { gridColumn: '1 / 3', gridRow: '5' },
+    'label/fun':              { gridColumn: '1 / 3', gridRow: '4' },
 
-    // Dev & QA (2×2 block in cols 1-2, rows 2-3)
-    'dev-qa/aegis':           { gridColumn: '1',     gridRow: '2' },
-    'dev-qa/qaagent':         { gridColumn: '2',     gridRow: '2' },
-    'dev-qa/bugalizer':       { gridColumn: '1',     gridRow: '3' },
-    'dev-qa/test-frameworks': { gridColumn: '2',     gridRow: '3' },
-    'dev-qa/squanch':         { gridColumn: '1',     gridRow: '4' },
+    // Dev & QA (cols 1-2, rows 2-3) · Bugalizer wide as Aegis's companion
+    'dev-qa/bugalizer':       { gridColumn: '1 / 3', gridRow: '2' },
+    'dev-qa/squanch':         { gridColumn: '1',     gridRow: '3' },
+    'dev-qa/engram':          { gridColumn: '2',     gridRow: '3' },
 
-    // Tools (col 3, rows 2-5)
+    // Tools (col 3, rows 2-4)
     'tools/tagteam':                   { gridColumn: '3', gridRow: '2' },
     'tools/linkedin-ghost-job-score':  { gridColumn: '3', gridRow: '3' },
-    'tools/unified':                   { gridColumn: '3', gridRow: '4' },
-    'tools/waylin':                    { gridColumn: '3', gridRow: '5 / 7' },
+    'tools/waylin':                    { gridColumn: '3', gridRow: '4 / 6' },
 
-    // Fun (rows 6-7)
-    'fun/botastrophic':    { gridColumn: '1 / 4', gridRow: '6' },
-    'fun/benfords_law':    { gridColumn: '1 / 4', gridRow: '7' }
+    // Fun (rows 5-6)
+    'fun/botastrophic':    { gridColumn: '1 / 3', gridRow: '5' },
+    'fun/benfords_law':    { gridColumn: '1 / 3', gridRow: '6' }
   };
 
   /* --- Fetch & Render --- */
@@ -45,6 +42,7 @@
     .then(function (data) {
       renderMeta(data.meta);
       renderFocus(data.currentFocus);
+      renderFeatured(data.featured);
       renderCategorizedProjects(data.categories);
       renderDemo(data.video);
       initReveal();
@@ -119,6 +117,46 @@
     }).join('');
   }
 
+  /* --- Featured Aegis band --- */
+
+  function renderFeatured(f) {
+    var el = document.getElementById('featured-band');
+    if (!el || !f) return;
+
+    var tiers = (f.tiers || []).map(function (t) {
+      return '<span class="featured__tier">' + escapeHtml(t) + '</span>';
+    }).join('<span class="featured__tier-sep" aria-hidden="true">&rarr;</span>');
+
+    var companion = f.companion
+      ? '<a class="featured__companion" href="' + escapeAttr(f.companion.href) + '">' +
+          '<span class="featured__companion-label">' + escapeHtml(f.companion.label) + '</span>' +
+          '<span class="featured__companion-blurb">' + escapeHtml(f.companion.blurb) + '</span>' +
+          '<span aria-hidden="true">&darr;</span>' +
+        '</a>'
+      : '';
+
+    el.innerHTML =
+      '<article class="featured reveal">' +
+        '<div class="featured__body">' +
+          '<p class="featured__eyebrow"><span aria-hidden="true">&gt;</span> ' + escapeHtml(f.eyebrow) + '</p>' +
+          '<h2 class="featured__name">' + escapeHtml(f.name) + '</h2>' +
+          '<p class="featured__tagline">' + escapeHtml(f.tagline) + '</p>' +
+          '<p class="featured__desc">' + escapeHtml(f.description) + '</p>' +
+          '<div class="featured__tiers" title="' + escapeAttr(f.tiersNote || '') + '">' + tiers + '</div>' +
+          '<p class="featured__local"><span class="featured__local-dot" aria-hidden="true"></span>' + escapeHtml(f.localFirst) + '</p>' +
+          '<p class="featured__status">' + escapeHtml(f.status) + '</p>' +
+          '<div class="featured__ctas">' +
+            '<a class="hero__cta hero__cta--primary" href="' + escapeAttr(f.detailUrl) + '">Explore Aegis <span aria-hidden="true">&rarr;</span></a>' +
+            '<a class="hero__cta" href="' + escapeAttr(f.url) + '" target="_blank" rel="noopener noreferrer">View on GitHub</a>' +
+          '</div>' +
+          companion +
+        '</div>' +
+        '<div class="featured__art">' +
+          '<img src="' + escapeAttr(f.image) + '" alt="Aegis scan console illustration" loading="lazy"/>' +
+        '</div>' +
+      '</article>';
+  }
+
   /* --- Categorized Projects --- */
 
   function renderCategorizedProjects(categories) {
@@ -135,7 +173,7 @@
       var labelStyle = buildGridStyle(labelPos);
 
       html +=
-        '<div class="category-label reveal" style="' + labelStyle + '; --cat-accent: ' + escapeAttr(cat.accent) + ';">' +
+        '<div class="category-label reveal" data-category="' + escapeAttr(cat.id) + '" style="' + labelStyle + '">' +
           '<span class="category-label__prompt">&gt;</span> ' +
           '<span class="category-label__text">' + escapeHtml(cat.label) + '</span>' +
           '<span class="category-label__cursor"></span>' +
@@ -162,8 +200,9 @@
             '<span class="card__window-dot"></span>' +
           '</div>';
 
-        // Repo slug
-        var slug = '<div class="card__slug">' + escapeHtml(repo.name) + '/</div>';
+        // Project name · big, uppercase (display name overrides repo slug)
+        var displayName = repo.displayName || repo.name.replace(/[-_]/g, ' ');
+        var slug = '<div class="card__name">' + escapeHtml(displayName) + '</div>';
 
         // Image
         var imageHtml = repo.image
@@ -208,7 +247,7 @@
         }
 
         html +=
-          '<article class="' + classes + '" data-category="' + escapeAttr(cat.id) + '" style="' + gridStyle + '; --reveal-delay: ' + delay.toFixed(2) + 's; --pulse-delay: ' + (cardIndex * 0.4).toFixed(1) + 's;">' +
+          '<article class="' + classes + '" id="card-' + escapeAttr(repo.name) + '" data-category="' + escapeAttr(cat.id) + '" style="' + gridStyle + '; --reveal-delay: ' + delay.toFixed(2) + 's; --pulse-delay: ' + (cardIndex * 0.4).toFixed(1) + 's;">' +
             windowDots +
             imageHtml +
             slug +
@@ -269,7 +308,7 @@
 
   /* ===================================================
      Particle Network Animation (hero canvas)
-     Floating nodes connected by lines — AI/network theme
+     Floating nodes connected by lines · AI/network theme
      =================================================== */
 
   function initParticles() {
@@ -282,8 +321,25 @@
     var particles = [];
     var PARTICLE_COUNT = 65;
     var CONNECT_DIST = 140;
-    var colors = ['#0fbcbf', '#e8a838', '#a78bfa', '#34d399', '#60a5fa', '#f472b6'];
+    var colors = [];
+    var linkRgb = '15, 188, 191';
     var animId;
+
+    // Particle palette lives in the theme tokens; re-read on every theme change
+    function readThemeColors() {
+      var styles = getComputedStyle(document.documentElement);
+      colors = [1, 2, 3, 4, 5, 6].map(function (n) {
+        return styles.getPropertyValue('--particle-' + n).trim() || '#0fbcbf';
+      });
+      linkRgb = styles.getPropertyValue('--particle-link').trim() || '15, 188, 191';
+    }
+
+    document.addEventListener('themechange', function () {
+      readThemeColors();
+      particles.forEach(function (p, i) {
+        p.color = colors[i % colors.length];
+      });
+    });
 
     function resize() {
       var rect = canvas.parentElement.getBoundingClientRect();
@@ -325,7 +381,7 @@
           var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECT_DIST) {
             var opacity = (1 - dist / CONNECT_DIST) * 0.22;
-            ctx.strokeStyle = 'rgba(15, 188, 191, ' + opacity + ')';
+            ctx.strokeStyle = 'rgba(' + linkRgb + ', ' + opacity + ')';
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -358,6 +414,7 @@
       animId = requestAnimationFrame(draw);
     }
 
+    readThemeColors();
     resize();
     createParticles();
     draw();

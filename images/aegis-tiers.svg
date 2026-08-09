@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" fill="none" role="img" aria-label="Aegis tier ladder: Quick Scan, Local AI, Cloud AI">
+  <!-- Ladder steps rising left to right -->
+  <!-- Step 1: Quick Scan -->
+  <rect x="30" y="130" width="220" height="80" rx="10" fill="#1a2332" stroke="#34d399" stroke-width="1.5"/>
+  <text x="50" y="158" fill="#34d399" font-family="monospace" font-size="15" font-weight="bold">QUICK SCAN</text>
+  <text x="50" y="180" fill="#e4ecf0" font-family="sans-serif" font-size="12">Deterministic · instant</text>
+  <text x="50" y="198" fill="#8899aa" font-family="sans-serif" font-size="12">No model, no cost</text>
+  <!-- Step 2: Local AI -->
+  <rect x="290" y="85" width="220" height="80" rx="10" fill="#1a2332" stroke="#0fbcbf" stroke-width="1.5"/>
+  <text x="310" y="113" fill="#0fbcbf" font-family="monospace" font-size="15" font-weight="bold">LOCAL AI</text>
+  <text x="310" y="135" fill="#e4ecf0" font-family="sans-serif" font-size="12">On-device Ollama model</text>
+  <text x="310" y="153" fill="#8899aa" font-family="sans-serif" font-size="12">Private · GPU-accelerated</text>
+  <!-- Step 3: Cloud AI -->
+  <rect x="550" y="40" width="220" height="80" rx="10" fill="#1a2332" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="570" y="68" fill="#e8a838" font-family="monospace" font-size="15" font-weight="bold">CLOUD AI</text>
+  <text x="570" y="90" fill="#e4ecf0" font-family="sans-serif" font-size="12">Configured cloud model</text>
+  <text x="570" y="108" fill="#8899aa" font-family="sans-serif" font-size="12">The deepest pass</text>
+  <!-- Arrows between steps -->
+  <path d="M252 165 L286 130" stroke="#8899aa" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M286 130 l-7 1 5 6 z" fill="#8899aa"/>
+  <path d="M512 120 L546 85" stroke="#8899aa" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M546 85 l-7 1 5 6 z" fill="#8899aa"/>
+  <!-- Axis label -->
+  <text x="400" y="232" text-anchor="middle" fill="#8899aa" font-family="monospace" font-size="11">DEPTH AND SPEND: YOU CHOOSE, PER REPORT</text>
+</svg>

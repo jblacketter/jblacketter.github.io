@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greg Blacketter — AI systems and the quality tools that keep them honest</title>
+  <title>Greg Blacketter | AI systems and the quality tools that keep them honest</title>
   <meta name="description" content="Greg Blacketter, QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence. Open to full-time, contract, and co-founder conversations.">
-  <meta property="og:title" content="Greg Blacketter — AI systems and the quality tools that keep them honest">
+  <meta property="og:title" content="Greg Blacketter | AI systems and the quality tools that keep them honest">
   <meta property="og:description" content="QA engineer and AI builder. I help teams ship LLM-powered features with confidence.">
   <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141e2a'/%3E%3Ctext x='6' y='23' font-family='monospace' font-size='18' fill='%230fbcbf'%3E%26gt;%3C/text%3E%3Crect x='19' y='9' width='7' height='15' fill='%230fbcbf' opacity='0.8'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* Pre-paint theme bootstrap: must run inline before first paint (same 3 lines on both pages) */
+    (function(){try{var t=localStorage.getItem('gb-theme');if(['charcoal','mist','paper','crt'].indexOf(t)>=0){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+  </script>
 </head>
 <body>
 
@@ -31,7 +36,7 @@
     <div class="hero__left reveal">
       <p class="hero__name">Greg Blacketter</p>
       <p class="hero__location">Portland, OR</p>
-      <h1 class="hero__title" id="hero-title">I build AI systems — and the quality tools that keep them honest.</h1>
+      <h1 class="hero__title" id="hero-title">I build AI systems, and the quality tools that keep them honest.</h1>
       <p class="hero__tagline" id="hero-tagline">QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence.</p>
 
       <div class="hero__availability" id="hero-availability" aria-label="Availability">
@@ -59,6 +64,13 @@
       </div>
     </div>
   </header>
+
+  <!-- Featured: Aegis -->
+  <section class="section section--featured" id="aegis">
+    <div class="section__inner section__inner--wide" id="featured-band">
+      <!-- Rendered by main.js -->
+    </div>
+  </section>
 
   <!-- Projects -->
   <section class="section" id="projects">
@@ -90,7 +102,7 @@
     <div class="section__inner">
       <h2 class="section__heading reveal" id="contact-heading">Let's talk</h2>
       <p class="contact__subheading reveal" id="contact-subheading">
-        If any of the work above resonates — for a role, a contract, or something you want to build — send a note. I read everything.
+        If any of this work resonates, for a role, a contract, or something you want to build, send a note. I read everything.
       </p>
       <div class="contact__links reveal" id="contact-links">
         <!-- Rendered by main.js -->
@@ -107,6 +119,7 @@
     </div>
   </footer>
 
+  <script src="js/theme.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
