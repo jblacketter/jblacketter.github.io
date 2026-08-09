@@ -275,7 +275,7 @@ a:hover { color: var(--link-2); }
   gap: 0.5rem;
   padding: 0.6rem 1.4rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
   border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
   color: var(--link);
   font-family: var(--font-heading);
@@ -292,7 +292,7 @@ a:hover { color: var(--link-2); }
 }
 
 .hero__cta:hover {
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  background: color-mix(in srgb, var(--accent) 20%, var(--bg));
   border-color: var(--accent);
   box-shadow: 0 0 28px var(--accent-glow), 0 0 8px color-mix(in srgb, var(--accent) 15%, transparent);
   color: var(--link);
@@ -668,7 +668,7 @@ a:hover { color: var(--link-2); }
   letter-spacing: 0.06em;
   padding: 0.15rem 0.5rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent-2) 8%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 8%, var(--bg));
   color: var(--link-2);
   margin-left: 0.5rem;
   vertical-align: middle;
@@ -726,14 +726,14 @@ a:hover { color: var(--link-2); }
   font-weight: 400;
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 6%, transparent);
+  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 8%, var(--bg));
   color: var(--cat-accent-text-sm, var(--link));
   border: 1px solid color-mix(in srgb, var(--cat-accent, var(--accent)) 22%, transparent);
   transition: all var(--transition);
 }
 
 .tag:hover {
-  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 20%, transparent);
+  background: color-mix(in srgb, var(--cat-accent, var(--accent)) 14%, var(--bg));
   box-shadow: 0 0 8px var(--cat-glow, var(--accent-glow));
 }
 
@@ -859,7 +859,7 @@ a:hover { color: var(--link-2); }
   align-items: center;
   padding: 0.45rem 1.1rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
   border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
   color: var(--link);
   font-family: var(--font-heading);
@@ -1139,7 +1139,7 @@ a:hover { color: var(--link-2); }
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
   color: var(--link);
-  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
 }
 
 .featured__tier-sep {
@@ -1321,8 +1321,8 @@ html[data-theme="mist"] {
   --ink-heading: #282c38;
   --border:      rgba(40, 44, 56, 0.16);
   --border-soft: rgba(40, 44, 56, 0.08);
-  --link:        #086568;
-  --link-2:      #8a5d08;
+  --link:        #075559;
+  --link-2:      #6f4a06;
   --on-accent:   #ffffff;
   --on-accent-2: #ffffff;
   --surface-deep: #141e2a;
@@ -1337,7 +1337,7 @@ html[data-theme="mist"] {
   --cat-tools-text:  #8a5d08;
   --cat-fun-text:    #6247c9;
   --cat-dev-qa-text-sm: #086568;
-  --cat-tools-text-sm:  #8a5d08;
+  --cat-tools-text-sm:  #6f4a06;
   --cat-fun-text-sm:    #6247c9;
   --link-3:      #5a41b8;
   --shadow-block: #b8c2d0;
@@ -1378,7 +1378,7 @@ html[data-theme="paper"] {
   --cat-dev-qa-text: #0d7377;
   --cat-tools-text:  #a2620a;
   --cat-fun-text:    #7050c8;
-  --cat-dev-qa-text-sm: #0d7377;
+  --cat-dev-qa-text-sm: #095356;
   --cat-tools-text-sm:  #8d5309;
   --cat-fun-text-sm:    #7050c8;
   --link-3:      #63449e;

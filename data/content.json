@@ -220,7 +220,7 @@
     "status": "In active development · multi-user preview in progress",
     "detailUrl": "aegis.html",
     "url": "https://github.com/jblacketter/aegis",
-    "image": "images/aegis.svg",
+    "image": "images/aegis.svg?v=2",
     "companion": {
       "label": "Pairs with BUGALIZER",
       "blurb": "bug reports in, proposed fixes out",

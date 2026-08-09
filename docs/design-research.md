@@ -47,16 +47,22 @@ just the raw token pairs. Thresholds: 4.5:1 for body/small text and controls,
 3:1 for large bold text (card names and category labels, 20.8px at weight 700)
 and non-text focus indicators.
 
-Result as of this phase: **26 pairs per theme times 5 themes, plus the
+Pill-shaped elements (CTAs, topbar CTA, tier chips, badges, tags) use **opaque**
+backgrounds (`color-mix(... , var(--bg))` rather than transparent tints), so
+their contrast is identical in every context: page background, cards, hovered
+cards, the featured band gradient, and the translucent topbar. Hover states are
+audited explicitly (CTA hover at 20%, tag hover at 14%).
+
+Result as of this phase: **29 pairs per theme times 5 themes, plus the
 theme-invariant placeholder surfaces: all pass.** Worst pair per theme:
 
 | Theme | Worst pair | Ratio | Needs |
 |---|---|---|---|
-| slate | badge text over amber tint | 4.63 | 4.5 |
-| charcoal | fun tag over tint | 5.65 | 4.5 |
-| mist | topbar CTA over tinted topbar | 4.63 | 4.5 |
-| paper | dev-qa tag over tint | 4.89 | 4.5 |
-| crt | fun tag over tint | 7.10 | 4.5 |
+| slate | CTA hover (incl. featured band) | 4.68 | 4.5 |
+| charcoal | fun tag hover | 5.56 | 4.5 |
+| mist | fun tag hover | 4.50 | 4.5 |
+| paper | tools tag hover | 4.68 | 4.5 |
+| crt | fun tag hover | 6.82 | 4.5 |
 
 Design rule enforced by the audit: rendered text never uses the raw
 `--accent*` / `--cat-*` tokens. Small text and controls use `--link`,

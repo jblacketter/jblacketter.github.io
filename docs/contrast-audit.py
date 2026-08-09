@@ -56,19 +56,19 @@ THEMES = {
                      cat_text=dict(dq='#4fd8da', tl='#e6b45a', fn='#b7a3f5'),
                      cat_sm=dict(dq='#4fd8da', tl='#e6b45a', fn='#b7a3f5')),
     'mist': dict(bg='#e9edf2', card='#f7f9fb', ink='#3d4555', muted=('#3d4555', 0.78),
-                 heading='#282c38', link='#086568', link2='#8a5d08', link3='#5a41b8',
+                 heading='#282c38', link='#075559', link2='#6f4a06', link3='#5a41b8',
                  accent='#0a7c7f', accent2='#8a5d08', on_accent='#ffffff', on_accent2='#ffffff',
                  topbar=('#e9edf2', 0.85),
                  cat=dict(dq='#0a7c7f', tl='#8a5d08', fn='#6247c9'),
                  cat_text=dict(dq='#0a7c7f', tl='#8a5d08', fn='#6247c9'),
-                 cat_sm=dict(dq='#086568', tl='#8a5d08', fn='#6247c9')),
+                 cat_sm=dict(dq='#086568', tl='#6f4a06', fn='#6247c9')),
     'paper': dict(bg='#f6f2e8', card='#fbf8f1', ink='#3a362e', muted=('#3a362e', 0.78),
                   heading='#221f19', link='#095e62', link2='#8d5309', link3='#63449e',
                   accent='#0d7377', accent2='#a2620a', on_accent='#ffffff', on_accent2='#ffffff',
                   topbar=('#f6f2e8', 0.85),
                   cat=dict(dq='#0d7377', tl='#a2620a', fn='#7050c8'),
                   cat_text=dict(dq='#0d7377', tl='#a2620a', fn='#7050c8'),
-                  cat_sm=dict(dq='#0d7377', tl='#8d5309', fn='#63449e')),
+                  cat_sm=dict(dq='#095356', tl='#8d5309', fn='#63449e')),
     'crt': dict(bg='#0a0e0a', card='#111811', ink='#c9edc9', muted=('#c9edc9', 0.72),
                 heading='#eaffea', link='#6dffa0', link2='#ffd23f', link3='#d7b3ff',
                 accent='#33ff66', accent2='#ffd23f', on_accent='#06210e', on_accent2='#241d02',
@@ -79,7 +79,8 @@ THEMES = {
 }
 DEEP = hex2rgb('#141e2a')  # theme-invariant terminal/diagram surface
 
-# Tint levels mirror css/style.css: tag 6%, badge 8%, tier chip 6%, cta 15%, cta hover 18%, topbar cta 18%
+# Tint levels mirror css/style.css: tag 8% (hover 14%), badge 8%, tier chip 8%,
+# cta 12% (hover 20%), topbar cta 12%; all opaque over var(--bg)
 failures = []
 for name, t in THEMES.items():
     bg = hex2rgb(t['bg'])
@@ -102,11 +103,14 @@ for name, t in THEMES.items():
     chk('availability label (link2) / bg', hex2rgb(t['link2']), bg, 4.5)
     chk('card__link (link2) / card', hex2rgb(t['link2']), card, 4.5)
     chk('companion label (link3) / card', hex2rgb(t['link3']), card, 4.5)
-    chk('topbar cta (link) / accent 18% over topbar', hex2rgb(t['link']), mix(t['accent'], 0.18, topbar), 4.5)
-    chk('hero cta (link) / accent 15% over bg', hex2rgb(t['link']), mix(t['accent'], 0.15, bg), 4.5)
-    chk('hero cta hover (link) / accent 18% over bg', hex2rgb(t['link']), mix(t['accent'], 0.18, bg), 4.5)
-    chk('tier chip (link) / accent 6% over card', hex2rgb(t['link']), mix(t['accent'], 0.06, card), 4.5)
-    chk('badge (link2) / accent2 8% over card', hex2rgb(t['link2']), mix(t['accent2'], 0.08, card), 4.5)
+    # Pill backgrounds are OPAQUE mixes with the theme bg (color-mix ... , var(--bg)),
+    # so these ratios hold in every context: page bg, cards, card hover, the
+    # featured band gradient, and the translucent topbar.
+    chk('topbar cta (link) / accent 12% opaque', hex2rgb(t['link']), mix(t['accent'], 0.12, bg), 4.5)
+    chk('cta normal incl .featured (link) / accent 12% opaque', hex2rgb(t['link']), mix(t['accent'], 0.12, bg), 4.5)
+    chk('cta hover incl .featured (link) / accent 20% opaque', hex2rgb(t['link']), mix(t['accent'], 0.20, bg), 4.5)
+    chk('tier chip (link) / accent 8% opaque', hex2rgb(t['link']), mix(t['accent'], 0.08, bg), 4.5)
+    chk('badge (link2) / accent2 8% opaque', hex2rgb(t['link2']), mix(t['accent2'], 0.08, bg), 4.5)
     chk('primary cta text / accent', hex2rgb(t['on_accent']), hex2rgb(t['accent']), 4.5)
     chk('primary cta hover text / accent2', hex2rgb(t['on_accent2']), hex2rgb(t['accent2']), 4.5)
     for k in ('dq', 'tl', 'fn'):
@@ -114,8 +118,10 @@ for name, t in THEMES.items():
             hex2rgb(t['cat_text'][k]), mix(t['cat'][k], 0.08, card), 3.0)
         chk(f'category label {k} (700 large) / cat 12% over bg',
             hex2rgb(t['cat_text'][k]), mix(t['cat'][k], 0.12, bg), 3.0)
-        chk(f'tag {k} (small) / cat 6% over card',
-            hex2rgb(t['cat_sm'][k]), mix(t['cat'][k], 0.06, card), 4.5)
+        chk(f'tag {k} (small) / cat 8% opaque',
+            hex2rgb(t['cat_sm'][k]), mix(t['cat'][k], 0.08, bg), 4.5)
+        chk(f'tag {k} hover (small) / cat 14% opaque',
+            hex2rgb(t['cat_sm'][k]), mix(t['cat'][k], 0.14, bg), 4.5)
     chk('focus outline (link) / card (non-text)', hex2rgb(t['link']), card, 3.0)
 
     worst = min(results, key=lambda r: r[1] / r[2])
