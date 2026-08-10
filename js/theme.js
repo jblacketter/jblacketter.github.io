@@ -7,13 +7,13 @@
   'use strict';
 
   var THEMES = [
+    { id: 'paper',    label: 'Paper' },
     { id: 'slate',    label: 'Slate' },
     { id: 'charcoal', label: 'Charcoal' },
     { id: 'mist',     label: 'Mist' },
-    { id: 'paper',    label: 'Paper' },
     { id: 'crt',      label: 'CRT' }
   ];
-  var DEFAULT_ID = 'slate';
+  var DEFAULT_ID = 'paper';
   var STORAGE_KEY = 'gb-theme';
 
   function validTheme(id) {
