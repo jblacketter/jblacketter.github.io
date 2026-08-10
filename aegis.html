@@ -8,6 +8,12 @@
   <meta property="og:title" content="Aegis | the AI QA copilot you point at a repository">
   <meta property="og:description" content="One scan: risk map, test plan, runnable tests, and app docs. Local-first AI at the depth you choose.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jblacketter.github.io/aegis.html">
+  <meta property="og:image" content="https://jblacketter.github.io/images/og-aegis.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jblacketter.github.io/images/og-aegis.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141e2a'/%3E%3Ctext x='6' y='23' font-family='monospace' font-size='18' fill='%230fbcbf'%3E%26gt;%3C/text%3E%3Crect x='19' y='9' width='7' height='15' fill='%230fbcbf' opacity='0.8'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,6 +112,12 @@
       overflow-x: auto;
     }
     .diagram img { width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; }
+    /* Small screens: keep the diagrams legible and let them swipe sideways
+       instead of shrinking to an unreadable strip */
+    @media (max-width: 640px) {
+      .diagram { -webkit-overflow-scrolling: touch; }
+      .diagram img { min-width: 640px; }
+    }
     .diagram-caption {
       font-size: 0.9rem;
       color: var(--ink-muted);

@@ -24,7 +24,7 @@
         },
         {
           "label": "LinkedIn",
-          "value": "linkedin.com/in/gregory-blacketter-5093364",
+          "value": "gregory-blacketter",
           "href": "https://www.linkedin.com/in/gregory-blacketter-5093364"
         },
         {
@@ -68,8 +68,7 @@
             "AI Agents",
             "Specifications"
           ],
-          "image": "images/squanch.svg",
-          "badge": "In Progress"
+          "image": "images/squanch.svg"
         },
         {
           "name": "engram",
@@ -138,7 +137,6 @@
             "CloudKit",
             "iOS"
           ],
-          "badge": "In Progress",
           "private": true,
           "image": "images/waylin.svg"
         }
