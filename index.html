@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Greg Blacketter | AI systems and the quality tools that keep them honest</title>
-  <meta name="description" content="Greg Blacketter, QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence. Open to full-time, contract, and co-founder conversations.">
+  <meta name="description" content="Greg Blacketter, QA engineer and test automation architect in Portland, OR. Quality engineering for teams shipping AI, backed by tools I designed and built. Flagship: Aegis, the AI QA copilot you point at a repository.">
   <meta property="og:title" content="Greg Blacketter | AI systems and the quality tools that keep them honest">
-  <meta property="og:description" content="QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence. Flagship: Aegis, the AI QA copilot you point at a repository.">
+  <meta property="og:description" content="Quality engineering for teams shipping AI, backed by tools I designed and built. Flagship: Aegis, the AI QA copilot you point at a repository.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jblacketter.github.io/">
   <meta property="og:image" content="https://jblacketter.github.io/images/og-home.png">
@@ -28,11 +29,16 @@
 
   <!-- Top nav -->
   <nav class="topbar" aria-label="Primary">
-    <a class="topbar__brand" href="#hero">
+    <a class="topbar__brand" href="index.html">
       <span class="topbar__prompt">&gt;</span>
       <span class="topbar__name">greg</span><span class="topbar__at">@</span><span class="topbar__host">blacketter</span>
     </a>
-    <a class="topbar__cta" href="#contact">Get in touch</a>
+    <div class="topbar__nav">
+      <a class="topbar__link" href="index.html" aria-current="page">Home</a>
+      <a class="topbar__link" href="aegis.html">Aegis</a>
+      <a class="topbar__link" href="work.html">Work</a>
+      <a class="topbar__cta" href="#contact">Work with me</a>
+    </div>
   </nav>
 
   <!-- Hero -->
@@ -41,33 +47,22 @@
 
     <div class="hero__left reveal">
       <p class="hero__name">Greg Blacketter</p>
-      <p class="hero__location">Portland, OR</p>
+      <p class="hero__role">AI QA Engineer &middot; Test Automation Architect <span class="hero__role-loc">&middot; Portland, OR</span></p>
       <h1 class="hero__title" id="hero-title">I build AI systems, and the quality tools that keep them honest.</h1>
-      <p class="hero__tagline" id="hero-tagline">QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence.</p>
+      <p class="hero__tagline" id="hero-tagline">Quality engineering for teams shipping AI. I built every tool on this page, and I bring the same discipline to yours.</p>
 
-      <div class="hero__availability" id="hero-availability" aria-label="Availability">
+      <p class="hero__capabilities" id="hero-capabilities" aria-label="Practice areas">
         <!-- Rendered by main.js -->
-      </div>
+      </p>
 
       <div class="hero__ctas">
-        <a class="hero__cta hero__cta--primary" href="#contact">Get in touch</a>
-        <a class="hero__cta" id="hero-github" href="https://github.com/jblacketter" target="_blank" rel="noopener noreferrer">
-          <svg class="hero__github-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-          View GitHub Profile
-        </a>
+        <a class="hero__cta hero__cta--primary" href="#aegis">Explore Aegis <span aria-hidden="true">&darr;</span></a>
+        <a class="hero__cta" href="#contact">Work with me</a>
       </div>
     </div>
 
     <div class="hero__right">
       <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero__focus" id="hero-focus">
-        <h2 class="hero__focus-heading">Where QA Meets AI</h2>
-        <div class="focus__grid" id="focus-grid">
-          <!-- Rendered by main.js -->
-        </div>
-      </div>
     </div>
   </header>
 
@@ -78,22 +73,50 @@
     </div>
   </section>
 
-  <!-- Projects -->
-  <section class="section" id="projects">
-    <div class="section__inner section__inner--wide">
-      <h2 class="section__heading reveal">Projects</h2>
-      <div class="projects-layout" id="projects-layout">
+  <!-- Workshop: compact project list -->
+  <section class="section" id="workshop">
+    <div class="section__inner">
+      <h2 class="section__heading reveal">From the workshop</h2>
+      <p class="workshop__intro reveal">
+        Tools I designed, built, and use. Each one is a working answer to a quality problem I kept
+        running into.
+      </p>
+      <div class="workshop" id="workshop-list">
         <!-- Rendered by main.js -->
       </div>
+      <p class="workshop__more reveal">
+        <a class="hero__cta" href="work.html">Full project details <span aria-hidden="true">&rarr;</span></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section section--alt" id="about">
+    <div class="section__inner">
+      <h2 class="section__heading reveal">How I work</h2>
+      <p class="about__text reveal">
+        I'm a QA engineer and test automation architect with 20+ years of building quality
+        systems — for financial-grade platforms at E*TRADE and TransUnion, mobile at eBay and
+        Intel Security, and a string of startups where I was the first QA hire and quality
+        strategy started with me. Now I'm focused on what AI changes about that job: replacing
+        manual test cases and brittle regression cycles with agents that explore UIs, exercise
+        APIs, and reason about failures instead of just detecting them.
+      </p>
+      <p class="about__text reveal">
+        Everything on this site was designed, built, and shipped by me — several of these tools
+        run in my client engagements today. When we work together, the person you talk to is the
+        person doing the work. Engagements usually start with a conversation about where quality
+        is hurting, and a scan of the codebase in question.
+      </p>
     </div>
   </section>
 
   <!-- Contact -->
   <section class="section section--contact" id="contact">
     <div class="section__inner">
-      <h2 class="section__heading reveal" id="contact-heading">Let's talk</h2>
+      <h2 class="section__heading reveal" id="contact-heading">Bring me a quality problem</h2>
       <p class="contact__subheading reveal" id="contact-subheading">
-        If any of this work resonates, for a role, a contract, or something you want to build, send a note. I read everything.
+        If your team is shipping AI-powered features, or shipping fast and wondering what's slipping through, that's the work I do. Tell me what you're building.
       </p>
       <div class="contact__links reveal" id="contact-links">
         <!-- Rendered by main.js -->

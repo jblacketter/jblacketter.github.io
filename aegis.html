@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aegis | the AI QA copilot you point at a repository</title>
@@ -68,6 +69,13 @@
       margin-bottom: 1.5rem;
     }
     .aegis-hero__ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+    .aegis-hero__provenance {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      margin-top: 1.1rem;
+    }
 
     .artifact-grid {
       display: grid;
@@ -197,7 +205,12 @@
       <span class="topbar__prompt">&gt;</span>
       <span class="topbar__name">greg</span><span class="topbar__at">@</span><span class="topbar__host">blacketter</span>
     </a>
-    <a class="topbar__cta" href="#contact">Get in touch</a>
+    <div class="topbar__nav">
+      <a class="topbar__link" href="index.html">Home</a>
+      <a class="topbar__link" href="aegis.html" aria-current="page">Aegis</a>
+      <a class="topbar__link" href="work.html">Work</a>
+      <a class="topbar__cta" href="#contact">Work with me</a>
+    </div>
   </nav>
 
   <!-- Hero -->
@@ -215,6 +228,7 @@
       <a class="hero__cta hero__cta--primary" href="https://github.com/jblacketter/aegis" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       <a class="hero__cta" href="index.html">&larr; Back to portfolio</a>
     </div>
+    <p class="aegis-hero__provenance">Designed and built by Greg Blacketter &middot; Portland, OR</p>
   </header>
 
   <!-- Flow diagram -->
@@ -271,7 +285,7 @@
         <div class="artifact reveal">
           <div class="artifact__vis"><img src="images/aegis-vis-analyses.svg" alt="Deterministic analyses grid: accessibility, observability, contracts, and compliance, each with a progress bar and findings." loading="lazy"></div>
           <div class="artifact__name">Deterministic Analyses</div>
-          <p>Cross-cutting coverage (accessibility, observability, contracts, compliance), users &amp; roles, pipeline &amp; gates, and test data &amp; environments.</p>
+          <p>Cross-cutting coverage (security scanning, accessibility, observability, contracts, compliance), users &amp; roles, pipeline &amp; gates, and test data &amp; environments.</p>
         </div>
       </div>
     </div>

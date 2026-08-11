@@ -2,20 +2,17 @@
   "meta": {
     "name": "Greg Blacketter",
     "title": "I build AI systems, and the quality tools that keep them honest.",
-    "tagline": "QA engineer and AI builder in Portland, OR. I help teams ship LLM-powered features with confidence.",
+    "tagline": "Quality engineering for teams shipping AI. I built every tool on this page, and I bring the same discipline to yours.",
     "location": "Portland, OR",
     "github": "https://github.com/jblacketter",
-    "availability": {
-      "label": "Open to",
-      "items": [
-        "Full-time roles",
-        "Contract engagements",
-        "Co-founder conversations"
-      ]
-    },
+    "capabilities": [
+      "AI-augmented development",
+      "Intelligent test engineering",
+      "AI quality & evaluation"
+    ],
     "contact": {
-      "heading": "Let's talk",
-      "subheading": "If any of this work resonates, for a role, a contract, or something you want to build, send a note. I read everything.",
+      "heading": "Bring me a quality problem",
+      "subheading": "If your team is shipping AI-powered features, or shipping fast and wondering what's slipping through, that's the work I do. Tell me what you're building.",
       "links": [
         {
           "label": "Email",
@@ -46,7 +43,7 @@
           "title": "What if every bug report arrived with a proposed fix?",
           "status": "Companion to Aegis · local LLMs + tree-sitter",
           "description": "Bug report processing server built on a multi-stage LLM pipeline. It validates each report, checks for duplicates, triages, localizes the code, and proposes a fix.",
-          "impact": "The intake side of the quality story: Aegis finds the risks before they ship, Bugalizer turns incoming bug reports into triaged, localized tickets with a proposed fix attached.",
+          "impact": "The intake side of the quality story: Aegis finds the risks before they ship, Bugalizer turns incoming bug reports into triaged, localized tickets with a proposed fix attached. Born in a live client engagement, not a demo.",
           "tags": [
             "Python",
             "FastAPI",
@@ -98,7 +95,7 @@
           "title": "What if two AI agents could ship code without a human babysitting every round?",
           "status": "Live · pip install tagteam",
           "description": "Pip-installable CLI for structured AI-to-AI handoffs with human oversight: one agent leads, another reviews, you arbitrate. It runs phase by phase from a roadmap and escalates to you when rounds go stale.",
-          "impact": "Productized multi-agent workflow: terminal automation (iTerm2/tmux), roadmap-driven phases, and JSONL-backed state that either agent can resume.",
+          "impact": "Productized multi-agent workflow: terminal automation (iTerm2/tmux), roadmap-driven phases, and JSONL-backed state that either agent can resume. It drives my client development work daily — and it built this site.",
           "tags": [
             "Python",
             "CLI",
@@ -183,23 +180,6 @@
       ]
     }
   ],
-  "currentFocus": [
-    {
-      "title": "AI-Augmented Development",
-      "description": "Systems where AI agents plan, review, and ship code together, from automated PR review to coordinated test generation.",
-      "status": "active"
-    },
-    {
-      "title": "Intelligent Test Engineering",
-      "description": "AI agents that analyze application behavior, generate meaningful test coverage, and catch regressions humans miss.",
-      "status": "active"
-    },
-    {
-      "title": "AI Quality & Evaluation",
-      "description": "Quality gates and evaluation pipelines that hold LLM-powered features to production standards.",
-      "status": "active"
-    }
-  ],
   "featured": {
     "name": "AEGIS",
     "eyebrow": "Flagship project",
@@ -213,13 +193,18 @@
     "tiersNote": "Every report runs at the depth you choose: deterministic, on-device model, or cloud model.",
     "localFirst": "Local-first: your code never leaves your machine.",
     "status": "In active development · multi-user preview in progress",
+    "artifacts": [
+      { "image": "images/aegis-vis-riskmap.svg", "label": "Risk Map" },
+      { "image": "images/aegis-vis-tests.svg", "label": "Generated Tests" },
+      { "image": "images/aegis-vis-testplan.svg", "label": "Test Plan" }
+    ],
     "detailUrl": "aegis.html",
     "url": "https://github.com/jblacketter/aegis",
     "image": "images/aegis.svg?v=2",
     "companion": {
       "label": "Pairs with BUGALIZER",
       "blurb": "bug reports in, proposed fixes out",
-      "href": "#card-bugalizer"
+      "href": "work.html#card-bugalizer"
     }
   }
 }

@@ -41,10 +41,11 @@
     .then(function (res) { return res.json(); })
     .then(function (data) {
       renderMeta(data.meta);
-      renderFocus(data.currentFocus);
       renderFeatured(data.featured);
+      renderWorkshopList(data.categories);
       renderCategorizedProjects(data.categories);
       initReveal();
+      scrollToHash();
     })
     .catch(function (err) {
       console.error('Failed to load content:', err);
@@ -61,20 +62,16 @@
     if (tagline && meta.tagline) tagline.textContent = meta.tagline;
     if (ghLink && meta.github) ghLink.href = meta.github;
 
-    renderAvailability(meta.availability);
+    renderCapabilities(meta.capabilities);
     renderContact(meta.contact);
   }
 
-  function renderAvailability(availability) {
-    var el = document.getElementById('hero-availability');
-    if (!el || !availability || !availability.items) return;
-    var label = availability.label
-      ? '<span class="availability__label">' + escapeHtml(availability.label) + ':</span>'
-      : '';
-    var items = availability.items.map(function (item) {
-      return '<span class="availability__item">' + escapeHtml(item) + '</span>';
-    }).join('<span class="availability__sep" aria-hidden="true">·</span>');
-    el.innerHTML = label + '<span class="availability__items">' + items + '</span>';
+  function renderCapabilities(capabilities) {
+    var el = document.getElementById('hero-capabilities');
+    if (!el || !capabilities || !capabilities.length) return;
+    el.innerHTML = capabilities.map(function (item) {
+      return '<span class="capabilities__item">' + escapeHtml(item) + '</span>';
+    }).join('<span class="capabilities__sep" aria-hidden="true">·</span>');
   }
 
   function renderContact(contact) {
@@ -100,20 +97,35 @@
     }
   }
 
-  /* --- Current Focus --- */
+  /* --- Workshop list (compact, index page) --- */
 
-  function renderFocus(items) {
-    var grid = document.getElementById('focus-grid');
-    if (!grid || !items) return;
+  function renderWorkshopList(categories) {
+    var el = document.getElementById('workshop-list');
+    if (!el || !categories) return;
 
-    grid.innerHTML = items.map(function (item) {
-      return (
-        '<article class="focus-card reveal">' +
-          '<h3 class="focus-card__title">' + escapeHtml(item.title) + '</h3>' +
-          '<p class="focus-card__desc">' + escapeHtml(item.description) + '</p>' +
-        '</article>'
-      );
-    }).join('');
+    var html = '';
+    categories.forEach(function (cat) {
+      html +=
+        '<div class="workshop__group reveal" data-category="' + escapeAttr(cat.id) + '">' +
+          '<span class="workshop__group-label"><span aria-hidden="true">&gt;</span> ' + escapeHtml(cat.label) + '</span>' +
+        '</div>';
+
+      cat.repos.forEach(function (repo) {
+        var displayName = repo.displayName || repo.name.replace(/[-_]/g, ' ');
+        var status = repo.status
+          ? '<span class="workshop-row__status">' + escapeHtml(repo.status) + '</span>'
+          : '';
+        html +=
+          '<a class="workshop-row reveal" data-category="' + escapeAttr(cat.id) + '" href="work.html#card-' + escapeAttr(repo.name) + '">' +
+            '<span class="workshop-row__name">' + escapeHtml(displayName) + '</span>' +
+            '<span class="workshop-row__title">' + escapeHtml(repo.title) + '</span>' +
+            status +
+            '<span class="workshop-row__arrow" aria-hidden="true">&rarr;</span>' +
+          '</a>';
+      });
+    });
+
+    el.innerHTML = html;
   }
 
   /* --- Featured Aegis band --- */
@@ -126,11 +138,23 @@
       return '<span class="featured__tier">' + escapeHtml(t) + '</span>';
     }).join('<span class="featured__tier-sep" aria-hidden="true">&rarr;</span>');
 
+    var artifacts = (f.artifacts || []).map(function (a) {
+      return (
+        '<figure class="featured__artifact">' +
+          '<img src="' + escapeAttr(a.image) + '" alt="' + escapeAttr(a.label) + ' report preview" loading="lazy"/>' +
+          '<figcaption class="featured__artifact-label">' + escapeHtml(a.label) + '</figcaption>' +
+        '</figure>'
+      );
+    }).join('');
+    var artifactsStrip = artifacts
+      ? '<div class="featured__artifacts" aria-label="What one scan produces">' + artifacts + '</div>'
+      : '';
+
     var companion = f.companion
       ? '<a class="featured__companion" href="' + escapeAttr(f.companion.href) + '">' +
           '<span class="featured__companion-label">' + escapeHtml(f.companion.label) + '</span>' +
           '<span class="featured__companion-blurb">' + escapeHtml(f.companion.blurb) + '</span>' +
-          '<span aria-hidden="true">&darr;</span>' +
+          '<span aria-hidden="true">&rarr;</span>' +
         '</a>'
       : '';
 
@@ -152,6 +176,7 @@
         '</div>' +
         '<div class="featured__art">' +
           '<img src="' + escapeAttr(f.image) + '" alt="Aegis scan console illustration" loading="lazy"/>' +
+          artifactsStrip +
         '</div>' +
       '</article>';
   }
@@ -272,6 +297,14 @@
     if (pos.gridColumn) parts.push('grid-column: ' + pos.gridColumn);
     if (pos.gridRow) parts.push('grid-row: ' + pos.gridRow);
     return parts.join('; ');
+  }
+
+  /* --- Re-run the URL fragment jump after JS renders the target --- */
+
+  function scrollToHash() {
+    if (!location.hash) return;
+    var target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView();
   }
 
   /* --- Scroll Reveal (IntersectionObserver) --- */
