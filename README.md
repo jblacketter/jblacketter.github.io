@@ -75,7 +75,7 @@ To add a custom domain (e.g., `gregblacketter.com`), configure it in repo Settin
 ├── images/               SVG project illustrations (8 files)
 │   ├── qaagent.svg       Terminal CLI mockup
 │   ├── waylin.svg        iOS phone with map pins
-│   ├── ai-handoff.svg    Tmux-style workflow panes
+│   ├── tagteam.svg       Tmux-style workflow panes (LEAD/REVIEWER)
 │   ├── ghost-job.svg     Browser with risk score badges
 │   ├── unified.svg       Hub-and-spoke control plane
 │   ├── playwright.svg    Test report with stats
