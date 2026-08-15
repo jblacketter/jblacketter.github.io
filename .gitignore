@@ -1,0 +1,5 @@
+# ai-handoff workflow state (ephemeral)
+handoff-state.json
+
+# macOS
+.DS_Store
