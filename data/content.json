@@ -92,15 +92,16 @@
       "repos": [
         {
           "name": "tagteam",
-          "title": "What if two AI agents could ship code without a human babysitting every round?",
-          "status": "Live · pip install tagteam",
-          "description": "Pip-installable CLI for structured AI-to-AI handoffs with human oversight: one agent leads, another reviews, you arbitrate. It runs phase by phase from a roadmap and escalates to you when rounds go stale.",
-          "impact": "Productized multi-agent workflow: terminal automation (iTerm2/tmux), roadmap-driven phases, and JSONL-backed state that either agent can resume. It drives my client development work daily — and it built this site.",
+          "title": "Two AIs hand off the work. One human breaks the tie.",
+          "status": "Live · v3.7 on PyPI · pip install tagteam · Apache-2.0",
+          "description": "CLI that runs a Lead agent and a Reviewer agent through a roadmap, phase by phase, with you as arbiter. Plan, review, implement, review: every round on the record, and it calls you only when the two can't settle it.",
+          "impact": "3.x turned a workflow into a platform: headless turns as fresh claude -p / codex exec processes with token accounting, a browser cockpit and cross-project hub, a script-driven gatekeeper that bounces broken builds before a reviewer turn is spent, multi-lens reviewer panels, and a roadmap DAG that runs independent phases in parallel worktrees. It drives my client work daily, it built this site — and tagteam builds tagteam.",
           "tags": [
             "Python",
             "CLI",
             "AI Agents",
-            "Workflow"
+            "Multi-agent",
+            "Headless"
           ],
           "url": "https://github.com/jblacketter/tagteam",
           "image": "images/tagteam.svg"
