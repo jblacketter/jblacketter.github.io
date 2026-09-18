@@ -116,7 +116,7 @@
           ? '<span class="workshop-row__status">' + escapeHtml(repo.status) + '</span>'
           : '';
         html +=
-          '<a class="workshop-row reveal" data-category="' + escapeAttr(cat.id) + '" href="work.html#card-' + escapeAttr(repo.name) + '">' +
+          '<a class="workshop-row reveal" data-category="' + escapeAttr(cat.id) + '" href="' + escapeAttr(repo.detailUrl || 'work.html#card-' + repo.name) + '">' +
             '<span class="workshop-row__name">' + escapeHtml(displayName) + '</span>' +
             '<span class="workshop-row__title">' + escapeHtml(repo.title) + '</span>' +
             status +
@@ -268,6 +268,17 @@
               'View on GitHub ' +
               '<span class="card__link-arrow">&rarr;</span>' +
             '</a>';
+        }
+        // Projects with their own page get a "How it works" link ahead of GitHub
+        if (repo.detailUrl) {
+          link =
+            '<div class="card__links">' +
+              '<a class="card__link" href="' + escapeAttr(repo.detailUrl) + '">' +
+                'How it works ' +
+                '<span class="card__link-arrow">&rarr;</span>' +
+              '</a>' +
+              link +
+            '</div>';
         }
 
         html +=
