@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tagteam | how it works</title>
+  <meta name="description" content="Tagteam runs a project as a series of phases: a lead agent plans and builds, a reviewer agent from a different company approves the plan and then the code, and you make the final call. Every exchange is on the record.">
+  <meta property="og:title" content="Tagteam | one AI builds it, a second AI checks it, you make the final call">
+  <meta property="og:description" content="A CLI that runs a lead agent and a reviewer agent through a roadmap, phase by phase, with you as the arbiter.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jblacketter.github.io/tagteam.html">
+  <meta property="og:image" content="https://jblacketter.github.io/images/tagteam/cockpit-cycle.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141e2a'/%3E%3Ctext x='6' y='23' font-family='monospace' font-size='18' fill='%230fbcbf'%3E%26gt;%3C/text%3E%3Crect x='19' y='9' width='7' height='15' fill='%230fbcbf' opacity='0.8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* Pre-paint theme bootstrap: must run inline before first paint (same 3 lines on both pages) */
+    (function(){try{var t=localStorage.getItem('gb-theme');if(['slate','charcoal','mist','crt'].indexOf(t)>=0){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+  </script>
+  <style>
+    /* --- Tagteam explainer page ---
+       Adapted from tagteam's docs/tagteam/index.html. Role colors ride the
+       portfolio's theme tokens so every theme (paper, slate, charcoal, mist,
+       crt) works: lead = accent-3, reviewer = accent, arbiter = accent-2. */
+    :root {
+      --tt-lead: var(--accent-3);
+      --tt-lead-ink: var(--link-3);
+      --tt-lead-t: color-mix(in srgb, var(--accent-3) 14%, var(--bg-card));
+      --tt-rev: var(--accent);
+      --tt-rev-ink: var(--link);
+      --tt-rev-t: color-mix(in srgb, var(--accent) 14%, var(--bg-card));
+      --tt-arb: var(--accent-2);
+      --tt-arb-ink: var(--link-2);
+      --tt-arb-t: color-mix(in srgb, var(--accent-2) 14%, var(--bg-card));
+      --tt-gate: var(--ink-muted);
+      --tt-gate-t: color-mix(in srgb, var(--ink) 8%, var(--bg-card));
+      --tt-surface: var(--bg-card);
+      --tt-sunk: color-mix(in srgb, var(--ink) 7%, var(--bg-card));
+      --tt-line: var(--border);
+      --tt-muted: var(--ink-muted);
+      --tt-code-bg: var(--surface-deep);
+      --tt-code-ink: #dce4ee;
+      --tt-code-dim: #8a98a9;
+    }
+
+    /* Hero (same shape as the Aegis page) */
+    .tt-hero { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 1rem; }
+    .tt-hero__eyebrow {
+      font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--link-2); margin-bottom: 0.6rem;
+    }
+    .tt-hero__name {
+      font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 5rem); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; line-height: 1;
+      background: linear-gradient(90deg, var(--ink-heading) 0%, var(--accent) 70%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .tt-hero__tagline {
+      font-family: var(--font-heading); font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 500;
+      color: var(--ink-heading); margin-bottom: 1rem; max-width: 36ch; text-wrap: balance; line-height: 1.3;
+    }
+    .tt-hero__desc { font-size: 1.1rem; line-height: 1.65; color: var(--ink); max-width: 64ch; margin-bottom: 1.25rem; }
+    .tt-hero__desc strong { color: var(--ink-heading); }
+    .tt-hero__ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+    /* Shared bits */
+    .tt-eyebrow { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tt-muted); }
+    .tt-muted { color: var(--tt-muted); }
+    .tt-prose { max-width: 66ch; }
+    .tt-prose p + p { margin-top: 0.8em; }
+    .tt-page code { font-family: var(--font-mono); font-size: 0.84em; }
+    .tt-page p code, .tt-page li code, .tt-page td code, .tt-page dd code {
+      background: var(--tt-sunk); padding: 0.08em 0.35em; border-radius: 4px;
+    }
+    .tt-page h3 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: var(--ink-heading); line-height: 1.2; }
+
+    .tt-sec-head { display: grid; gap: 0.5rem; margin-bottom: 1.6rem; }
+    .tt-sec-head .tt-eyebrow b { color: var(--ink-heading); font-weight: 500; }
+    .tt-sec-head .section__heading { font-size: clamp(1.5rem, 3vw, 2.05rem); margin-bottom: 0; text-wrap: balance; }
+    .tt-sec-head .section__heading::after { margin-top: 0.35rem; }
+
+    .tt-c-lead { color: var(--tt-lead-ink); } .tt-c-rev { color: var(--tt-rev-ink); }
+    .tt-c-arb { color: var(--tt-arb-ink); } .tt-c-gate { color: var(--tt-gate); }
+    .tt-bg-lead { background: var(--tt-lead); } .tt-bg-rev { background: var(--tt-rev); }
+    .tt-bg-arb { background: var(--tt-arb); } .tt-bg-gate { background: var(--tt-gate); }
+    .tt-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+
+    /* Cast of three */
+    .tt-cast { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.75rem; }
+    .tt-role {
+      background: var(--tt-surface); border: 1px solid var(--tt-line); border-radius: var(--radius);
+      padding: 1.1rem 1.1rem 1rem; display: grid; gap: 0.4rem; align-content: start;
+      box-shadow: 4px 4px 0 var(--shadow-block);
+    }
+    .tt-role__tag { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .tt-role h3 { font-size: 1.3rem; }
+    .tt-role p { font-size: 0.95rem; color: var(--tt-muted); }
+    .tt-role .tt-never { font-size: 0.88rem; border-top: 1px dashed var(--tt-line); padding-top: 0.5rem; margin-top: 0.25rem; }
+
+    .tt-short {
+      margin-top: 1.6rem; border-left: 4px solid var(--tt-arb); background: var(--tt-arb-t); color: var(--ink);
+      padding: 1rem 1.25rem; border-radius: 0 var(--radius) var(--radius) 0; max-width: 78ch;
+    }
+    .tt-short .tt-eyebrow { color: var(--tt-arb-ink); margin-bottom: 0.25rem; }
+
+    /* Figures + diagrams */
+    .tt-fig { margin: 0; background: var(--tt-surface); border: 1px solid var(--tt-line); border-radius: var(--radius); padding: 1.1rem; }
+    .tt-fig figcaption { font-size: 0.92rem; color: var(--tt-muted); margin-top: 0.75rem; max-width: 80ch; }
+    .tt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    svg.tt-diagram { display: block; width: 100%; height: auto; color: var(--ink); font-family: var(--font-body); }
+    .tt-scroll svg.tt-diagram { min-width: 760px; }
+    .tt-diagram .t { fill: currentColor; font-size: 14px; }
+    .tt-diagram .t-b { fill: currentColor; font-size: 15px; font-weight: 600; font-family: var(--font-heading); }
+    .tt-diagram .t-s { fill: var(--tt-muted); font-size: 12px; }
+    .tt-diagram .t-m { fill: var(--tt-muted); font-size: 11.5px; font-family: var(--font-mono); }
+    .tt-diagram .t-tag { font-size: 10.5px; font-family: var(--font-mono); letter-spacing: 0.1em; }
+    .tt-diagram .ln { stroke: currentColor; stroke-width: 1.6; fill: none; }
+    .tt-diagram .ln-mut { stroke: var(--tt-muted); stroke-width: 1.4; fill: none; }
+    .tt-diagram .dash { stroke-dasharray: 5 4; }
+    .tt-diagram .grid { stroke: var(--tt-line); stroke-width: 1; }
+    .tt-diagram .f-lead { fill: var(--tt-lead-t); stroke: var(--tt-lead); stroke-width: 1.6; }
+    .tt-diagram .f-rev { fill: var(--tt-rev-t); stroke: var(--tt-rev); stroke-width: 1.6; }
+    .tt-diagram .f-arb { fill: var(--tt-arb-t); stroke: var(--tt-arb); stroke-width: 1.6; }
+    .tt-diagram .f-gate { fill: var(--tt-gate-t); stroke: var(--tt-gate); stroke-width: 1.6; }
+    .tt-diagram .f-plain { fill: var(--tt-surface); stroke: var(--tt-muted); stroke-width: 1.4; }
+    .tt-diagram .f-frame { fill: none; stroke: var(--tt-muted); stroke-width: 1.2; stroke-dasharray: 6 5; }
+    .tt-diagram .fill-lead { fill: var(--tt-lead-ink); } .tt-diagram .fill-rev { fill: var(--tt-rev-ink); }
+    .tt-diagram .fill-arb { fill: var(--tt-arb-ink); } .tt-diagram .fill-mut { fill: var(--tt-muted); }
+    .tt-diagram .arrowhead { fill: currentColor; }
+
+    /* Swimlane stepper */
+    #tt-lanes .lane-col { fill: var(--tt-lead); opacity: 0; transition: opacity 0.2s; }
+    #tt-lanes .lane-col.on { opacity: 0.1; }
+    #tt-lanes .node { cursor: pointer; }
+    #tt-lanes .node rect { transition: stroke-width 0.15s; }
+    #tt-lanes .node.on rect { stroke-width: 3.2; }
+    #tt-lanes .node:focus-visible { outline: none; }
+    #tt-lanes .node:focus-visible rect { stroke-dasharray: 4 3; }
+    .tt-stepper { margin-top: 1.1rem; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.1rem; align-items: start; }
+    .tt-step-copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+    .tt-who { display: flex; gap: 0.5rem; align-items: center; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .tt-step-copy h3 { font-size: 1.4rem; }
+    .tt-step-nav { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.4rem; }
+    .tt-btn {
+      font: 500 0.92rem var(--font-body); background: var(--tt-surface); color: var(--ink);
+      border: 1px solid var(--tt-line); border-radius: var(--radius-sm); padding: 0.45rem 0.9rem; cursor: pointer;
+    }
+    .tt-btn:hover { border-color: var(--accent); }
+    .tt-btn:disabled { opacity: 0.4; cursor: default; }
+    .tt-pips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .tt-pip {
+      width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--tt-line); background: var(--tt-surface);
+      font: 500 0.75rem var(--font-mono); color: var(--tt-muted); cursor: pointer; padding: 0;
+    }
+    .tt-pip.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+    .tt-page :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .tt-step-facts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+    .tt-fact .tt-eyebrow { font-size: 0.68rem; margin-bottom: 0.25rem; }
+    .tt-writes { list-style: none; display: grid; gap: 0.25rem; }
+    .tt-writes li { font-family: var(--font-mono); font-size: 0.8rem; background: var(--tt-sunk); border-radius: var(--radius-sm); padding: 0.25rem 0.5rem; overflow-wrap: anywhere; }
+
+    pre.tt-term {
+      background: var(--tt-code-bg); color: var(--tt-code-ink); font-family: var(--font-mono); font-size: 0.8rem;
+      line-height: 1.55; border-radius: var(--radius-sm); padding: 0.75rem 0.9rem; overflow-x: auto; margin: 0; white-space: pre;
+    }
+    pre.tt-term .dim { color: var(--tt-code-dim); }
+    pre.tt-term .k { color: #8fb0ff; } pre.tt-term .g { color: #6fddb8; } pre.tt-term .y { color: #f2c46d; }
+
+    /* Two-column act layout */
+    .tt-act { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
+    .tt-file { background: var(--tt-surface); border: 1px solid var(--tt-line); border-radius: var(--radius); overflow: hidden; box-shadow: 4px 4px 0 var(--shadow-block); }
+    .tt-file__bar {
+      display: flex; justify-content: space-between; gap: 0.75rem; align-items: center; padding: 0.5rem 0.9rem;
+      border-bottom: 1px solid var(--tt-line); background: var(--tt-sunk); font-family: var(--font-mono); font-size: 0.78rem;
+    }
+    .tt-file__bar .ex { color: var(--tt-muted); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .tt-file pre { margin: 0; padding: 0.9rem 1rem; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink); }
+    .tt-file pre .h { color: var(--tt-lead-ink); font-weight: 500; }
+    .tt-file pre .ok { color: var(--tt-rev-ink); }
+
+    /* Rounds log */
+    .tt-log { display: grid; gap: 0.6rem; }
+    .tt-entry {
+      display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.75rem; background: var(--tt-surface);
+      border: 1px solid var(--tt-line); border-radius: var(--radius-sm); padding: 0.75rem 0.9rem;
+    }
+    .tt-entry .r { font-family: var(--font-mono); font-size: 0.74rem; color: var(--tt-muted); grid-row: span 2; padding-top: 2px; }
+    .tt-entry .act-l { font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500; letter-spacing: 0.04em; }
+    .tt-entry p { font-size: 0.93rem; }
+    .tt-entry.lead { border-left: 4px solid var(--tt-lead); } .tt-entry.lead .act-l { color: var(--tt-lead-ink); }
+    .tt-entry.rev { border-left: 4px solid var(--tt-rev); } .tt-entry.rev .act-l { color: var(--tt-rev-ink); }
+
+    /* Card grids */
+    .tt-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .tt-cards.three { grid-template-columns: repeat(3, 1fr); }
+    .tt-card {
+      background: var(--tt-surface); border: 1px solid var(--tt-line); border-radius: var(--radius);
+      padding: 1rem; display: grid; gap: 0.5rem; align-content: start; box-shadow: 4px 4px 0 var(--shadow-block);
+    }
+    .tt-card h3 { font-size: 1.05rem; }
+    .tt-card p { font-size: 0.93rem; color: var(--tt-muted); }
+    .tt-card .tt-eyebrow { font-size: 0.7rem; }
+    .tt-card .cmd { font-family: var(--font-mono); font-size: 0.76rem; background: var(--tt-sunk); border-radius: var(--radius-sm); padding: 0.4rem 0.5rem; overflow-wrap: anywhere; color: var(--ink); }
+    .tt-card.arb { border-top: 3px solid var(--tt-arb); }
+
+    /* Files table */
+    .tt-ftable { width: 100%; border-collapse: collapse; background: var(--tt-surface); border: 1px solid var(--tt-line); font-size: 0.92rem; }
+    .tt-ftable th { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tt-muted); text-align: left; font-weight: 500; padding: 0.6rem 0.9rem; background: var(--tt-sunk); }
+    .tt-ftable td { padding: 0.6rem 0.9rem; border-top: 1px solid var(--tt-line); vertical-align: top; }
+    .tt-ftable td:first-child { font-family: var(--font-mono); font-size: 0.8rem; white-space: nowrap; }
+    .tt-ftable tr.grp td { background: var(--tt-sunk); font-family: var(--font-heading); font-weight: 600; font-size: 0.92rem; padding: 0.45rem 0.9rem; white-space: normal; color: var(--ink-heading); }
+    .tt-when { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+    .tt-when.setup { background: var(--tt-sunk); color: var(--tt-muted); border: 1px solid var(--tt-line); }
+    .tt-when.lead { background: var(--tt-lead-t); color: var(--tt-lead-ink); }
+    .tt-when.rev { background: var(--tt-rev-t); color: var(--tt-rev-ink); }
+    .tt-when.arb { background: var(--tt-arb-t); color: var(--tt-arb-ink); }
+    .tt-when.gate { background: var(--tt-gate-t); color: var(--ink); }
+
+    .tt-gloss { display: grid; grid-template-columns: max-content 1fr; gap: 0.6rem 1.4rem; max-width: 80ch; }
+    .tt-gloss dt { font-family: var(--font-heading); font-weight: 600; color: var(--ink-heading); }
+    .tt-gloss dd { color: var(--tt-muted); }
+
+    /* Cockpit screenshots */
+    .tt-shot { margin-top: 1.75rem; background: var(--tt-surface); border: 1px solid var(--tt-line); border-radius: var(--radius); overflow: hidden; box-shadow: 4px 4px 0 var(--shadow-block); }
+    .tt-shot .chrome { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.75rem; background: var(--tt-sunk); border-bottom: 1px solid var(--tt-line); font-family: var(--font-mono); font-size: 0.72rem; color: var(--tt-muted); }
+    .tt-shot .chrome i { width: 9px; height: 9px; border-radius: 50%; background: var(--tt-line); display: inline-block; }
+    .tt-shot .chrome span { margin-left: 0.5rem; }
+    .tt-shot img { display: block; width: 100%; height: auto; }
+    .tt-shot figcaption { padding: 0.75rem 1.1rem 1rem; font-size: 0.92rem; color: var(--tt-muted); }
+    .tt-shot figcaption b { color: var(--ink-heading); }
+
+    .tt-install { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.75rem; align-items: center; }
+
+    /* Vertical rhythm: match the Aegis page */
+    .section { padding: 2.5rem 2rem; }
+
+    @media (max-width: 860px) {
+      .tt-cast, .tt-cards, .tt-cards.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tt-act, .tt-stepper, .tt-install { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .tt-hero { padding: 1.5rem 1rem 0.5rem; }
+      .section { padding: 2rem 1rem; }
+      .tt-cast, .tt-cards, .tt-cards.three { grid-template-columns: minmax(0, 1fr); }
+      .tt-ftable td:first-child { white-space: normal; overflow-wrap: anywhere; }
+      .tt-ftable th:nth-child(3), .tt-ftable td:nth-child(3) { display: none; }
+      .tt-gloss { grid-template-columns: 1fr; gap: 2px; }
+      .tt-gloss dd { margin-bottom: 0.6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .tt-page * { transition: none !important; } }
+  </style>
+</head>
+<body class="tt-page">
+
+  <!-- Top nav -->
+  <nav class="topbar" aria-label="Primary">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__prompt">&gt;</span>
+      <span class="topbar__name">greg</span><span class="topbar__at">@</span><span class="topbar__host">blacketter</span>
+    </a>
+    <div class="topbar__nav">
+      <a class="topbar__link" href="index.html">Home</a>
+      <a class="topbar__link" href="aegis.html">Aegis</a>
+      <a class="topbar__link" href="tagteam.html" aria-current="page">Tagteam</a>
+      <a class="topbar__link" href="work.html">Work</a>
+      <a class="topbar__cta" href="#contact">Contact me</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="tt-hero">
+    <p class="tt-hero__eyebrow"><span aria-hidden="true">&gt;</span> How it works &middot; a guide for people who haven't seen it</p>
+    <h1 class="tt-hero__name">Tagteam</h1>
+    <p class="tt-hero__tagline">One AI builds it. A second AI checks it. You make the final call.</p>
+    <p class="tt-hero__desc">Tagteam runs a project as a series of small <strong>phases</strong>. For each phase, a <strong>lead</strong> agent writes the plan and the code. A <strong>reviewer</strong> agent, usually a model from a different company, has to approve the plan before any code gets written, and has to approve the code before the phase is done. The two take turns, one at a time, and every exchange is saved to a file.</p>
+    <div class="tt-hero__ctas">
+      <a class="hero__cta hero__cta--primary" href="https://github.com/jblacketter/tagteam" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      <a class="hero__cta" href="work.html#card-tagteam">&larr; Back to the workshop</a>
+    </div>
+
+    <div class="tt-cast">
+      <div class="tt-role">
+        <div class="tt-role__tag tt-c-lead"><span class="tt-dot tt-bg-lead"></span>Lead &middot; e.g. Claude</div>
+        <h3>Plans and builds</h3>
+        <p>Talks through the idea with you, writes the roadmap and each phase plan, writes the code and tests, and makes the changes the reviewer asks for.</p>
+        <p class="tt-never">Can't approve its own work.</p>
+      </div>
+      <div class="tt-role">
+        <div class="tt-role__tag tt-c-rev"><span class="tt-dot tt-bg-rev"></span>Reviewer &middot; e.g. Codex</div>
+        <h3>Reads and rules</h3>
+        <p>Reads each submission, checks it against the plan and the code, then does one of four things: approve, request changes, escalate to you, or ask you a question.</p>
+        <p class="tt-never">Doesn't write the code.</p>
+      </div>
+      <div class="tt-role">
+        <div class="tt-role__tag tt-c-arb"><span class="tt-dot tt-bg-arb"></span>Arbiter &middot; you</div>
+        <h3>Sets direction and breaks ties</h3>
+        <p>Decides what gets built. Steps in only when the agents disagree, when one of them has a question, or when you want to leave them a note.</p>
+        <p class="tt-never">You don't pass messages between them. The handoff state does that.</p>
+      </div>
+    </div>
+
+    <div class="tt-short">
+      <div class="tt-eyebrow">In 30 seconds</div>
+      <p>If you ask one AI to review its own work, you haven't really had it reviewed. Tagteam makes a second AI sign off twice for every phase: once on the plan, before any code exists, and once on the code, after the tests have run. The agents hand the turn back and forth using a small state file, and every step is written down, so you can see why each decision was made.</p>
+    </div>
+  </header>
+
+  <!-- ============ BIG PICTURE ============ -->
+  <section class="section" id="big-picture">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>The big picture</b> &middot; the whole project, start to finish</div>
+        <h2 class="section__heading">A project starts as a conversation, becomes a roadmap, then goes through the phases one at a time</h2>
+      </div>
+      <figure class="tt-fig reveal">
+        <div class="tt-scroll">
+        <svg class="tt-diagram" viewBox="0 0 1000 220" role="img" aria-label="Flow: brainstorm with the lead, which produces a roadmap; then each phase goes plan doc, plan review, build, code review, and on approval loops back to the next phase's plan doc.">
+          <defs>
+            <marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arrowhead"/></marker>
+          </defs>
+          <text x="85" y="50" text-anchor="middle" class="t-tag fill-arb">YOU + LEAD</text>
+          <rect x="10" y="60" width="150" height="70" rx="10" class="f-arb"/>
+          <text x="85" y="91" text-anchor="middle" class="t-b">Brainstorm</text>
+          <text x="85" y="111" text-anchor="middle" class="t-s">free conversation</text>
+          <line x1="160" y1="95" x2="188" y2="95" class="ln" marker-end="url(#ah1)"/>
+          <text x="260" y="50" text-anchor="middle" class="t-tag fill-lead">LEAD WRITES</text>
+          <rect x="190" y="60" width="140" height="70" rx="10" class="f-lead"/>
+          <text x="260" y="91" text-anchor="middle" class="t-b">Roadmap</text>
+          <text x="260" y="111" text-anchor="middle" class="t-m">docs/roadmap.md</text>
+          <line x1="330" y1="95" x2="386" y2="95" class="ln" marker-end="url(#ah1)"/>
+          <rect x="370" y="14" width="620" height="192" rx="14" class="f-frame"/>
+          <text x="386" y="34" class="t-tag fill-mut">EACH PHASE, IN ORDER</text>
+          <text x="453" y="52" text-anchor="middle" class="t-tag fill-lead">LEAD</text>
+          <rect x="388" y="60" width="130" height="70" rx="10" class="f-lead"/>
+          <text x="453" y="91" text-anchor="middle" class="t-b">Plan doc</text>
+          <text x="453" y="111" text-anchor="middle" class="t-m">docs/phases/…</text>
+          <line x1="518" y1="95" x2="538" y2="95" class="ln" marker-end="url(#ah1)"/>
+          <text x="605" y="52" text-anchor="middle" class="t-tag fill-rev">REVIEWER</text>
+          <rect x="540" y="60" width="130" height="70" rx="10" class="f-rev"/>
+          <text x="605" y="91" text-anchor="middle" class="t-b">Plan review</text>
+          <text x="605" y="111" text-anchor="middle" class="t-s">rounds → approve</text>
+          <line x1="670" y1="95" x2="690" y2="95" class="ln" marker-end="url(#ah1)"/>
+          <text x="757" y="52" text-anchor="middle" class="t-tag fill-lead">LEAD</text>
+          <rect x="692" y="60" width="130" height="70" rx="10" class="f-lead"/>
+          <text x="757" y="91" text-anchor="middle" class="t-b">Build</text>
+          <text x="757" y="111" text-anchor="middle" class="t-s">code + tests</text>
+          <line x1="822" y1="95" x2="842" y2="95" class="ln" marker-end="url(#ah1)"/>
+          <text x="909" y="52" text-anchor="middle" class="t-tag fill-rev">GATE + REVIEWER</text>
+          <rect x="844" y="60" width="130" height="70" rx="10" class="f-rev"/>
+          <text x="909" y="91" text-anchor="middle" class="t-b">Code review</text>
+          <text x="909" y="111" text-anchor="middle" class="t-s">tests, then rounds</text>
+          <path d="M909 130 V176 H453 V132" class="ln" marker-end="url(#ah1)"/>
+          <text x="681" y="168" text-anchor="middle" class="t-s">approved → phase complete → next phase</text>
+          <text x="681" y="196" text-anchor="middle" class="t-s">until the roadmap is finished</text>
+        </svg>
+        </div>
+        <figcaption>You and the lead talk freely only at the start. After that, each phase goes through two review gates: <strong>plan review</strong>, before any code exists, and <strong>code review</strong>, after the tests pass. The reviewer has to approve at both gates before the next phase opens.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ STEP 1: BRAINSTORM ============ -->
+  <section class="section section--alt" id="brainstorm">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>Step 1</b> &middot; brainstorm with the lead</div>
+        <h2 class="section__heading">Start with a conversation, not a spec</h2>
+      </div>
+      <div class="tt-act">
+        <div class="tt-prose">
+          <p>Run <code>tagteam quickstart</code> in your project. It asks which agent is the lead and which is the reviewer, writes those names to <code>tagteam.yaml</code>, adds starter files (a blank roadmap, a decision log, templates, review checklists), and opens three terminals: <strong>Lead</strong>, <strong>Watcher</strong> and <strong>Reviewer</strong>.</p>
+          <p>Then you just talk to the lead, either in its terminal or in the web cockpit's lead lane. Tell it what you're building, who it's for, what's out of scope, and what you're worried about. The lead suggests how to break the work into phases, and you push back until the order makes sense to you.</p>
+          <p>What comes out of this is <strong><code>docs/roadmap.md</code></strong>: an ordered list of phases, each with a status and a one-paragraph description. A phase can also list another phase it depends on, so it won't start until that one is done.</p>
+          <p class="tt-muted">The reviewer hasn't done anything yet. Review starts with the first phase plan.</p>
+        </div>
+        <div class="tt-file reveal">
+          <div class="tt-file__bar"><span>docs/roadmap.md</span><span class="ex">example project</span></div>
+<pre><span class="h"># Project Roadmap</span>
+
+<span class="h">## Phases</span>
+
+<span class="h">### Phase 1: Invoice data model</span>
+- **Status:** <span class="ok">✅ Complete</span>
+- **Description:** Invoice, line-item and customer
+  tables; migrations; seed data.
+
+<span class="h">### Phase 2: CSV export</span>
+- **Status:** In progress
+- **Depends on:** Phase 1
+- **Description:** `invoices export --format csv`
+  so the accountant stops asking for screenshots.
+
+<span class="h">### Phase 3: Overdue reminders</span>
+- **Status:** Not started
+- **Depends on:** Phase 1
+- **Description:** Nightly job emails customers
+  whose invoice is 14+ days overdue.</pre>
+        </div>
+      </div>
+      <figure class="tt-shot reveal">
+        <div class="chrome"><i></i><i></i><i></i><span>tagteam serve &middot; cockpit 3.13.0 &middot; demo project</span></div>
+        <img src="images/tagteam/cockpit-lead.png" width="1280" height="800" loading="lazy" alt="Tagteam cockpit on an idle demo project. The top Needs-you card is a Start card: Next: csv-export — plan, with the command to start it, a Copy command button and a Start button. Below, the lead lane shows a conversation with Claude that ends with the roadmap reordered so csv-export comes first. The reviewer lane on the right is empty: No reviews yet.">
+        <figcaption><b>Brainstorming in the cockpit.</b> The left lane is a chat with the lead. Here you've agreed to reorder the roadmap, and the lead has done it. The card at the top reads the roadmap and shows the next step (<em>csv-export — plan</em>). Pressing <b>Start</b> turns on the watcher and tells the lead to start that phase. The reviewer lane stays empty until there's a plan to review.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2: PHASE PLAN ============ -->
+  <section class="section" id="plan-doc">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>Step 2</b> &middot; write the phase plan</div>
+        <h2 class="section__heading">Each phase gets a written plan, and the reviewer approves it before any code is written</h2>
+      </div>
+      <div class="tt-act">
+        <div class="tt-file reveal">
+          <div class="tt-file__bar"><span>docs/phases/csv-export.md</span><span class="ex">example</span></div>
+<pre><span class="h"># Phase 2: CSV export</span>
+
+<span class="h">## Summary</span>
+**What:** `invoices export --format csv`
+**Why:** accountant needs it for month-end
+**Depends on:** Phase 1
+
+<span class="h">## Scope</span>
+In:  one row per invoice, date filter
+Out: Excel, scheduled exports
+
+<span class="h">## Technical Approach</span>
+Stream rows with Python's csv module …
+
+<span class="h">## Files to Create/Modify</span>
+- `app/export.py` — new
+- `tests/test_export.py` — new
+
+<span class="h">## Success Criteria</span>
+- [ ] commas/newlines in names survive
+- [ ] 50k invoices without loading all</pre>
+        </div>
+        <div class="tt-prose">
+          <p>When it's time to start a phase, the lead writes a plan at <code>docs/phases/&lt;phase&gt;.md</code> from a fixed template: <em>Summary, Scope (in and out), Technical Approach, Files, Success Criteria, Open Questions, Risks</em>.</p>
+          <p>Then the lead submits it for review. That opens the phase's <strong>plan cycle</strong>. The reviewer reads the plan against the real codebase, and anything wrong gets fixed in the document, where a fix takes a sentence. If the same problem shows up in code three days later, it can take an afternoon to fix.</p>
+          <p>The success criteria are important here: the reviewer uses them in the next cycle to judge whether the code does what the plan said it would.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SWIMLANE ============ -->
+  <section class="section section--alt" id="one-phase">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>Step 3 onward</b> &middot; one phase, turn by turn</div>
+        <h2 class="section__heading">Only one agent works at a time</h2>
+        <p class="tt-prose tt-muted">This is a real phase from the example: one round of changes on the plan, a clean build, and code that passes review the first time. Click any box or use the arrows to see what happens at that step: the command, the files it writes, and what <code>handoff-state.json</code> (the file that tracks whose turn it is) says afterward.</p>
+      </div>
+      <figure class="tt-fig">
+        <div class="tt-scroll">
+        <svg class="tt-diagram" id="tt-lanes" viewBox="0 0 1110 340" role="img" aria-label="Swimlane of one phase. Lead submits plan round 1; reviewer requests changes; lead submits round 2; reviewer approves the plan; lead builds; lead submits implementation round 1; the gate runs the tests and passes; reviewer approves, completing the phase. The arbiter is on call throughout.">
+          <defs>
+            <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arrowhead"/></marker>
+          </defs>
+          <rect class="lane-col" data-step="0" x="144" y="36" width="112" height="296" rx="8"/>
+          <rect class="lane-col" data-step="1" x="264" y="36" width="112" height="296" rx="8"/>
+          <rect class="lane-col" data-step="2" x="384" y="36" width="112" height="296" rx="8"/>
+          <rect class="lane-col" data-step="3" x="504" y="36" width="112" height="296" rx="8"/>
+          <rect class="lane-col" data-step="4" x="624" y="36" width="112" height="296" rx="8"/>
+          <rect class="lane-col" data-step="5" x="744" y="36" width="112" height="296" rx="8"/>
+          <rect class="lane-col" data-step="6" x="864" y="36" width="112" height="296" rx="8"/>
+          <rect class="lane-col" data-step="7" x="984" y="36" width="112" height="296" rx="8"/>
+          <rect x="144" y="8" width="472" height="22" rx="5" class="f-rev"/>
+          <text x="380" y="23.5" text-anchor="middle" class="t-tag fill-rev">PLAN CYCLE</text>
+          <rect x="624" y="8" width="112" height="22" rx="5" class="f-lead"/>
+          <text x="680" y="23.5" text-anchor="middle" class="t-tag fill-lead">BUILD</text>
+          <rect x="744" y="8" width="352" height="22" rx="5" class="f-rev"/>
+          <text x="920" y="23.5" text-anchor="middle" class="t-tag fill-rev">IMPL CYCLE</text>
+          <line x1="0" y1="120" x2="1100" y2="120" class="grid"/>
+          <line x1="0" y1="170" x2="1100" y2="170" class="grid"/>
+          <line x1="0" y1="250" x2="1100" y2="250" class="grid"/>
+          <text x="12" y="78" class="t-b fill-lead">Lead</text>
+          <text x="12" y="96" class="t-s">plans · builds</text>
+          <text x="12" y="143" class="t-b fill-mut">Gate</text>
+          <text x="12" y="160" class="t-s">automatic</text>
+          <text x="12" y="208" class="t-b fill-rev">Reviewer</text>
+          <text x="12" y="226" class="t-s">reads · rules</text>
+          <text x="12" y="288" class="t-b fill-arb">Arbiter</text>
+          <text x="12" y="306" class="t-s">you</text>
+          <path d="M246 80 H260 V210 H272" class="ln" marker-end="url(#ah2)"/>
+          <path d="M366 210 H380 V80 H392" class="ln" marker-end="url(#ah2)"/>
+          <path d="M486 80 H500 V210 H512" class="ln" marker-end="url(#ah2)"/>
+          <path d="M606 210 H620 V80 H632" class="ln" marker-end="url(#ah2)"/>
+          <path d="M726 80 H752" class="ln" marker-end="url(#ah2)"/>
+          <path d="M846 80 H860 V145 H872" class="ln" marker-end="url(#ah2)"/>
+          <path d="M966 145 H980 V210 H992" class="ln" marker-end="url(#ah2)"/>
+          <g class="node" data-step="0" tabindex="0" role="button" aria-label="Step 1: lead submits plan round 1"><rect x="154" y="61" width="92" height="38" rx="8" class="f-lead"/><text x="200" y="85" text-anchor="middle" class="t">Plan · R1</text></g>
+          <g class="node" data-step="1" tabindex="0" role="button" aria-label="Step 2: reviewer requests changes"><rect x="274" y="191" width="92" height="38" rx="8" class="f-rev"/><text x="320" y="215" text-anchor="middle" class="t">Changes</text></g>
+          <g class="node" data-step="2" tabindex="0" role="button" aria-label="Step 3: lead submits plan round 2"><rect x="394" y="61" width="92" height="38" rx="8" class="f-lead"/><text x="440" y="85" text-anchor="middle" class="t">Plan · R2</text></g>
+          <g class="node" data-step="3" tabindex="0" role="button" aria-label="Step 4: reviewer approves the plan"><rect x="514" y="191" width="92" height="38" rx="8" class="f-rev"/><text x="560" y="215" text-anchor="middle" class="t">Approve ✓</text></g>
+          <g class="node" data-step="4" tabindex="0" role="button" aria-label="Step 5: lead builds"><rect x="634" y="61" width="92" height="38" rx="8" class="f-lead"/><text x="680" y="85" text-anchor="middle" class="t">Build</text></g>
+          <g class="node" data-step="5" tabindex="0" role="button" aria-label="Step 6: lead submits implementation round 1"><rect x="754" y="61" width="92" height="38" rx="8" class="f-lead"/><text x="800" y="85" text-anchor="middle" class="t">Impl · R1</text></g>
+          <g class="node" data-step="6" tabindex="0" role="button" aria-label="Step 7: gate runs tests"><rect x="874" y="130" width="92" height="30" rx="8" class="f-gate"/><text x="920" y="150" text-anchor="middle" class="t">Tests pass</text></g>
+          <g class="node" data-step="7" tabindex="0" role="button" aria-label="Step 8: reviewer approves implementation"><rect x="994" y="191" width="92" height="38" rx="8" class="f-rev"/><text x="1040" y="215" text-anchor="middle" class="t">Approve ✓</text></g>
+          <text x="1040" y="243" text-anchor="middle" class="t-s">phase complete</text>
+          <rect x="144" y="262" width="952" height="56" rx="10" class="f-arb" style="stroke-dasharray:6 5"/>
+          <text x="620" y="286" text-anchor="middle" class="t">On call the whole time, but not needed for this phase.</text>
+          <text x="620" y="305" text-anchor="middle" class="t-s">Steps in on an ESCALATE or NEED_HUMAN, and can leave a note for either agent at any point.</text>
+        </svg>
+        </div>
+
+        <div class="tt-stepper" aria-live="polite">
+          <div class="tt-step-copy">
+            <div class="tt-who" id="st-who"><span class="tt-dot tt-bg-lead"></span><span></span></div>
+            <h3 id="st-title"></h3>
+            <p id="st-body"></p>
+            <div class="tt-step-nav">
+              <button class="tt-btn" id="st-prev" type="button">&larr; Back</button>
+              <div class="tt-pips" id="st-pips"></div>
+              <button class="tt-btn" id="st-next" type="button">Next &rarr;</button>
+            </div>
+          </div>
+          <div class="tt-step-facts">
+            <div class="tt-fact"><div class="tt-eyebrow">Command it runs</div><pre class="tt-term" id="st-cmd"></pre></div>
+            <div class="tt-fact"><div class="tt-eyebrow">Files written</div><ul class="tt-writes" id="st-writes"></ul></div>
+            <div class="tt-fact"><div class="tt-eyebrow">handoff-state.json afterwards</div><pre class="tt-term" id="st-state"></pre></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ THE HANDOFF CONTRACT ============ -->
+  <section class="section" id="handoff">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>The handoff</b> &middot; what happens inside every cycle</div>
+        <h2 class="section__heading">The reviewer always gets the same four options</h2>
+      </div>
+      <figure class="tt-fig reveal">
+        <div class="tt-scroll">
+        <svg class="tt-diagram" viewBox="0 0 920 320" role="img" aria-label="State diagram. Lead's turn submits to reviewer's turn, passing through the gate on implementation cycles; a failing gate bounces back to the lead. The reviewer can request changes (back to the lead, next round), approve (cycle closed), or escalate or ask the human. The arbiter rules approve (cycle closed) or request changes / answer (back to the lead).">
+          <defs>
+            <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arrowhead"/></marker>
+          </defs>
+          <rect x="40" y="110" width="170" height="80" rx="12" class="f-lead"/>
+          <text x="125" y="146" text-anchor="middle" class="t-b">Lead's turn</text>
+          <text x="125" y="166" text-anchor="middle" class="t-s">writes / revises</text>
+          <rect x="520" y="110" width="170" height="80" rx="12" class="f-rev"/>
+          <text x="605" y="146" text-anchor="middle" class="t-b">Reviewer's turn</text>
+          <text x="605" y="166" text-anchor="middle" class="t-s">reads the diff, decides</text>
+          <rect x="760" y="30" width="140" height="64" rx="12" class="f-plain"/>
+          <text x="830" y="58" text-anchor="middle" class="t-b">Approved</text>
+          <text x="830" y="77" text-anchor="middle" class="t-s">cycle closed</text>
+          <rect x="520" y="248" width="220" height="56" rx="12" class="f-arb"/>
+          <text x="630" y="272" text-anchor="middle" class="t-b">Arbiter (you)</text>
+          <text x="630" y="291" text-anchor="middle" class="t-s">reads the brief, rules</text>
+          <line x1="210" y1="132" x2="315" y2="132" class="ln"/>
+          <rect x="315" y="119" width="100" height="26" rx="6" class="f-gate"/>
+          <text x="365" y="136.5" text-anchor="middle" class="t" style="font-size:12.5px">gate · impl</text>
+          <line x1="415" y1="132" x2="518" y2="132" class="ln" marker-end="url(#ah3)"/>
+          <text x="262" y="124" text-anchor="middle" class="t-m fill-lead">SUBMIT</text>
+          <text x="467" y="124" text-anchor="middle" class="t-s">tests pass</text>
+          <path d="M340 119 V84 H150 V108" class="ln-mut dash" marker-end="url(#ah3)"/>
+          <text x="245" y="76" text-anchor="middle" class="t-s">bounce: tests failed</text>
+          <line x1="520" y1="172" x2="212" y2="172" class="ln" marker-end="url(#ah3)"/>
+          <text x="366" y="192" text-anchor="middle" class="t-m fill-rev">REQUEST_CHANGES</text>
+          <text x="366" y="208" text-anchor="middle" class="t-s">lead resubmits as round N+1</text>
+          <path d="M650 110 V62 H758" class="ln" marker-end="url(#ah3)"/>
+          <text x="704" y="54" text-anchor="middle" class="t-m fill-rev">APPROVE</text>
+          <line x1="630" y1="190" x2="630" y2="246" class="ln" marker-end="url(#ah3)"/>
+          <text x="640" y="216" class="t-m fill-rev">ESCALATE</text>
+          <text x="640" y="232" class="t-m fill-rev">NEED_HUMAN</text>
+          <path d="M520 276 H110 V192" class="ln dash" marker-end="url(#ah3)"/>
+          <text x="310" y="268" text-anchor="middle" class="t-s">rule: request changes · answer</text>
+          <path d="M740 276 H830 V96" class="ln dash" marker-end="url(#ah3)"/>
+          <text x="840" y="200" class="t-s">rule:</text>
+          <text x="840" y="216" class="t-s">approve</text>
+        </svg>
+        </div>
+        <figcaption>Every submission goes to the reviewer. On implementation cycles, the gate runs the tests first. The reviewer responds with one of four actions. If the lead resubmits the same thing without changes ten rounds in a row, tagteam escalates to you automatically.</figcaption>
+      </figure>
+
+      <div class="tt-act" style="margin-top:1.75rem">
+        <div class="tt-prose">
+          <h3 style="margin-bottom:0.6rem">How the turn gets passed</h3>
+          <p>The agents never talk to each other directly. All they share is <code>handoff-state.json</code>, a small file saying which phase they're on, whether it's the plan or implementation cycle (plan/impl), the round number, and <em>whose turn it is</em>. It works like a baton: an agent only acts when the baton is in its hands.</p>
+          <p>Each agent's turn starts with <code>/tagteam:handoff</code>. The agent reads the state and the latest round, does its work, and runs <strong>exactly one</strong> command that records the round and hands the baton over. The <strong>watcher</strong> sees the change and types <code>/tagteam:handoff</code> into the other agent's terminal, so no one has to copy and paste between them.</p>
+          <p>Each agent begins its reply with a status banner and ends with a box that says who goes next, so you always know where things stand:</p>
+        </div>
+<pre class="tt-term reveal"><span class="k">Phase: csv-export | Type: plan | Round: 2 | Turn: reviewer | Status: ready</span>
+<span class="dim"> Reviewing lead's submission.</span>
+
+ Read docs/phases/csv-export.md against app/ and
+ the round-1 feedback. Quoting rule is now RFC 4180
+ via csv.QUOTE_MINIMAL with a test; export streams.
+
+ <span class="g">$ tagteam cycle add --phase csv-export --type plan \
+     --role reviewer --action APPROVE --round 2 \
+     --content "Approved. Quoting + streaming specified."</span>
+
+┌──────────────────────────────────────────────────┐
+│ NEXT: Plan approved. Tell <span class="y">claude</span> to implement,  │
+│       then run  /tagteam:handoff start csv-export impl │
+└──────────────────────────────────────────────────┘</pre>
+      </div>
+
+      <div style="margin-top:2rem">
+        <h3 style="margin-bottom:0.4rem">What gets saved: every round, in order</h3>
+        <p class="tt-prose tt-muted" style="margin-bottom:1rem">Each cycle has a log file, <code>docs/handoffs/csv-export_plan_rounds.jsonl</code>, that tagteam only ever adds to. It's the full record of what was submitted and what the reviewer said, so you can check why the plan changed.</p>
+        <div class="tt-log">
+          <div class="tt-entry lead reveal"><span class="r">R1</span><span class="act-l">LEAD · SUBMIT_FOR_REVIEW</span><p>Plan for csv-export: docs/phases/csv-export.md. Adds <code>export --format csv</code> to the invoices command; tests in tests/test_export.py.</p></div>
+          <div class="tt-entry rev reveal"><span class="r">R1</span><span class="act-l">REVIEWER · REQUEST_CHANGES</span><p>The plan doesn't say how commas and newlines inside customer names get escaped. Name the quoting rule and add a test for it. Also: is the export streamed or built in memory? Some accounts have 50k invoices.</p></div>
+          <div class="tt-entry lead reveal"><span class="r">R2</span><span class="act-l">LEAD · SUBMIT_FOR_REVIEW</span><p>Quoting: RFC 4180 via csv.QUOTE_MINIMAL; added a success criterion and a test for embedded commas/newlines. Rows stream through a generator, and there's a 50k-row memory test.</p></div>
+          <div class="tt-entry rev reveal"><span class="r">R2</span><span class="act-l">REVIEWER · APPROVE</span><p>Approved. The quoting rule and streaming are now specified and testable.</p></div>
+        </div>
+        <p class="tt-muted" style="font-size:0.85rem;margin-top:0.5rem">Example content. Real rounds read like this, usually longer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUILD + GATE ============ -->
+  <section class="section section--alt" id="build">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>Build and code review</b></div>
+        <h2 class="section__heading">The code has to pass the tests before the reviewer looks at it</h2>
+      </div>
+      <div class="tt-cards three">
+        <div class="tt-card reveal">
+          <div class="tt-eyebrow tt-c-lead">Lead</div>
+          <h3>Builds to the approved plan</h3>
+          <p>Once the plan is approved, the lead writes the code and tests. Nothing is being reviewed during this time. Then it opens the <strong>impl cycle</strong> with a short submission: what changed, where, and how it was checked.</p>
+          <div class="cmd">tagteam cycle init --phase csv-export --type impl</div>
+        </div>
+        <div class="tt-card reveal">
+          <div class="tt-eyebrow tt-c-gate">Gate (automatic)</div>
+          <h3>Runs the checks, not an AI</h3>
+          <p>The same command runs the full test suite. It also checks that the code actually changed since the plan was approved, and that the plan doc exists. If anything fails, the gate <strong>bounces</strong> the turn back to the lead with the failing output, and the reviewer never sees it.</p>
+          <div class="cmd">GATE: PASS | tests ok | scope 6 paths | plan-doc ok</div>
+        </div>
+        <div class="tt-card reveal">
+          <div class="tt-eyebrow tt-c-rev">Reviewer</div>
+          <h3>Reads the diff against the plan</h3>
+          <p>The reviewer takes the test result as given and doesn't run the suite again. It reads the diff and checks it against the plan's scope and success criteria. Then it's the same four options: approve, request changes (and another round), escalate, or ask you.</p>
+          <div class="cmd">--action APPROVE → phase complete</div>
+        </div>
+      </div>
+      <p class="tt-prose" style="margin-top:1.4rem">When the implementation is approved, the phase is done. The lead marks it <strong>✅ Complete</strong> in the roadmap and the phase doc. In <em>single-phase</em> mode, it stops there, and you start the next phase when you're ready. In <em>full-roadmap</em> mode, the watcher moves straight on to the next phase that's ready, meaning one whose dependencies are finished, and hands the lead <code>/tagteam:handoff start &lt;next-phase&gt;</code>.</p>
+      <figure class="tt-shot reveal">
+        <div class="chrome"><i></i><i></i><i></i><span>tagteam serve &middot; cockpit 3.13.0 &middot; demo project</span></div>
+        <img src="images/tagteam/cockpit-cycle.png" width="1280" height="800" loading="lazy" alt="Tagteam cockpit during an implementation cycle, round 2. Top strip: checkout-validation, implementation round 2; Codex is working, review round 2; watcher on. The lead lane shows two finished implementation turns and a note that Codex is reviewing. The reviewer lane shows round 1's review marked CHANGES REQUESTED, a pre-check for round 2 marked PASSED with 212 tests ok, scope 6 paths, plan-doc ok, and the round 2 review streaming its live log with a stop turn button.">
+        <figcaption><b>A code review in progress.</b> The lead is on its second implementation round, after the reviewer requested changes in round 1. The round-2 submission has already passed the gate (<b>pre-check · PASSED</b>: 212 tests, 6 files in scope, plan doc present). The reviewer's review of it is streaming live in the right lane. While it's the reviewer's turn, the lead waits.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ ARBITER ============ -->
+  <section class="section" id="arbiter">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>You</b> &middot; when the human steps in</div>
+        <h2 class="section__heading">You're not in every exchange, only where you're needed</h2>
+      </div>
+      <div class="tt-cards">
+        <div class="tt-card arb reveal">
+          <h3>Escalation</h3>
+          <p>The reviewer thinks the disagreement is one only you can settle. A short decision brief is written for you, and then you rule.</p>
+          <div class="cmd">tagteam brief<br>tagteam rule approve | request-changes</div>
+        </div>
+        <div class="tt-card arb reveal">
+          <h3>A question</h3>
+          <p><code>NEED_HUMAN</code>: the reviewer (or the lead) needs a fact or a preference only you have. Your answer goes to the agent that asked, and the cycle picks up where it left off.</p>
+          <div class="cmd">tagteam rule answer --to lead</div>
+        </div>
+        <div class="tt-card arb reveal">
+          <h3>Stuck loop</h3>
+          <p>If the lead resubmits identical content ten rounds in a row, tagteam escalates to you automatically. A cycle that's still making progress, even slowly, is never cut off.</p>
+          <div class="cmd">auto-escalate at 10 stale rounds</div>
+        </div>
+        <div class="tt-card arb reveal">
+          <h3>A note, any time</h3>
+          <p>Leave an instruction for either agent. It shows up in their next turn, and they have to say how they handled it. You can also pause and resume the handoffs.</p>
+          <div class="cmd">tagteam interject<br>tagteam pause · resume</div>
+        </div>
+      </div>
+      <figure class="tt-shot reveal">
+        <div class="chrome"><i></i><i></i><i></i><span>tagteam serve &middot; cockpit 3.13.0 &middot; demo project</span></div>
+        <img src="images/tagteam/cockpit-needs-you.png" width="1280" height="800" loading="lazy" alt="Tagteam cockpit with an escalation. Top strip: rate-limit-middleware, plan round 3, escalated to you; waiting on you. The Needs-you card, outlined in red, shows the escalation and a decision brief: the crux (what the rate limiter does when its store is unreachable), the lead's position (fail open), the reviewer's position (fail closed with a fallback bucket), and a recommendation with medium confidence, followed by the two tagteam rule commands, a comment box, and Request changes and Approve buttons. Below, both lanes show three plan rounds, the reviewer's first two marked changes requested and the third escalated.">
+        <figcaption><b>An escalation, waiting on you.</b> After three plan rounds, the lead and the reviewer still disagree on a product question: should the rate limiter fail open or fail closed? The reviewer escalated, and the briefer wrote a one-screen summary: the crux, each side's position, and a recommendation. Clicking <b>Approve</b> or <b>Request changes</b> runs the same <code>tagteam rule</code> command you'd type in the terminal.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ FILES ============ -->
+  <section class="section section--alt" id="files">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>What it leaves behind</b> &middot; files in your project</div>
+        <h2 class="section__heading">Everything is a file you can open, diff and commit</h2>
+      </div>
+      <div class="tt-scroll reveal">
+      <table class="tt-ftable">
+        <thead><tr><th>Path</th><th>Appears</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="3">Set once</td></tr>
+          <tr><td>tagteam.yaml</td><td><span class="tt-when setup">quickstart</span></td><td>Who's the lead, who's the reviewer, and whether the gate is on and which test command it runs.</td></tr>
+          <tr><td>templates/ · docs/checklists/</td><td><span class="tt-when setup">quickstart</span></td><td>The phase-plan template and the plan and code-review checklists.</td></tr>
+          <tr><td>AGENTS.md · CLAUDE.md</td><td><span class="tt-when setup">quickstart</span></td><td>Short pointers that tell each agent how the handoff works (only created if missing).</td></tr>
+          <tr class="grp"><td colspan="3">Planning documents: written by the lead, read by everyone</td></tr>
+          <tr><td>docs/roadmap.md</td><td><span class="tt-when lead">brainstorm</span></td><td>The ordered phases, their status and dependencies. Updated as each phase finishes.</td></tr>
+          <tr><td>docs/phases/&lt;phase&gt;.md</td><td><span class="tt-when lead">each phase</span></td><td>The plan the reviewer approves, and later the standard the code is checked against.</td></tr>
+          <tr><td>docs/decision_log.md</td><td><span class="tt-when lead">as needed</span></td><td>Decisions that last beyond a single phase, and why they were made.</td></tr>
+          <tr class="grp"><td colspan="3">The record: written by tagteam commands</td></tr>
+          <tr><td>handoff-state.json</td><td><span class="tt-when rev">every turn</span></td><td>The baton: phase, plan/impl, round, whose turn, status, plus a short history.</td></tr>
+          <tr><td>docs/handoffs/&lt;phase&gt;_plan_rounds.jsonl</td><td><span class="tt-when rev">plan cycle</span></td><td>Every plan submission and reviewer verdict. Tagteam only ever adds to it, never edits.</td></tr>
+          <tr><td>docs/handoffs/&lt;phase&gt;_impl_rounds.jsonl</td><td><span class="tt-when rev">impl cycle</span></td><td>The same for the code review, with the gate's results included.</td></tr>
+          <tr><td>docs/handoffs/&lt;phase&gt;_&lt;type&gt;_status.json</td><td><span class="tt-when rev">each cycle</span></td><td>The cycle's current state, plus the git commit it started from, so scope checks compare against the right baseline.</td></tr>
+          <tr><td>.tagteam/gates/…log</td><td><span class="tt-when gate">each impl submit</span></td><td>Full test output from each gate run.</td></tr>
+          <tr><td>docs/escalations/…md</td><td><span class="tt-when arb">escalations only</span></td><td>The decision brief written for you.</td></tr>
+          <tr><td>.tagteam/tagteam.db</td><td><span class="tt-when setup">always</span></td><td>A SQLite mirror of all of the above plus token usage, for the dashboard.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODES ============ -->
+  <section class="section" id="modes">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>Running it</b> &middot; how the turn gets from one agent to the other</div>
+        <h2 class="section__heading">The workflow is the same in every mode; only the amount of automation changes</h2>
+      </div>
+      <div class="tt-cards three">
+        <div class="tt-card reveal">
+          <h3>Manual</h3>
+          <p>No watcher. When one agent finishes, you tell the other to run <code>/tagteam:handoff</code>. It's the best way to learn the workflow.</p>
+        </div>
+        <div class="tt-card reveal">
+          <h3>Watched</h3>
+          <p><code>tagteam watch</code> keeps an eye on the baton and types the next command into the right terminal, but it waits until that agent is idle so it never interrupts one mid-task. This is the everyday setup: three terminals side by side.</p>
+        </div>
+        <div class="tt-card reveal">
+          <h3>Headless</h3>
+          <p>Each turn runs as a fresh CLI process with no terminal. You follow it with <code>tagteam tail</code>, or watch it in the cockpit (<code>tagteam serve --theme cockpit</code>), the web view of the same state. The screenshots above are from the cockpit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GLOSSARY ============ -->
+  <section class="section section--alt" id="words">
+    <div class="section__inner">
+      <div class="tt-sec-head">
+        <div class="tt-eyebrow"><b>Terms</b></div>
+        <h2 class="section__heading">Six terms that cover most of it</h2>
+      </div>
+      <dl class="tt-gloss reveal">
+        <dt>Phase</dt><dd>One section of the roadmap, small enough to plan, build and review in one sitting. It has a slug, like <code>csv-export</code>.</dd>
+        <dt>Cycle</dt><dd>One review loop for a phase. Every phase has two: <strong>plan</strong>, then <strong>impl</strong>.</dd>
+        <dt>Round</dt><dd>One lead submission plus the reviewer's response. A request for changes starts round N+1.</dd>
+        <dt>Turn</dt><dd>Whose move it is right now: lead, reviewer, or nobody (done, or waiting on you).</dd>
+        <dt>Gate</dt><dd>The automatic check (tests, scope, plan doc) that runs when the lead submits code, before the reviewer sees it.</dd>
+        <dt>Arbiter</dt><dd>You. You set the direction, settle disputes, and answer questions.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ TRY IT ============ -->
+  <section class="section" id="try-it">
+    <div class="section__inner">
+      <div class="tt-install">
+        <div class="tt-prose">
+          <h2 class="section__heading">Try it</h2>
+          <p>Tagteam is on PyPI under Apache-2.0. Install it, run <code>quickstart</code> in a project, and start talking to the lead.</p>
+          <p class="tt-muted">For the full reference, see <a href="https://github.com/jblacketter/tagteam/blob/main/docs/how-tagteam-works.md" target="_blank" rel="noopener noreferrer">docs/how-tagteam-works.md</a>. For the exact rules the agents follow, run <code>tagteam contract</code>.</p>
+          <div class="tt-hero__ctas" style="margin-top:1.25rem">
+            <a class="hero__cta hero__cta--primary" href="https://github.com/jblacketter/tagteam" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          </div>
+        </div>
+<pre class="tt-term reveal"><span class="dim"># install (either works)</span>
+<span class="g">$ pip install tagteam</span>
+<span class="g">$ uv tool install tagteam</span>
+
+<span class="dim"># in your project</span>
+<span class="g">$ tagteam quickstart</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section--alt section--contact" id="contact">
+    <div class="section__inner">
+      <h2 class="section__heading reveal">Want to see it run?</h2>
+      <p class="contact__subheading reveal">
+        Tagteam drives my client work every day, and it built this site. If you'd like a walkthrough
+        on a real project, or to talk about putting review gates around AI-written code, send a note.
+      </p>
+      <div class="contact__links reveal">
+        <a class="contact-link" href="mailto:jblacketter@gmail.com">
+          <span class="contact-link__label">Email</span>
+          <span class="contact-link__value">jblacketter@gmail.com</span>
+          <span class="contact-link__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/gregory-blacketter-5093364" target="_blank" rel="noopener noreferrer">
+          <span class="contact-link__label">LinkedIn</span>
+          <span class="contact-link__value">gregory-blacketter</span>
+          <span class="contact-link__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a class="footer__link" href="index.html">&larr; Portfolio</a>
+      <span class="footer__sep">&middot;</span>
+      <a class="footer__link" href="https://github.com/jblacketter" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span class="footer__sep">&middot;</span>
+      <span class="footer__copy">&copy; 2026 Greg Blacketter</span>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script>
+    // Reveal-on-scroll, same pattern as the Aegis page
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function (el) { observer.observe(el); });
+    })();
+
+    // Swimlane stepper (from tagteam's docs/tagteam/index.html)
+    (function () {
+      var steps = [
+        {who:"lead", label:"Lead", title:"Lead submits the plan",
+         body:"After the brainstorm, the lead writes docs/phases/csv-export.md and opens the plan cycle. This one command records round 1 and passes the turn to the reviewer.",
+         cmd:"$ tagteam cycle init --phase csv-export --type plan \\\n    --lead claude --reviewer codex \\\n    --content \"Plan for csv-export — docs/phases/…\"",
+         writes:["docs/phases/csv-export.md","docs/handoffs/csv-export_plan_rounds.jsonl","docs/handoffs/csv-export_plan_status.json","handoff-state.json"],
+         state:{phase:"csv-export",type:"plan",round:1,turn:"reviewer",status:"ready"}},
+        {who:"rev", label:"Reviewer", title:"Reviewer asks for changes",
+         body:"The watcher wakes the reviewer. It reads the plan against the actual code and finds a gap: nothing says how commas inside customer names get escaped. It sends the plan back with specific notes.",
+         cmd:"$ tagteam cycle add --phase csv-export --type plan \\\n    --role reviewer --action REQUEST_CHANGES --round 1 <<'EOF'\nQuoting rule unspecified … streaming vs memory?\nEOF",
+         writes:["docs/handoffs/csv-export_plan_rounds.jsonl  (appended)","handoff-state.json"],
+         state:{phase:"csv-export",type:"plan",round:1,turn:"lead",status:"ready"}},
+        {who:"lead", label:"Lead", title:"Lead revises and resubmits",
+         body:"The lead makes the fixes in the plan doc and submits round 2. The note says what changed. The reviewer reads the file itself.",
+         cmd:"$ tagteam cycle add --phase csv-export --type plan \\\n    --role lead --action SUBMIT_FOR_REVIEW --round 2 \\\n    --content \"Quoting: RFC 4180; streaming + tests\"",
+         writes:["docs/phases/csv-export.md  (edited)","docs/handoffs/csv-export_plan_rounds.jsonl  (appended)","handoff-state.json"],
+         state:{phase:"csv-export",type:"plan",round:2,turn:"reviewer",status:"ready"}},
+        {who:"rev", label:"Reviewer", title:"Reviewer approves the plan",
+         body:"The plan is approved, and no code has been written yet. That's the point: problems got fixed in a document, where they're cheap to fix.",
+         cmd:"$ tagteam cycle add --phase csv-export --type plan \\\n    --role reviewer --action APPROVE --round 2 \\\n    --content \"Approved.\"",
+         writes:["docs/handoffs/csv-export_plan_rounds.jsonl  (appended)","docs/handoffs/csv-export_plan_status.json","handoff-state.json"],
+         state:{phase:"csv-export",type:"plan",round:2,turn:null,status:"done",result:"approved"}},
+        {who:"lead", label:"Lead", title:"Lead builds it",
+         body:"The lead writes the code and tests for the approved plan. No cycle is open during the build, so the state file doesn't change. The lead runs focused tests as it goes, and the full suite runs once, at submission.",
+         cmd:"(no tagteam commands, just normal work)\n$ pytest tests/test_export.py",
+         writes:["app/export.py","tests/test_export.py"],
+         state:{phase:"csv-export",type:"plan",round:2,turn:null,status:"done",result:"approved"}},
+        {who:"lead", label:"Lead", title:"Lead opens the implementation review",
+         body:"The lead submits the code for review. The note covers what changed, where, and how it was checked. Tagteam records the git commit the work started from, so the gate can check that code actually changed.",
+         cmd:"$ tagteam cycle init --phase csv-export --type impl \\\n    --lead claude --reviewer codex \\\n    --content \"export.py + tests; see gate\"",
+         writes:["docs/handoffs/csv-export_impl_rounds.jsonl","docs/handoffs/csv-export_impl_status.json  (baseline sha)"],
+         state:"// the gate runs inside this same command;\n// the turn moves when it finishes (next step)"},
+        {who:"gate", label:"Gate · automatic", title:"The gate runs the tests",
+         body:"Still inside the lead's command: the full test suite runs, plus a check that code actually changed and that the plan doc exists. If anything fails, the turn goes straight back to the lead with the failure output, and the reviewer never sees it.",
+         cmd:"GATE: PASS | tests ok (212 passed) | scope 6 paths\n      | plan-doc ok | checked: HEAD 3f23845",
+         writes:[".tagteam/gates/csv-export_impl_r1_gate_….log","docs/handoffs/csv-export_impl_rounds.jsonl  (gate entry)","handoff-state.json"],
+         state:{phase:"csv-export",type:"impl",round:1,turn:"reviewer",status:"ready"}},
+        {who:"rev", label:"Reviewer", title:"Reviewer approves the code, and the phase is done",
+         body:"The reviewer reads the diff against the plan's success criteria. The test result is already recorded, so it doesn't run the suite again. It approves, and the lead marks the phase ✅ Complete in the roadmap. In full-roadmap mode, the watcher moves straight on to Phase 3.",
+         cmd:"$ tagteam cycle add --phase csv-export --type impl \\\n    --role reviewer --action APPROVE --round 1 \\\n    --content \"Approved. Criteria met; tests cover quoting.\"",
+         writes:["docs/handoffs/csv-export_impl_rounds.jsonl  (appended)","handoff-state.json","docs/roadmap.md  (status → ✅ Complete)"],
+         state:{phase:"csv-export",type:"impl",round:1,turn:null,status:"done",result:"approved"}}
+      ];
+      var dotCls = {lead:"tt-bg-lead",rev:"tt-bg-rev",gate:"tt-bg-gate",arb:"tt-bg-arb"};
+      var colCls = {lead:"tt-c-lead",rev:"tt-c-rev",gate:"tt-c-gate",arb:"tt-c-arb"};
+      var cur = 0;
+      var $ = function (id) { return document.getElementById(id); };
+      var pips = $("st-pips");
+      steps.forEach(function (s, i) {
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "tt-pip"; b.textContent = String(i + 1);
+        b.setAttribute("aria-label", "Step " + (i + 1) + ": " + s.title);
+        b.addEventListener("click", function () { show(i); });
+        pips.appendChild(b);
+      });
+      function fmtState(st) {
+        if (typeof st === "string") return st;
+        return "{\n" + Object.keys(st).map(function (k) { return '  "' + k + '": ' + JSON.stringify(st[k]); }).join(",\n") + "\n}";
+      }
+      function show(i) {
+        cur = i; var s = steps[i];
+        var who = $("st-who");
+        who.className = "tt-who " + colCls[s.who];
+        who.firstElementChild.className = "tt-dot " + dotCls[s.who];
+        who.lastElementChild.textContent = "Step " + (i + 1) + " of " + steps.length + " · " + s.label;
+        $("st-title").textContent = s.title;
+        $("st-body").textContent = s.body;
+        $("st-cmd").textContent = s.cmd;
+        $("st-state").textContent = fmtState(s.state);
+        var w = $("st-writes"); w.textContent = "";
+        s.writes.forEach(function (p) { var li = document.createElement("li"); li.textContent = p; w.appendChild(li); });
+        document.querySelectorAll("#tt-lanes .lane-col").forEach(function (el) { el.classList.toggle("on", +el.dataset.step === i); });
+        document.querySelectorAll("#tt-lanes .node").forEach(function (el) { el.classList.toggle("on", +el.dataset.step === i); });
+        document.querySelectorAll(".tt-pip").forEach(function (el, j) { el.classList.toggle("on", j === i); });
+        $("st-prev").disabled = i === 0; $("st-next").disabled = i === steps.length - 1;
+      }
+      $("st-prev").addEventListener("click", function () { if (cur > 0) show(cur - 1); });
+      $("st-next").addEventListener("click", function () { if (cur < steps.length - 1) show(cur + 1); });
+      document.querySelectorAll("#tt-lanes .node").forEach(function (el) {
+        var i = +el.dataset.step;
+        el.addEventListener("click", function () { show(i); });
+        el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(i); } });
+      });
+      show(0);
+    })();
+  </script>
+</body>
+</html>

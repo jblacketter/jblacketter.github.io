@@ -730,6 +730,8 @@ a:hover { color: var(--link-2); }
   transition: color var(--transition);
 }
 .card__link:hover { color: var(--link); }
+.card__links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin-top: auto; }
+.card__links .card__link { margin-top: 0; }
 .card__link-arrow { transition: transform var(--transition); }
 .card__link:hover .card__link-arrow { transform: translateX(3px); }
 
@@ -1342,6 +1344,16 @@ a:hover { color: var(--link-2); }
   .hero__cta { padding: 0.55rem 1.1rem; font-size: 0.85rem; }
   .card { padding: 1.25rem; }
   .card__image { margin: -1.25rem -1.25rem 0.75rem -1.25rem; }
+}
+
+/* Narrow phones: five nav items don't fit; the brand prompt already links home */
+@media (max-width: 480px) {
+  .topbar__link[href="index.html"] { display: none; }
+}
+@media (max-width: 360px) {
+  .topbar { padding-inline: 0.75rem; }
+  .topbar__nav { gap: 0.5rem; }
+  .topbar__brand { margin-right: 0.3rem; }
 }
 
 /* ===================================================
